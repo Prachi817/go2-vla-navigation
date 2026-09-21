@@ -1,9 +1,17 @@
 # Task 1 — Orin–Go2 Integration & High-Level Control
 
-Goal: get the Jetson Orin talking to the Go2 over the Unitree SDK — read
-robot state (pose, velocity, battery) and send high-level motion commands
-(forward, backward, turn, stop). This is the "legs" interface the VLA brain
-(Task 3/4) will eventually call with commands like *"move forward 75 cm"*.
+Goal: get the Jetson Orin talking to the Go2 — read robot state (pose,
+velocity, battery) and send high-level motion commands (forward, backward,
+turn, stop). This is the "legs" interface the VLA brain (Task 3/4) will
+eventually call with commands like *"move forward 75 cm"*.
+
+Two parallel implementations live in this folder, both doing the same
+thing over the same underlying robot API:
+
+- **`go2_interface.py`, `read_state.py`, `basic_control.py`** — raw
+  `unitree_sdk2py`, talking directly to the robot's DDS topics.
+- **`ros2/`** — the same functionality over ROS 2 (`unitree_ros2`), using
+  `rclpy` nodes instead of the SDK's `ChannelSubscriber`/`SportClient`.
 
 ## How the Go2 SDK actually works
 
@@ -29,26 +37,36 @@ wraps it. Low-level joint control is what you'd reach for if you were
 writing your own gait controller, which is out of scope here since the
 Go2's onboard controller already handles balance/walking.
 
-**Caveat to verify on hardware:** `rt/lowstate` is confirmed identical
-across every robot in the SDK's examples. `rt/sportmodestate` is used by
-other Unitree quadrupeds/humanoids in this SDK but there's no Go2-specific
-example exercising it — confirm the exact topic string with a DDS spy or
-`ros2 topic list` (if running the ROS 2 bridge) the first time you connect.
+**Topic names are confirmed**, not just assumed: `unitree_ros2`'s own docs
+list `sportmodestate` (position/velocity/gait) and `lowstate`
+(battery/IMU/joints) with the exact same field layout used here, which
+cross-checks the raw SDK topic strings (`rt/sportmodestate`, `rt/lowstate`)
+independently of the SDK's own examples.
 
-## Why raw SDK instead of unitree_ros2 (for now)
+## Why both the SDK and ROS 2 (not just one)
 
-Two ways to talk to the Go2: this SDK directly, or through `unitree_ros2`
-(a ROS 2 bridge over the same underlying DDS topics — it wraps, not
-replaces, what's used here). Going with the raw SDK for Task 1:
+We originally planned raw SDK only, deferring ROS 2 to Task 2 (Isaac Sim
+is ROS 2-native) and the Nav2 stretch goal, to avoid installing ROS 2 on
+the Orin before it was needed. We reversed that: ROS 2 is being added now,
+alongside the SDK, rather than waiting.
 
-- No ROS 2 install needed on the Orin just to read state and send a move
-  command — less setup, faster to get something working.
-- `unitree_ros2` pays off once Task 2 (Isaac Sim, which is ROS 2-native)
-  and the Nav2 stretch goal are in play — that's the point to add or switch
-  to the ROS 2 layer, not before.
-- Since `unitree_ros2` sits on top of the same SDK/DDS topics documented
-  above, moving to it later is an added interface layer, not a rewrite of
-  `go2_interface.py`'s logic.
+The two aren't really different robot APIs — they're two transports onto
+the *same* one. `unitree_ros2` doesn't reimplement robot control; the
+DDS topics `rt/sportmodestate`/`rt/lowstate` and the "sport" service's
+numeric command IDs (`MOVE = 1008`, `STANDUP = 1004`, ...) are identical
+on both sides. Concretely:
+
+| | Raw SDK (`go2_interface.py`) | ROS 2 (`ros2/go2_ros2_interface.py`) |
+|---|---|---|
+| State | `ChannelSubscriber` on `rt/sportmodestate` / `rt/lowstate` | `rclpy` subscription on `/sportmodestate` / `/lowstate` |
+| Commands | `SportClient.Move(...)` (SDK call, has a return code) | Publish a `unitree_api/msg/Request` with `api_id=1008` to `/api/sport/request` (fire-and-forget, no return code) |
+| Needs installed | `unitree_sdk2py` only | ROS 2 (Foxy or Humble) + `unitree_ros2`'s `cyclonedds_ws` built |
+
+`ros2/go2_ros2_interface.py` is a Python (`rclpy`) port of the request-ID
+mapping that `unitree_ros2` only ships as a C++ example
+(`ros2_sport_client.cpp`) — there's no bundled Python equivalent upstream,
+so this repo's version is hand-written against that same numeric ID table,
+not copied from an official Python example.
 
 ## Setup
 
@@ -75,8 +93,67 @@ replaces, what's used here). Going with the raw SDK for Task 1:
    pip3 install -r requirements.txt
    ```
 
+### ROS 2 setup (for `ros2/`)
+
+First check which Ubuntu/ROS 2 you actually have — the two paths differ:
+```bash
+lsb_release -a   # Ubuntu 20.04 -> ROS 2 Foxy; Ubuntu 22.04 -> ROS 2 Humble (recommended)
+```
+
+1. **Install ROS 2** if it isn't already, following the [official
+   instructions](https://docs.ros.org/en/humble/Installation.html) for
+   your Ubuntu version.
+
+2. **Clone `unitree_ros2`**:
+   ```bash
+   cd ~
+   git clone https://github.com/unitreerobotics/unitree_ros2
+   ```
+
+3. **Get a matching CycloneDDS.** The robot uses cyclonedds 0.10.2, which
+   the default ROS 2 RMW doesn't ship:
+   - **Humble**: just install the prebuilt packages, no source build needed:
+     ```bash
+     sudo apt install ros-humble-rmw-cyclonedds-cpp ros-humble-rosidl-generator-dds-idl
+     ```
+   - **Foxy**: these prebuilt packages aren't ABI-compatible with 0.10.2,
+     so it has to be built from source. Make sure ROS 2 is **not** sourced
+     in the terminal you build in (comment out any
+     `source /opt/ros/foxy/setup.bash` in `~/.bashrc` first), then:
+     ```bash
+     sudo apt install ros-foxy-rmw-cyclonedds-cpp ros-foxy-rosidl-generator-dds-idl libyaml-cpp-dev
+     cd ~/unitree_ros2/cyclonedds_ws/src
+     git clone https://github.com/ros2/rmw_cyclonedds -b foxy
+     git clone https://github.com/eclipse-cyclonedds/cyclonedds -b releases/0.10.x
+     cd ..
+     colcon build --packages-select cyclonedds
+     ```
+
+4. **Build the Unitree message packages** (`unitree_go`, `unitree_api`,
+   ...) — this is what makes `from unitree_go.msg import ...` importable
+   from Python:
+   ```bash
+   source /opt/ros/<foxy-or-humble>/setup.bash
+   cd ~/unitree_ros2
+   colcon build
+   ```
+
+5. **Point it at the right network interface.** Edit
+   `~/unitree_ros2/setup.sh` and replace `enp3s0` with your interface name
+   (the same one from `ip addr` in the Network step above), then source it
+   in every terminal you run these scripts from:
+   ```bash
+   source ~/unitree_ros2/setup.sh
+   ```
+   Sanity check before running anything in `ros2/`:
+   ```bash
+   ros2 topic list        # should include /sportmodestate, /lowstate
+   ros2 topic echo /sportmodestate
+   ```
+
 ## Usage
 
+### Raw SDK
 Read live robot state:
 ```bash
 python3 read_state.py <network_interface>
@@ -89,17 +166,34 @@ python3 basic_control.py <network_interface> <command>
 # commands: standup, standdown, stop, forward, backward, turn_left_90, turn_right_90
 ```
 
-**Safety**: always clear space around the robot before running
-`basic_control.py`, and keep the wireless controller within reach to
-override — the script won't stop the robot for you if something looks wrong.
+### ROS 2
+After `source ~/unitree_ros2/setup.sh` (no network-interface argument needed —
+that's baked into the sourced environment, not a script argument):
+```bash
+cd ros2
+python3 read_state_ros2.py
+python3 basic_control_ros2.py <command>
+# same commands: standup, standdown, stop, forward, backward, turn_left_90, turn_right_90
+```
+
+**Safety**: always clear space around the robot before running either
+`basic_control.py` or `basic_control_ros2.py`, and keep the wireless
+controller within reach to override — neither script stops the robot for
+you if something looks wrong.
 
 ## Next steps for this task
 
-- [ ] Confirm `rt/sportmodestate` topic name and field units on real hardware
+- [ ] Run both `read_state.py` and `read_state_ros2.py` on real hardware
+      and confirm they report the same position/velocity/battery values
+- [ ] Run `basic_control.py`/`basic_control_ros2.py` and confirm both
+      command paths actually move the robot (clear space, controller in hand)
+- [ ] Decide whether to keep maintaining both interfaces long-term or
+      settle on one once Task 2 clarifies what the sim pipeline needs
 - [ ] Replace the open-loop `move_distance`/`turn_degrees` timing with
-      closed-loop control using `go2.position` feedback
-- [ ] Wrap `go2_interface.py` in a small command-server (e.g. a socket or
-      ROS 2 node) so the off-board VLA (running on the GPU cluster) can send
-      it text-like actions ("move forward 75 cm") over the network
-- [ ] Add camera streaming (`VideoClient`, see SDK's
-      `example/go2/front_camera/`) once Task 3 needs live frames
+      closed-loop control using `go2.position` feedback (needed in both
+      `go2_interface.py` and `go2_ros2_interface.py`)
+- [ ] Wrap whichever interface we settle on in a small command-server so
+      the off-board VLA (running on the GPU cluster) can send it text-like
+      actions ("move forward 75 cm") over the network
+- [ ] Add camera streaming once Task 3 needs live frames (SDK's
+      `VideoClient`, or ROS 2's `utlidar`/camera topics if going that route)
