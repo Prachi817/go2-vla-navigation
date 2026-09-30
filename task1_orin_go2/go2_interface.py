@@ -1,5 +1,6 @@
 import math
 import time
+from typing import Optional
 
 from unitree_sdk2py.core.channel import ChannelFactoryInitialize, ChannelSubscriber
 from unitree_sdk2py.go2.sport.sport_client import SportClient
@@ -19,8 +20,8 @@ class Go2Interface:
     def __init__(self, network_interface: str):
         ChannelFactoryInitialize(0, network_interface)
 
-        self._sport_state: SportModeState_ | None = None
-        self._low_state: LowState_ | None = None
+        self._sport_state: Optional[SportModeState_] = None
+        self._low_state: Optional[LowState_] = None
 
         self._sport_state_sub = ChannelSubscriber(SPORTMODESTATE_TOPIC, SportModeState_)
         self._sport_state_sub.Init(self._on_sport_state, 10)
