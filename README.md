@@ -124,7 +124,10 @@ git clone https://github.com/unitreerobotics/unitree_sdk2_python
 
 ## Status
 
-🚧 **In progress** — Task 1 (Orin–Go2 integration) underway.
+✅ **Task 1 complete** — Orin–Go2 integration (state reading, high-level
+control, camera/LiDAR sensing) done, over both the raw SDK and ROS 2. See
+[`task1_orin_go2/README.md`](task1_orin_go2/README.md) for the details.
+🚧 Task 2 (Go2 simulation environment) up next.
 
 ---
 
