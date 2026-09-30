@@ -17,8 +17,13 @@ in, across both the raw SDK and ROS 2 paths. Hardware verification so far:
   values checked against the phone app and matched)
 - ⏳ **Implemented, not yet confirmed on hardware**: `basic_control.py` /
   `basic_control_ros2.py` movement commands, `read_state_ros2.py`,
-  `read_camera.py`, `read_lidar.py` (camera/LiDAR support is SDK-side
-  only so far — not yet mirrored into `go2_ros2_interface.py`)
+  `read_camera.py`/`read_lidar.py` (SDK), `read_camera_ros2.py`/
+  `read_lidar_ros2.py` (ROS 2)
+- ⚠️ **Known unconfirmed guess, not just "untested"**: the ROS 2 camera
+  topic names (`/api/videohub/request`/`/response`) are inferred from a
+  naming pattern, not verified against any working example — see
+  "Camera and LiDAR" below before trusting `get_camera_frame()` on the
+  ROS 2 side
 
 See "Next steps for this task" at the bottom for the exact remaining list.
 
@@ -85,27 +90,36 @@ mapping that `unitree_ros2` only ships as a C++ example
 so this repo's version is hand-written against that same numeric ID table,
 not copied from an official Python example.
 
-## Camera and LiDAR (SDK only, for now)
+## Camera and LiDAR
 
-`go2_interface.py` now also wraps the two sensor-reading building blocks
-confirmed to exist in the SDK:
+Both `go2_interface.py` (SDK) and `ros2/go2_ros2_interface.py` (ROS 2) now
+expose the same four methods: `get_camera_frame()`, `set_lidar(on)`,
+`point_cloud`, `point_cloud_xyz()`. How solid each one is differs though:
 
-- **`go2.get_camera_frame()`** — one-shot RGB frame as a BGR numpy array
-  (OpenCV convention), or `None` on failure. This is a request/response
-  call (`VideoClient.GetImageSample()`) — there's no continuous camera
-  *topic* on the Go2, so call this again every time you need a fresh frame
-  (e.g. in a polling loop for the VLA later).
-- **`go2.set_lidar(True/False)`** — turns the LiDAR on/off by publishing
-  to `rt/utlidar/switch`.
-- **`go2.point_cloud`** — latest raw `sensor_msgs/PointCloud2` message (or
-  `None` until one arrives), from subscribing to `rt/utlidar/cloud`.
-- **`go2.point_cloud_xyz()`** — the same point cloud decoded into a plain
-  list of `(x, y, z)` float tuples, for anything that doesn't want to deal
-  with the raw ROS message struct directly.
-
-Not yet done: the same two capabilities in `go2_ros2_interface.py` (ROS 2
-side). The underlying topics/types are identical either way, so this is a
-port, not new design work — see "Next steps" below.
+- **LiDAR — confirmed pattern.** `rt/utlidar/switch` / `rt/utlidar/cloud`
+  (SDK) and `/utlidar/switch` / `/utlidar/cloud` (ROS 2) are the same
+  topics documented in `unitree_ros2`'s own README, cross-checked
+  independently of any one example. `point_cloud_xyz()` decodes the
+  `sensor_msgs/PointCloud2` by reading the `x`/`y`/`z` field offsets from
+  the message itself rather than hardcoding a layout, so it isn't tied to
+  one specific point step/field order.
+- **Camera — confirmed on the SDK side, inferred (untested) on ROS 2.**
+  `go2_interface.py`'s `get_camera_frame()` uses the SDK's `VideoClient`
+  directly — this is a real, documented request/response call
+  (`VIDEO_API_ID_GETIMAGESAMPLE`), no topic involved since there's no
+  continuous camera stream on the Go2 at all, SDK or ROS 2.
+  `go2_ros2_interface.py`'s version has to reimplement that same
+  request/response call manually (ROS 2 has no built-in "call a service"
+  concept the way the SDK does) by publishing a `unitree_api/msg/Request`
+  to `/api/videohub/request` and waiting for a matching
+  `/api/videohub/response`. That topic name is **inferred, not
+  confirmed** — every other unitree_ros2 service (sport, motion_switcher,
+  voice, arm) follows the `/api/<service>/request`+`/response` pattern,
+  and the SDK's video service is internally named `"videohub"`, but
+  `unitree_ros2` has zero camera example code anywhere to verify this
+  against. If `read_camera_ros2.py` never returns a frame, check
+  `ros2 topic list` for the real topic name before assuming the decoding
+  logic is broken.
 
 ## Setup
 
@@ -223,6 +237,8 @@ cd ros2
 python3 read_state_ros2.py
 python3 basic_control_ros2.py <command>
 # same commands: standup, standdown, stop, forward, backward, turn_left_90, turn_right_90
+python3 read_lidar_ros2.py
+python3 read_camera_ros2.py   # see the note above -- topic name is unconfirmed
 ```
 
 **Safety**: always clear space around the robot before running either
@@ -238,11 +254,15 @@ you if something looks wrong.
       same values as `read_state.py`
 - [ ] Run `basic_control.py`/`basic_control_ros2.py` and confirm both
       command paths actually move the robot (clear space, controller in hand)
-- [x] Wire camera + LiDAR reading into `go2_interface.py`
-      (`get_camera_frame`, `set_lidar`, `point_cloud`/`point_cloud_xyz`)
-- [ ] Run `read_camera.py` and `read_lidar.py` on real hardware and confirm
-      a real image / non-empty point cloud comes back
-- [ ] Mirror camera + LiDAR reading into `go2_ros2_interface.py`
+- [x] Wire camera + LiDAR reading into `go2_interface.py` (SDK) and
+      `go2_ros2_interface.py` (ROS 2) — same four methods on both
+- [ ] Run `read_camera.py` / `read_lidar.py` (SDK) on real hardware and
+      confirm a real image / non-empty point cloud comes back
+- [ ] Run `read_lidar_ros2.py` and confirm it matches `read_lidar.py`'s
+      point cloud
+- [ ] Run `read_camera_ros2.py` — this is the one likely to fail first,
+      since `/api/videohub/request`+`/response` are inferred, not
+      confirmed; if it fails, check `ros2 topic list` for the real name
 - [ ] Decide whether to keep maintaining both interfaces long-term or
       settle on one once Task 2 clarifies what the sim pipeline needs
 - [ ] Replace the open-loop `move_distance`/`turn_degrees` timing with
