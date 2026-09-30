@@ -178,22 +178,4 @@ python3 basic_control_ros2.py <command>
 
 **Safety**: always clear space around the robot before running either
 `basic_control.py` or `basic_control_ros2.py`, and keep the wireless
-controller within reach to override — neither script stops the robot for
-you if something looks wrong.
-
-## Next steps for this task
-
-- [ ] Run both `read_state.py` and `read_state_ros2.py` on real hardware
-      and confirm they report the same position/velocity/battery values
-- [ ] Run `basic_control.py`/`basic_control_ros2.py` and confirm both
-      command paths actually move the robot (clear space, controller in hand)
-- [ ] Decide whether to keep maintaining both interfaces long-term or
-      settle on one once Task 2 clarifies what the sim pipeline needs
-- [ ] Replace the open-loop `move_distance`/`turn_degrees` timing with
-      closed-loop control using `go2.position` feedback (needed in both
-      `go2_interface.py` and `go2_ros2_interface.py`)
-- [ ] Wrap whichever interface we settle on in a small command-server so
-      the off-board VLA (running on the GPU cluster) can send it text-like
-      actions ("move forward 75 cm") over the network
-- [ ] Add camera streaming once Task 3 needs live frames (SDK's
-      `VideoClient`, or ROS 2's `utlidar`/camera topics if going that route)
+controller within reach to override.
