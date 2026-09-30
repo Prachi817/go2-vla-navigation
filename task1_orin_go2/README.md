@@ -25,8 +25,6 @@ in, across both the raw SDK and ROS 2 paths. Hardware verification so far:
   "Camera and LiDAR" below before trusting `get_camera_frame()` on the
   ROS 2 side
 
-See "Next steps for this task" at the bottom for the exact remaining list.
-
 Two parallel implementations live in this folder, both doing the same
 thing over the same underlying robot API:
 
@@ -243,31 +241,4 @@ python3 read_camera_ros2.py   # see the note above -- topic name is unconfirmed
 
 **Safety**: always clear space around the robot before running either
 `basic_control.py` or `basic_control_ros2.py`, and keep the wireless
-controller within reach to override — neither script stops the robot for
-you if something looks wrong.
-
-## Next steps for this task
-
-- [x] Run `read_state.py` on real hardware and confirm position/velocity/
-      battery values are accurate (checked against the phone app)
-- [ ] Run `read_state_ros2.py` on real hardware and confirm it reports the
-      same values as `read_state.py`
-- [ ] Run `basic_control.py`/`basic_control_ros2.py` and confirm both
-      command paths actually move the robot (clear space, controller in hand)
-- [x] Wire camera + LiDAR reading into `go2_interface.py` (SDK) and
-      `go2_ros2_interface.py` (ROS 2) — same four methods on both
-- [ ] Run `read_camera.py` / `read_lidar.py` (SDK) on real hardware and
-      confirm a real image / non-empty point cloud comes back
-- [ ] Run `read_lidar_ros2.py` and confirm it matches `read_lidar.py`'s
-      point cloud
-- [ ] Run `read_camera_ros2.py` — this is the one likely to fail first,
-      since `/api/videohub/request`+`/response` are inferred, not
-      confirmed; if it fails, check `ros2 topic list` for the real name
-- [ ] Decide whether to keep maintaining both interfaces long-term or
-      settle on one once Task 2 clarifies what the sim pipeline needs
-- [ ] Replace the open-loop `move_distance`/`turn_degrees` timing with
-      closed-loop control using `go2.position` feedback (needed in both
-      `go2_interface.py` and `go2_ros2_interface.py`)
-- [ ] Wrap whichever interface we settle on in a small command-server so
-      the off-board VLA (running on the GPU cluster) can send it text-like
-      actions ("move forward 75 cm") over the network
+controller within reach to override.
