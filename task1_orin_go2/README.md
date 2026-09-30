@@ -1,9 +1,26 @@
 # Task 1 — Orin–Go2 Integration & High-Level Control
 
 Goal: get the Jetson Orin talking to the Go2 — read robot state (pose,
-velocity, battery) and send high-level motion commands (forward, backward,
-turn, stop). This is the "legs" interface the VLA brain (Task 3/4) will
-eventually call with commands like *"move forward 75 cm"*.
+velocity, battery), read sensors (camera, LiDAR), and send high-level
+motion commands (forward, backward, turn, stop). This is the "legs"
+interface the VLA brain (Task 3/4) will eventually call with commands
+like *"move forward 75 cm"*, fed by the same camera frames it reads.
+
+## Status
+
+**Core Task 1 integration is implemented** — Orin↔Go2 communication,
+high-level motion control, and state/camera/LiDAR reading are all wired
+in, across both the raw SDK and ROS 2 paths. Hardware verification so far:
+
+- ✅ **Confirmed on real hardware**: network setup (`eth0` ↔ Go2 over
+  Ethernet), SDK install, `read_state.py` (position/velocity/battery
+  values checked against the phone app and matched)
+- ⏳ **Implemented, not yet confirmed on hardware**: `basic_control.py` /
+  `basic_control_ros2.py` movement commands, `read_state_ros2.py`,
+  `read_camera.py`, `read_lidar.py` (camera/LiDAR support is SDK-side
+  only so far — not yet mirrored into `go2_ros2_interface.py`)
+
+See "Next steps for this task" at the bottom for the exact remaining list.
 
 Two parallel implementations live in this folder, both doing the same
 thing over the same underlying robot API:
@@ -67,6 +84,28 @@ mapping that `unitree_ros2` only ships as a C++ example
 (`ros2_sport_client.cpp`) — there's no bundled Python equivalent upstream,
 so this repo's version is hand-written against that same numeric ID table,
 not copied from an official Python example.
+
+## Camera and LiDAR (SDK only, for now)
+
+`go2_interface.py` now also wraps the two sensor-reading building blocks
+confirmed to exist in the SDK:
+
+- **`go2.get_camera_frame()`** — one-shot RGB frame as a BGR numpy array
+  (OpenCV convention), or `None` on failure. This is a request/response
+  call (`VideoClient.GetImageSample()`) — there's no continuous camera
+  *topic* on the Go2, so call this again every time you need a fresh frame
+  (e.g. in a polling loop for the VLA later).
+- **`go2.set_lidar(True/False)`** — turns the LiDAR on/off by publishing
+  to `rt/utlidar/switch`.
+- **`go2.point_cloud`** — latest raw `sensor_msgs/PointCloud2` message (or
+  `None` until one arrives), from subscribing to `rt/utlidar/cloud`.
+- **`go2.point_cloud_xyz()`** — the same point cloud decoded into a plain
+  list of `(x, y, z)` float tuples, for anything that doesn't want to deal
+  with the raw ROS message struct directly.
+
+Not yet done: the same two capabilities in `go2_ros2_interface.py` (ROS 2
+side). The underlying topics/types are identical either way, so this is a
+port, not new design work — see "Next steps" below.
 
 ## Setup
 
@@ -166,6 +205,16 @@ python3 basic_control.py <network_interface> <command>
 # commands: standup, standdown, stop, forward, backward, turn_left_90, turn_right_90
 ```
 
+Grab one camera frame (saves `camera_frame.jpg` in the current directory):
+```bash
+python3 read_camera.py <network_interface>
+```
+
+Read the LiDAR point cloud (turns the LiDAR on, waits for data, prints point count):
+```bash
+python3 read_lidar.py <network_interface>
+```
+
 ### ROS 2
 After `source ~/unitree_ros2/setup.sh` (no network-interface argument needed —
 that's baked into the sourced environment, not a script argument):
@@ -183,10 +232,17 @@ you if something looks wrong.
 
 ## Next steps for this task
 
-- [ ] Run both `read_state.py` and `read_state_ros2.py` on real hardware
-      and confirm they report the same position/velocity/battery values
+- [x] Run `read_state.py` on real hardware and confirm position/velocity/
+      battery values are accurate (checked against the phone app)
+- [ ] Run `read_state_ros2.py` on real hardware and confirm it reports the
+      same values as `read_state.py`
 - [ ] Run `basic_control.py`/`basic_control_ros2.py` and confirm both
       command paths actually move the robot (clear space, controller in hand)
+- [x] Wire camera + LiDAR reading into `go2_interface.py`
+      (`get_camera_frame`, `set_lidar`, `point_cloud`/`point_cloud_xyz`)
+- [ ] Run `read_camera.py` and `read_lidar.py` on real hardware and confirm
+      a real image / non-empty point cloud comes back
+- [ ] Mirror camera + LiDAR reading into `go2_ros2_interface.py`
 - [ ] Decide whether to keep maintaining both interfaces long-term or
       settle on one once Task 2 clarifies what the sim pipeline needs
 - [ ] Replace the open-loop `move_distance`/`turn_degrees` timing with
@@ -195,5 +251,3 @@ you if something looks wrong.
 - [ ] Wrap whichever interface we settle on in a small command-server so
       the off-board VLA (running on the GPU cluster) can send it text-like
       actions ("move forward 75 cm") over the network
-- [ ] Add camera streaming once Task 3 needs live frames (SDK's
-      `VideoClient`, or ROS 2's `utlidar`/camera topics if going that route)
