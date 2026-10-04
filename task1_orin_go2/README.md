@@ -131,10 +131,14 @@ lsb_release -a   # Ubuntu 20.04 -> ROS 2 Foxy; Ubuntu 22.04 -> ROS 2 Humble (rec
 
 4. **Build the Unitree message packages** (`unitree_go`, `unitree_api`,
    ...) — this is what makes `from unitree_go.msg import ...` importable
-   from Python:
+   from Python. These packages live under `cyclonedds_ws/src/unitree/`, so
+   build from **`cyclonedds_ws`**, not the top-level `unitree_ros2`
+   directory (building from the wrong directory silently finds nothing to
+   build, and `unitree_api`/`unitree_go` end up missing later with no
+   obvious error until you try to import them):
    ```bash
    source /opt/ros/<foxy-or-humble>/setup.bash
-   cd ~/unitree_ros2
+   cd ~/unitree_ros2/cyclonedds_ws
    colcon build
    ```
 
