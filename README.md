@@ -127,7 +127,15 @@ git clone https://github.com/unitreerobotics/unitree_sdk2_python
 ✅ **Task 1 complete** — Orin–Go2 integration (state reading, high-level
 control, camera/LiDAR sensing) done, over both the raw SDK and ROS 2. See
 [`task1_orin_go2/README.md`](task1_orin_go2/README.md) for the details.
-🚧 Task 2 (Go2 simulation environment) up next.
+
+✅ **Task 2 core milestone reached** — Go2 running in Isaac Sim
+(NaVILA-Bench's `go2_matterport_vision` demo), confirmed by watching it
+walk around a rendered Matterport3D scene. See
+[`task2_simulation/README.md`](task2_simulation/README.md) for setup
+details and what's still open (simulated sensor access isn't separately
+confirmed yet, only control).
+
+🚧 Task 3 (VLA-based control in simulation) up next.
 
 ---
 
