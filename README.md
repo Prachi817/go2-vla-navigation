@@ -20,8 +20,8 @@ The system follows a two-level design, inspired by the NaVILA framework:
 - **The "legs" (low level):** the Go2's controller turns that command into
   real walking, handling balance and obstacles.
 
-The VLA model runs off-board on a GPU (SLU's Libra HPC cluster) and
-communicates with the robot's onboard NVIDIA Jetson Orin.
+The VLA model runs off-board on a lab workstation GPU (NVIDIA RTX A4500)
+and communicates with the robot's onboard NVIDIA Jetson Orin.
 
 ```
 Instruction ──▶ Camera + VLA (GPU) ──▶ "move forward 75 cm" ──▶ Go2 walks
@@ -56,7 +56,7 @@ Instruction ──▶ Camera + VLA (GPU) ──▶ "move forward 75 cm" ──�
 
 - **Robot:** Unitree Go2 EDU
 - **Onboard computer:** NVIDIA Jetson Orin
-- **Off-board GPU:** SLU Libra HPC cluster (for running the VLA and simulation)
+- **Off-board GPU:** lab workstation with an NVIDIA RTX A4500, 20 GB (runs the VLA and simulation)
 - **Sensors:** RGB camera, LiDAR, IMU
 
 ---
@@ -124,18 +124,23 @@ git clone https://github.com/unitreerobotics/unitree_sdk2_python
 
 ## Status
 
-✅ **Task 1 complete** — Orin–Go2 integration (state reading, high-level
+**Task 1 complete** — Orin–Go2 integration (state reading, high-level
 control, camera/LiDAR sensing) done, over both the raw SDK and ROS 2. See
 [`task1_orin_go2/README.md`](task1_orin_go2/README.md) for the details.
 
-✅ **Task 2 core milestone reached** — Go2 running in Isaac Sim
+**Task 2 core milestone reached** — Go2 running in Isaac Sim
 (NaVILA-Bench's `go2_matterport_vision` demo), confirmed by watching it
 walk around a rendered Matterport3D scene. See
 [`task2_simulation/README.md`](task2_simulation/README.md) for setup
-details and what's still open (simulated sensor access isn't separately
-confirmed yet, only control).
+details. Simulated sensing (camera/depth) was confirmed later through
+Task 3's VLA evaluation.
 
-🚧 Task 3 (VLA-based control in simulation) up next.
+**Task 3 core milestone reached** - NaVILA (8-bit) drives the simulated
+Go2 from camera frames + language instructions, on one 20 GB GPU shared
+with Isaac Sim. First 10 benchmark episodes: 70% success, 90% oracle
+success, SPL 0.647; a 200-episode run is in progress. See
+[`task3_vla_sim/README.md`](task3_vla_sim/README.md) for setup, fixes,
+results and failure analysis.
 
 ---
 

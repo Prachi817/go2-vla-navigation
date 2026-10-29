@@ -7,18 +7,17 @@ touching the physical robot.
 
 ## Status
 
-✅ **Confirmed working** — ran `demo_planner.py` (`go2_matterport_vision`
+**Confirmed working** — ran `demo_planner.py` (`go2_matterport_vision`
 task) on the lab computer's Isaac Sim. Watched the Go2 walk around inside
 a rendered Matterport3D house scene via a PD path planner + pretrained
 low-level walking policy, for a full ~12 minute run that shut down cleanly.
 
-⏳ **Not yet separately confirmed**: whether this specific demo exercises
-actual simulated *sensor* access (camera/depth), or only position/goal
-state to drive the PD planner. The task's own wording asks for sensor
-access *and* control — the control half is confirmed; the sensor half is
-more likely exercised by Task 3's VLA evaluation scripts
-(`navila_eval.py`), not this planner demo. Worth checking explicitly
-before calling sensing fully done.
+**Sensing confirmed in Task 3**: this planner demo only proved
+control. Task 3's `navila_eval.py` runs in this same environment and feeds
+the robot's simulated RGB camera (`camera_obs`, 512x512) to the VLA for
+every decision, with `depth_obs` (1x512x512) also available, so sensor
+access *and* control are both confirmed. See
+[`../task3_vla_sim/README.md`](../task3_vla_sim/README.md).
 
 ## What this actually is
 
@@ -160,9 +159,9 @@ runs for several minutes, shuts down cleanly.
 
 ## Next steps
 
-- [ ] Confirm whether this demo actually exercises simulated camera/depth
-      sensor access, or just planner state — check `navila_eval.py` if not
+- [x] Confirm simulated camera/depth sensor access, done via
+      `navila_eval.py` in Task 3
 - [ ] Try `legged-loco` only if a custom-trained walking policy is ever
       needed (not required for the current milestone)
-- [ ] Task 3: integrate the actual NaVILA VLA model using this same
-      environment (`navila_eval.py` / `run_benchmark.py` in NaVILA-Bench)
+- [x] Task 3: integrate the actual NaVILA VLA model using this same
+      environment, see [`../task3_vla_sim/README.md`](../task3_vla_sim/README.md)
