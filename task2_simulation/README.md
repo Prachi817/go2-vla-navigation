@@ -7,7 +7,7 @@ touching the physical robot.
 
 ## Status
 
-✅ **Confirmed working** — ran `demo_planner.py` (`go2_matterport_vision`
+**Confirmed working** — ran `demo_planner.py` (`go2_matterport_vision`
 task) on the lab computer's Isaac Sim. Watched the Go2 walk around inside
 a rendered Matterport3D house scene via a PD path planner + pretrained
 low-level walking policy, for a full ~12 minute run that shut down cleanly.
