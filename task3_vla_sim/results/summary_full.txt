@@ -1,0 +1,1095 @@
+Results dir: eval_results/go2_matterport_vision_loco_2024-09-25_23-22-02
+Episodes: 1077
+
+  success                  0.344
+  oracle_success           0.517
+  spl                      0.307
+  distance_to_goal         6.328
+  oracle_navigation_error  4.045
+  path_length              10.100
+
+Outcome breakdown:
+  success                                   370  (34.4%)
+  never reached, never stopped              333  (30.9%)
+  never reached, stopped in wrong place     187  (17.4%)
+  reached goal, never stopped               129  (12.0%)
+  reached goal, stopped outside radius       58  (5.4%)
+
+ idx  file  succ  oracle  dist_goal  path_len  decisions  outcome
+   0     0     1       1       1.13      9.19         26  success
+   1     1     1       1       1.19      9.11       None  success
+   2     2     1       1       0.56      8.52       None  success
+   3     6     0       0       3.31      7.27         18  never reached, stopped in wrong place
+   4     7     1       1       1.30      9.27       None  success
+   5     8     1       1       0.44     10.66       None  success
+   6     9     1       1       1.59      8.63       None  success
+   7    10     1       1       0.46      6.69       None  success
+   8    11     1       1       1.04      8.05       None  success
+   9    12     0       1       2.74     16.42         42  reached goal, never stopped
+  10    13     0       0       7.63     10.55         32  never reached, stopped in wrong place
+  11    14     1       1       0.23     12.45         34  success
+  12    18     0       0       5.18     11.01         29  never reached, stopped in wrong place
+  13    19     0       0       4.88     11.97         34  never reached, stopped in wrong place
+  14    20     0       0      11.76     15.71         46  never reached, never stopped
+  15    24     1       1       0.45     13.25         36  success
+  16    25     1       1       0.44     13.55         36  success
+  17    26     0       0       8.62      7.94         46  never reached, never stopped
+  18    30     0       1       3.53     10.37         26  reached goal, stopped outside radius
+  19    31     1       1       1.00      6.89         28  success
+  20    32     0       1       6.94     18.57         26  reached goal, never stopped
+  21    39     0       1       1.17     16.08         47  reached goal, never stopped
+  22    40     0       0       3.56     13.58         41  never reached, stopped in wrong place
+  23    41     0       1       0.94     16.58         42  reached goal, never stopped
+  24    42     0       1       1.10     13.93         48  reached goal, never stopped
+  25    43     0       0      12.91      7.74         22  never reached, stopped in wrong place
+  26    44     1       1       2.17     14.45         43  success
+  27    48     0       0      17.29      6.65         20  never reached, stopped in wrong place
+  28    49     0       0      11.96      7.48         21  never reached, stopped in wrong place
+  29    50     0       0      19.61     10.33         49  never reached, never stopped
+  30    51     0       0      20.35     12.46         38  never reached, stopped in wrong place
+  31    52     0       0      17.08      6.81         24  never reached, stopped in wrong place
+  32    53     0       0      15.81      8.62         23  never reached, stopped in wrong place
+  33    54     0       0       9.25     12.87         43  never reached, stopped in wrong place
+  34    55     1       1       2.61     12.74         35  success
+  35    56     1       1       0.47     12.62         33  success
+  36    60     0       0       7.94      0.15         63  never reached, never stopped
+  37    61     0       0       7.94      0.15         74  never reached, never stopped
+  38    62     0       0       7.94      0.15         81  never reached, never stopped
+  39    66     0       0       4.69     11.61         30  never reached, stopped in wrong place
+  40    67     0       0       4.29     11.11         24  never reached, stopped in wrong place
+  41    68     0       1       2.21     14.19         48  reached goal, never stopped
+  42    69     0       0       7.16     17.50         43  never reached, never stopped
+  43    70     0       0       6.94     17.09         40  never reached, stopped in wrong place
+  44    71     0       0      15.82     17.31         39  never reached, never stopped
+  45    72     0       0       3.81      9.79         39  never reached, never stopped
+  46    73     1       1       2.07     11.27         36  success
+  47    74     0       0      12.09     13.75         39  never reached, stopped in wrong place
+  48    75     0       0      19.29     15.74         38  never reached, stopped in wrong place
+  49    76     1       1       0.56     13.57         40  success
+  50    77     1       1       0.59     12.95         41  success
+  51    78     1       1       0.75      8.10         20  success
+  52    79     0       1       3.30      7.65         19  reached goal, stopped outside radius
+  53    80     0       1       3.10      7.44         20  reached goal, stopped outside radius
+  54    81     1       1       0.61     13.35         32  success
+  55    82     0       0      23.81     12.53         47  never reached, never stopped
+  56    83     0       0      23.86     12.25         48  never reached, never stopped
+  57    84     0       0      12.94      9.09         43  never reached, never stopped
+  58    85     0       0      10.81     16.44         41  never reached, stopped in wrong place
+  59    86     1       1       1.97     10.19         32  success
+  60    87     0       0      15.27     11.75         38  never reached, stopped in wrong place
+  61    88     1       1       0.50     12.91         43  success
+  62    89     0       0       6.74     13.80         43  never reached, never stopped
+  63    90     1       1       0.20      5.77         16  success
+  64    91     1       1       0.98      5.11         15  success
+  65    92     1       1       0.43      6.34         19  success
+  66    93     1       1       0.42     13.87         31  success
+  67    94     1       1       1.52     15.73         32  success
+  68    95     0       0       4.72      9.55         22  never reached, stopped in wrong place
+  69    96     1       1       0.32      7.04         25  success
+  70    97     1       1       0.52      7.66         27  success
+  71    98     1       1       0.40      7.38         26  success
+  72   102     0       0       8.87      9.90         42  never reached, never stopped
+  73   103     0       0       4.84     10.77         29  never reached, stopped in wrong place
+  74   104     0       0       4.37     10.06         27  never reached, stopped in wrong place
+  75   111     0       0      10.27      1.50         36  never reached, never stopped
+  76   112     0       0       9.70      1.21         23  never reached, never stopped
+  77   113     0       0      10.24      2.06         35  never reached, never stopped
+  78   114     0       0       6.63      3.33         68  never reached, never stopped
+  79   115     0       1      13.22     15.14         47  reached goal, never stopped
+  80   116     1       1       0.24      6.13         24  success
+  81   120     1       1       0.24      5.14         15  success
+  82   121     0       1       3.61      8.89         22  reached goal, stopped outside radius
+  83   122     1       1       1.81      7.06         19  success
+  84   123     0       1       3.51     12.88         46  reached goal, stopped outside radius
+  85   124     1       1       2.00     11.14         42  success
+  86   125     1       1       2.73     12.10         45  success
+  87   126     1       1       2.31      7.64         22  success
+  88   127     1       1       1.91      7.17         22  success
+  89   128     1       1       1.28      6.55         33  success
+  90   135     1       1       1.73      9.78         26  success
+  91   136     1       1       1.67      9.68         24  success
+  92   137     1       1       1.69      6.45         20  success
+  93   138     1       1       1.83     15.85         39  success
+  94   139     0       0      22.70     11.00         42  never reached, stopped in wrong place
+  95   140     0       1       2.37     16.42         41  reached goal, never stopped
+  96   141     0       0      12.75     12.94         25  never reached, stopped in wrong place
+  97   142     1       1       0.40      5.41         17  success
+  98   143     0       0      12.95     12.44         26  never reached, stopped in wrong place
+  99   144     1       1       0.16      7.69         28  success
+ 100   145     0       1       3.59      8.21         25  reached goal, stopped outside radius
+ 101   146     1       1       0.39      7.96         25  success
+ 102   147     1       1       0.77      8.95         29  success
+ 103   148     1       1       0.77      8.95         29  success
+ 104   149     0       1       3.85     11.15         36  reached goal, stopped outside radius
+ 105   150     0       0      10.18     17.33         40  never reached, stopped in wrong place
+ 106   151     0       0      11.85     15.80         37  never reached, stopped in wrong place
+ 107   152     0       0      11.49     13.48         41  never reached, never stopped
+ 108   153     1       1       0.52     12.10         31  success
+ 109   154     1       1       0.83     13.39         37  success
+ 110   155     1       1       0.37     12.93         35  success
+ 111   156     1       1       2.58     11.56         31  success
+ 112   157     0       0       3.49      6.06         17  never reached, stopped in wrong place
+ 113   158     1       1       2.69      7.16         20  success
+ 114   159     0       0      13.29      4.50         56  never reached, never stopped
+ 115   160     0       0      13.82      4.38         24  never reached, stopped in wrong place
+ 116   161     0       0       4.17      8.72         27  never reached, stopped in wrong place
+ 117   162     1       1       2.94      7.45         22  success
+ 118   163     1       1       2.85      6.98         21  success
+ 119   164     1       1       2.83      7.21         23  success
+ 120   165     0       0      11.48      7.50         34  never reached, stopped in wrong place
+ 121   166     1       1       1.05      5.71         18  success
+ 122   167     0       0      11.07      9.13         60  never reached, never stopped
+ 123   174     0       0       7.18      0.15         50  never reached, never stopped
+ 124   175     0       0       7.17      0.10         30  never reached, never stopped
+ 125   176     0       0       7.17      0.10         33  never reached, never stopped
+ 126   177     0       0      11.89      8.73         20  never reached, stopped in wrong place
+ 127   178     0       0      19.70     16.78         40  never reached, never stopped
+ 128   179     0       0       7.50     16.29         43  never reached, never stopped
+ 129   189     0       0      12.56     14.27         42  never reached, never stopped
+ 130   190     1       1       0.80     11.69         34  success
+ 131   191     0       0      11.07     12.74         32  never reached, stopped in wrong place
+ 132   192     1       1       0.97     13.57         36  success
+ 133   193     1       1       0.24     12.38         35  success
+ 134   194     1       1       0.71     11.20         43  success
+ 135   198     0       0       6.44      5.14          7  never reached, never stopped
+ 136   199     1       1       2.59      5.62         21  success
+ 137   200     1       1       2.62      5.73         24  success
+ 138   204     0       0      17.81      7.26         22  never reached, stopped in wrong place
+ 139   205     0       0      22.34     13.47         41  never reached, never stopped
+ 140   206     0       0      17.81      7.26         24  never reached, stopped in wrong place
+ 141   207     0       0      10.06      2.84         39  never reached, never stopped
+ 142   208     0       1       2.49     11.54         46  reached goal, never stopped
+ 143   209     0       0      11.33      2.38         35  never reached, never stopped
+ 144   213     0       0       6.15     10.12         33  never reached, never stopped
+ 145   214     0       1       1.39     12.79         54  reached goal, never stopped
+ 146   215     1       1       2.99      6.95         25  success
+ 147   216     0       0       7.79      2.78         44  never reached, never stopped
+ 148   217     0       0       7.74      2.88         45  never reached, never stopped
+ 149   218     0       0       6.12      4.45         44  never reached, never stopped
+ 150   225     0       0       5.14      9.35         45  never reached, never stopped
+ 151   226     0       0       6.29      3.63         12  never reached, stopped in wrong place
+ 152   227     1       1       2.97      9.26         32  success
+ 153   234     1       1       1.62     10.77         29  success
+ 154   235     0       0      13.89      7.81         30  never reached, stopped in wrong place
+ 155   236     1       1       1.64     10.29         28  success
+ 156   237     0       1       8.50     17.40         42  reached goal, never stopped
+ 157   238     1       1       2.41     11.60         25  success
+ 158   239     1       1       2.37     11.47         26  success
+ 159   243     1       1       0.56      7.10         22  success
+ 160   244     1       1       0.42      7.87         25  success
+ 161   245     1       1       2.74     10.40         38  success
+ 162   246     0       0      10.07     13.69         40  never reached, stopped in wrong place
+ 163   247     0       0      12.65      8.01         47  never reached, never stopped
+ 164   248     0       0       9.52      5.66         14  never reached, stopped in wrong place
+ 165   249     0       0       3.72     13.70         38  never reached, stopped in wrong place
+ 166   250     0       0       3.72     12.48         34  never reached, stopped in wrong place
+ 167   251     0       0       3.78     12.72         33  never reached, stopped in wrong place
+ 168   252     1       1       0.72     12.22         38  success
+ 169   253     1       1       1.12     11.62         38  success
+ 170   254     1       1       1.82     10.72         33  success
+ 171   255     0       0       5.86      0.99          3  never reached, never stopped
+ 172   256     0       0       5.86      0.99          3  never reached, never stopped
+ 173   257     0       0       5.86      0.99          3  never reached, never stopped
+ 174   258     1       1       1.10      4.82         15  success
+ 175   259     1       1       0.51      5.84         21  success
+ 176   260     1       1       0.69      6.18         19  success
+ 177   261     0       0      13.53      5.63         39  never reached, never stopped
+ 178   262     0       0      11.59      1.75         37  never reached, never stopped
+ 179   263     0       0      13.46      6.00         39  never reached, never stopped
+ 180   264     0       0      13.75     16.98         44  never reached, never stopped
+ 181   265     0       0      14.26     16.83         45  never reached, stopped in wrong place
+ 182   266     0       1       4.46      9.46         41  reached goal, never stopped
+ 183   276     0       0      17.13      4.72         18  never reached, stopped in wrong place
+ 184   277     0       1       1.96     15.68         41  reached goal, never stopped
+ 185   278     1       1       0.49     14.13         38  success
+ 186   279     0       0       3.01     13.78         47  never reached, never stopped
+ 187   280     1       1       1.22     16.53         44  success
+ 188   281     0       0       9.97     13.74         45  never reached, never stopped
+ 189   285     1       1       1.95      9.15         27  success
+ 190   286     1       1       1.47     10.85         33  success
+ 191   287     0       0      16.10     15.34         41  never reached, never stopped
+ 192   291     0       1       1.51     14.48         50  reached goal, never stopped
+ 193   292     0       1       3.49     13.44         48  reached goal, never stopped
+ 194   293     0       1       3.14     14.10         46  reached goal, never stopped
+ 195   300     0       1       5.85     11.32         24  reached goal, stopped outside radius
+ 196   301     0       1       3.76     13.81         36  reached goal, never stopped
+ 197   302     0       1       5.07     10.36         26  reached goal, stopped outside radius
+ 198   306     0       0       8.21      6.96         80  never reached, never stopped
+ 199   307     0       0       8.70      6.88         55  never reached, never stopped
+ 200   308     0       0       8.56      5.71         52  never reached, never stopped
+ 201   309     0       1       1.66      9.07         52  reached goal, never stopped
+ 202   310     0       1       8.59     14.66         41  reached goal, stopped outside radius
+ 203   311     0       1       2.01     11.24         48  reached goal, never stopped
+ 204   312     1       1       2.09     13.35         35  success
+ 205   313     1       1       1.52     10.15         24  success
+ 206   314     1       1       2.44      8.32         21  success
+ 207   318     0       1       5.26      7.32         47  reached goal, never stopped
+ 208   319     0       1       3.07     12.25         43  reached goal, never stopped
+ 209   320     1       1       0.58      5.52         19  success
+ 210   321     0       1       3.74     15.53         53  reached goal, never stopped
+ 211   322     1       1       1.40     11.11         39  success
+ 212   323     1       1       0.91      8.87         29  success
+ 213   333     1       1       0.47     10.20         22  success
+ 214   334     0       1       6.05     16.59         41  reached goal, never stopped
+ 215   335     1       1       0.29     10.80         34  success
+ 216   339     1       1       0.40     11.48         28  success
+ 217   340     0       0      21.23     17.53         39  never reached, never stopped
+ 218   341     1       1       0.67     12.09         29  success
+ 219   342     1       1       1.43      6.16         19  success
+ 220   343     0       1       4.87      8.49         38  reached goal, never stopped
+ 221   344     1       1       0.30      6.61         22  success
+ 222   351     0       0      15.86     10.18         30  never reached, stopped in wrong place
+ 223   352     0       0      10.07     10.78         43  never reached, never stopped
+ 224   353     0       1       4.39      8.81         22  reached goal, stopped outside radius
+ 225   357     0       0      11.36      8.36         28  never reached, stopped in wrong place
+ 226   358     0       1       2.62     14.39         47  reached goal, never stopped
+ 227   359     1       1       2.94     14.31         44  success
+ 228   360     1       1       0.30      9.97         27  success
+ 229   361     1       1       0.25      9.54         20  success
+ 230   362     1       1       0.30      9.77         27  success
+ 231   363     1       1       0.58      7.88         21  success
+ 232   364     1       1       0.55      7.79         22  success
+ 233   365     1       1       0.46      7.82         20  success
+ 234   366     0       0      10.57     10.42         49  never reached, never stopped
+ 235   367     0       1       1.81     12.59         44  reached goal, never stopped
+ 236   368     0       0       5.96      9.15         58  never reached, never stopped
+ 237   378     0       0      18.11      7.84         41  never reached, never stopped
+ 238   379     1       1       1.46     12.56         33  success
+ 239   380     0       0      18.06      7.98         42  never reached, never stopped
+ 240   381     0       0      10.98      1.15         18  never reached, never stopped
+ 241   382     0       0      10.98      1.15         18  never reached, never stopped
+ 242   383     0       0      11.09      0.61         20  never reached, never stopped
+ 243   384     1       1       0.45     10.48         27  success
+ 244   385     0       1       4.20     15.96         49  reached goal, never stopped
+ 245   386     1       1       0.61     10.70         30  success
+ 246   387     0       0      12.15      9.83         36  never reached, never stopped
+ 247   388     0       0      12.17     10.54         41  never reached, never stopped
+ 248   389     0       0      10.68      9.78         36  never reached, never stopped
+ 249   393     1       1       0.84      5.74         13  success
+ 250   394     0       0       7.32     15.20         47  never reached, never stopped
+ 251   395     0       0       9.56     15.93         51  never reached, stopped in wrong place
+ 252   402     0       0      21.55     15.64         39  never reached, never stopped
+ 253   403     1       1       0.57     11.78         32  success
+ 254   404     0       0       3.50     15.38         46  never reached, never stopped
+ 255   405     1       1       1.59     12.75         29  success
+ 256   406     0       0       9.48     13.88         35  never reached, stopped in wrong place
+ 257   407     0       0       8.90     16.02         41  never reached, never stopped
+ 258   408     1       1       1.55      6.96         23  success
+ 259   409     0       0      11.51      7.63         19  never reached, stopped in wrong place
+ 260   410     0       0       8.97      6.30         47  never reached, never stopped
+ 261   414     0       1      10.96     13.95         37  reached goal, never stopped
+ 262   415     0       0       7.98      2.92         44  never reached, never stopped
+ 263   416     0       1      10.29     14.95         39  reached goal, never stopped
+ 264   417     1       1       0.88     12.02         28  success
+ 265   418     1       1       0.88     12.02         28  success
+ 266   419     1       1       1.02     12.02         26  success
+ 267   420     0       0      22.07     11.75         30  never reached, stopped in wrong place
+ 268   421     1       1       2.09     13.41         37  success
+ 269   422     0       0      21.65     15.38         42  never reached, never stopped
+ 270   426     0       0       6.91      9.19         40  never reached, never stopped
+ 271   427     0       0       6.91      9.19         38  never reached, never stopped
+ 272   428     0       0       6.91      9.19         44  never reached, never stopped
+ 273   438     0       0       5.96      4.53         46  never reached, never stopped
+ 274   439     0       0       5.21      7.62         37  never reached, never stopped
+ 275   440     1       1       0.26      6.93         27  success
+ 276   441     1       1       0.69     12.70         30  success
+ 277   442     0       0      11.97      8.30         53  never reached, never stopped
+ 278   443     0       0       8.88      3.97         53  never reached, never stopped
+ 279   444     0       0       3.11     10.75         37  never reached, never stopped
+ 280   445     0       1       5.24     12.04         43  reached goal, never stopped
+ 281   446     0       0       6.13     10.34         27  never reached, stopped in wrong place
+ 282   447     1       1       0.89      8.68         17  success
+ 283   448     0       0       8.73      6.51         60  never reached, never stopped
+ 284   449     1       1       1.51      9.31         18  success
+ 285   453     0       0      10.08      2.74         13  never reached, stopped in wrong place
+ 286   454     0       0      13.22     11.18         37  never reached, stopped in wrong place
+ 287   455     0       0      15.47     12.76         35  never reached, stopped in wrong place
+ 288   459     1       1       1.08      6.78         27  success
+ 289   460     0       1       1.05      4.12         33  reached goal, never stopped
+ 290   461     1       1       0.92      7.70         46  success
+ 291   471     1       1       0.70     12.40         35  success
+ 292   472     0       0       7.75     10.28         25  never reached, stopped in wrong place
+ 293   473     1       1       0.67     12.83         36  success
+ 294   474     0       0      11.63      9.77         27  never reached, stopped in wrong place
+ 295   475     0       0      10.30     14.28         49  never reached, never stopped
+ 296   476     0       0      11.04      9.27         25  never reached, stopped in wrong place
+ 297   486     0       0       9.72      8.80         34  never reached, stopped in wrong place
+ 298   487     1       1       0.57      9.03         23  success
+ 299   488     1       1       0.72      9.96         26  success
+ 300   489     1       1       1.27      8.63         19  success
+ 301   490     0       1       4.93     12.39         29  reached goal, stopped outside radius
+ 302   491     1       1       2.92     10.36         25  success
+ 303   492     0       1       3.12      8.59         24  reached goal, stopped outside radius
+ 304   493     0       1       3.28     11.24         43  reached goal, never stopped
+ 305   494     0       0      13.10      7.35         17  never reached, stopped in wrong place
+ 306   495     0       0       8.78      1.01         20  never reached, never stopped
+ 307   496     0       0       8.78      1.01         20  never reached, never stopped
+ 308   497     0       0       8.78      1.01         20  never reached, never stopped
+ 309   498     1       1       1.09     10.25         24  success
+ 310   499     1       1       0.89     10.04         26  success
+ 311   500     1       1       0.44      9.51         24  success
+ 312   501     1       1       1.23     13.20         40  success
+ 313   502     0       0       7.62      4.49         50  never reached, never stopped
+ 314   503     0       0       7.55      4.52         21  never reached, stopped in wrong place
+ 315   504     0       1      13.79     15.89         42  reached goal, stopped outside radius
+ 316   505     0       0       3.91      3.07         24  never reached, never stopped
+ 317   506     0       1      14.18     16.59         40  reached goal, stopped outside radius
+ 318   510     1       1       0.52      5.85         23  success
+ 319   511     0       0       4.20      4.08         34  never reached, never stopped
+ 320   512     0       1       0.31     11.07         53  reached goal, never stopped
+ 321   513     1       1       0.58     10.94         29  success
+ 322   514     0       0       9.84      1.87         29  never reached, never stopped
+ 323   515     0       0      13.06     11.93         29  never reached, stopped in wrong place
+ 324   522     1       1       2.38     12.40         34  success
+ 325   523     0       1       3.21     13.85         36  reached goal, stopped outside radius
+ 326   524     0       1       3.17     13.53         32  reached goal, stopped outside radius
+ 327   525     1       1       1.08      6.42         18  success
+ 328   526     0       0       7.46      5.43         47  never reached, never stopped
+ 329   527     0       1       4.17     11.18         53  reached goal, never stopped
+ 330   537     1       1       0.35      6.35         18  success
+ 331   538     1       1       2.69      9.72         30  success
+ 332   539     0       1       3.14      9.40         26  reached goal, stopped outside radius
+ 333   543     0       0      13.31     11.95         30  never reached, stopped in wrong place
+ 334   544     0       0      11.29     14.77         43  never reached, stopped in wrong place
+ 335   545     0       0      11.33     14.96         41  never reached, stopped in wrong place
+ 336   546     0       1       4.11     16.89         45  reached goal, never stopped
+ 337   547     0       0      10.45     16.94         47  never reached, never stopped
+ 338   548     0       1       3.73     17.19         41  reached goal, never stopped
+ 339   558     0       0      19.14      8.42         24  never reached, stopped in wrong place
+ 340   559     0       0      19.14      8.42         24  never reached, stopped in wrong place
+ 341   560     0       0      20.97     10.28         28  never reached, stopped in wrong place
+ 342   561     0       1      11.18     23.69         32  reached goal, never stopped
+ 343   562     0       1      11.18     23.69         32  reached goal, never stopped
+ 344   563     0       1       2.38     11.35         39  reached goal, never stopped
+ 345   567     0       0      11.95     10.35         27  never reached, stopped in wrong place
+ 346   568     0       0      15.91      7.95         40  never reached, never stopped
+ 347   569     0       0      15.06      5.19         12  never reached, stopped in wrong place
+ 348   570     0       0      10.66     15.22         36  never reached, never stopped
+ 349   571     0       0      17.07      8.11         24  never reached, stopped in wrong place
+ 350   572     0       0      15.52     10.21         47  never reached, never stopped
+ 351   576     0       0      14.27     14.95         41  never reached, stopped in wrong place
+ 352   577     1       1       1.32     16.40         38  success
+ 353   578     0       0       8.66      7.06         17  never reached, stopped in wrong place
+ 354   582     1       1       1.09     13.06         33  success
+ 355   583     0       0      14.46      6.15         19  never reached, stopped in wrong place
+ 356   584     0       0      14.53      6.12         17  never reached, stopped in wrong place
+ 357   585     0       0       4.38      9.13         42  never reached, never stopped
+ 358   586     0       0       7.53     10.75         41  never reached, stopped in wrong place
+ 359   587     0       0       4.23      9.10         39  never reached, never stopped
+ 360   588     1       1       2.18      7.05         21  success
+ 361   589     1       1       0.53     10.09         38  success
+ 362   590     1       1       0.47      8.62         27  success
+ 363   597     0       0       6.82      1.89         13  never reached, stopped in wrong place
+ 364   598     0       0       8.35      5.25         38  never reached, never stopped
+ 365   599     0       0       7.13      2.14         11  never reached, stopped in wrong place
+ 366   600     0       1       3.32     12.02         33  reached goal, stopped outside radius
+ 367   601     0       1       3.42     11.65         31  reached goal, stopped outside radius
+ 368   602     1       1       2.79     13.47         38  success
+ 369   606     0       0      10.65     11.54         55  never reached, never stopped
+ 370   607     0       1       3.59     12.89         54  reached goal, never stopped
+ 371   608     0       1       1.89     11.77         58  reached goal, never stopped
+ 372   609     0       0       6.90      3.73         34  never reached, never stopped
+ 373   610     0       0       9.15      4.60         70  never reached, never stopped
+ 374   611     1       1       1.66      8.18         23  success
+ 375   627     0       1       4.17      8.55         26  reached goal, stopped outside radius
+ 376   628     1       1       0.27      8.23         28  success
+ 377   629     0       1       4.36     13.19         46  reached goal, never stopped
+ 378   630     0       0       5.35      0.23         45  never reached, never stopped
+ 379   631     0       0       5.35      0.23         46  never reached, never stopped
+ 380   632     0       0       5.35      0.23         39  never reached, never stopped
+ 381   633     0       0      15.46      5.52         69  never reached, never stopped
+ 382   634     0       0       9.86      6.82         42  never reached, never stopped
+ 383   635     0       0      12.16     11.89         24  never reached, never stopped
+ 384   639     0       0      13.92      6.73         16  never reached, stopped in wrong place
+ 385   640     0       0      11.97      4.72         12  never reached, stopped in wrong place
+ 386   641     0       0      13.73      6.54         15  never reached, stopped in wrong place
+ 387   645     0       0       5.21     10.22         28  never reached, stopped in wrong place
+ 388   646     0       0       4.27     16.90         40  never reached, stopped in wrong place
+ 389   647     0       0      14.30     18.01         41  never reached, never stopped
+ 390   651     0       0       7.16      4.01         12  never reached, stopped in wrong place
+ 391   652     0       0       7.44      3.80         13  never reached, stopped in wrong place
+ 392   653     0       0       7.16      4.01         10  never reached, stopped in wrong place
+ 393   654     0       1       7.26     17.43         43  reached goal, never stopped
+ 394   655     1       1       0.98     10.65         28  success
+ 395   656     1       1       0.43     10.70         27  success
+ 396   663     0       0      11.63     15.58         43  never reached, never stopped
+ 397   664     0       0      15.17      1.30         29  never reached, never stopped
+ 398   665     0       0      16.18     17.41         39  never reached, never stopped
+ 399   669     1       1       1.20      9.76         31  success
+ 400   670     0       0       5.35     10.04         37  never reached, never stopped
+ 401   671     0       0       8.49     14.27         46  never reached, never stopped
+ 402   672     0       0      15.98     10.88         31  never reached, stopped in wrong place
+ 403   673     0       0       9.34     14.08         44  never reached, never stopped
+ 404   674     0       0      12.85      8.05         25  never reached, stopped in wrong place
+ 405   675     1       1       2.33      8.70         24  success
+ 406   676     0       0      20.62     16.53         39  never reached, never stopped
+ 407   677     0       0      20.86     16.48         41  never reached, never stopped
+ 408   681     0       0       6.60      2.48         36  never reached, never stopped
+ 409   682     0       0       6.59      2.82         37  never reached, never stopped
+ 410   683     0       0       6.59      2.82         38  never reached, never stopped
+ 411   696     0       0       5.87      0.29         35  never reached, never stopped
+ 412   697     0       0       5.87      0.29         35  never reached, never stopped
+ 413   698     0       0       5.87      0.29         35  never reached, never stopped
+ 414   699     0       0       7.01      5.87         35  never reached, never stopped
+ 415   700     0       0       3.51      9.21         41  never reached, never stopped
+ 416   701     0       0       3.37      9.53         50  never reached, never stopped
+ 417   702     1       1       0.44     10.34         31  success
+ 418   703     1       1       1.56     12.02         33  success
+ 419   704     1       1       1.76     12.37         35  success
+ 420   711     0       0      11.83     14.03         42  never reached, never stopped
+ 421   712     0       0      10.23     13.84         41  never reached, never stopped
+ 422   713     0       0       7.34     10.10         38  never reached, never stopped
+ 423   714     1       1       0.22     13.14         34  success
+ 424   715     1       1       1.45     13.53         36  success
+ 425   716     1       1       1.64     13.95         34  success
+ 426   717     0       0       5.15      3.50         47  never reached, never stopped
+ 427   718     1       1       0.70      7.29         30  success
+ 428   719     1       1       0.71      5.81         35  success
+ 429   720     0       1       6.34     11.16         56  reached goal, never stopped
+ 430   721     0       1       4.25      9.94         44  reached goal, never stopped
+ 431   722     0       1       4.82     14.44         41  reached goal, never stopped
+ 432   729     0       0       5.75     10.30         43  never reached, never stopped
+ 433   730     0       0      11.16     21.24         25  never reached, never stopped
+ 434   731     0       0       5.72     10.90         50  never reached, never stopped
+ 435   738     0       1       3.31     17.61         47  reached goal, never stopped
+ 436   739     0       1       3.17     17.53         44  reached goal, never stopped
+ 437   740     0       1       3.31     17.61         46  reached goal, never stopped
+ 438   741     0       1       2.66     15.14         44  reached goal, never stopped
+ 439   742     0       0      13.19     13.34         45  never reached, never stopped
+ 440   743     0       1       1.79     14.71         44  reached goal, never stopped
+ 441   744     0       0       6.51      7.46         20  never reached, stopped in wrong place
+ 442   745     1       1       2.13      6.20         19  success
+ 443   746     0       0       9.19      5.91         67  never reached, never stopped
+ 444   750     0       0       8.84      1.84         38  never reached, never stopped
+ 445   751     0       0       9.06      4.39         48  never reached, never stopped
+ 446   752     0       0       8.98      4.60         50  never reached, never stopped
+ 447   753     0       0       7.86     12.38         48  never reached, never stopped
+ 448   754     0       0      15.36      8.17         40  never reached, never stopped
+ 449   755     0       0      14.83      5.00         53  never reached, never stopped
+ 450   756     0       1       6.03     14.51         41  reached goal, stopped outside radius
+ 451   757     0       1       6.21     14.92         38  reached goal, stopped outside radius
+ 452   758     0       1       5.72     14.43         37  reached goal, stopped outside radius
+ 453   771     1       1       1.76      6.78         17  success
+ 454   772     1       1       1.93      7.23         17  success
+ 455   773     0       1       3.81      9.56         19  reached goal, stopped outside radius
+ 456   777     0       1       1.45     16.53         41  reached goal, never stopped
+ 457   778     0       0      20.05     16.71         42  never reached, never stopped
+ 458   779     0       1       1.79     14.12         38  reached goal, never stopped
+ 459   780     0       0       3.57      2.94         82  never reached, never stopped
+ 460   781     0       0       5.84      5.94         30  never reached, stopped in wrong place
+ 461   782     0       0       3.57      2.94         82  never reached, never stopped
+ 462   783     0       0       8.20     14.70         39  never reached, never stopped
+ 463   784     1       1       2.89     13.32         44  success
+ 464   785     0       0       5.03      9.90         49  never reached, never stopped
+ 465   792     0       0      11.55      3.29         33  never reached, never stopped
+ 466   793     0       0      11.19      2.74         28  never reached, never stopped
+ 467   794     0       0      11.62      5.42         43  never reached, never stopped
+ 468   795     0       0      16.34      9.69         42  never reached, never stopped
+ 469   796     1       1       2.63     10.91         23  success
+ 470   797     1       1       1.51     12.51         29  success
+ 471   801     0       0       6.87     18.24         41  never reached, never stopped
+ 472   802     0       0       7.21     14.02         33  never reached, stopped in wrong place
+ 473   803     1       1       2.46     16.35         43  success
+ 474   804     1       1       0.88      7.25         22  success
+ 475   805     1       1       0.88      7.25         22  success
+ 476   806     1       1       1.11      9.33         34  success
+ 477   807     0       1       9.83     17.40         40  reached goal, never stopped
+ 478   808     1       1       1.94      9.16         28  success
+ 479   809     0       1       9.83     17.40         40  reached goal, never stopped
+ 480   819     0       1       3.52      8.43         20  reached goal, stopped outside radius
+ 481   820     0       1      12.66     15.63         42  reached goal, never stopped
+ 482   821     0       0       9.84      6.29         41  never reached, never stopped
+ 483   825     0       0       9.09      5.12         12  never reached, stopped in wrong place
+ 484   826     0       0      10.69      6.78         16  never reached, stopped in wrong place
+ 485   827     0       0      13.06     15.32         43  never reached, stopped in wrong place
+ 486   840     0       1       6.78     16.75         42  reached goal, never stopped
+ 487   841     0       1       4.22     15.93         44  reached goal, never stopped
+ 488   842     0       1       3.74     15.64         49  reached goal, never stopped
+ 489   852     0       0       8.95      4.02         44  never reached, never stopped
+ 490   853     0       0       9.93      5.97         42  never reached, never stopped
+ 491   854     0       1       2.21     10.83         44  reached goal, never stopped
+ 492   858     0       0       6.45      4.74         38  never reached, never stopped
+ 493   859     0       0      10.88      6.48         24  never reached, stopped in wrong place
+ 494   860     1       1       0.35     11.15         36  success
+ 495   861     1       1       1.58     13.61         38  success
+ 496   862     1       1       0.30     12.26         31  success
+ 497   863     1       1       0.71     12.37         33  success
+ 498   867     0       1       3.17     10.13         33  reached goal, stopped outside radius
+ 499   868     0       0      12.38     11.40         42  never reached, never stopped
+ 500   869     0       0      12.37     11.63         41  never reached, never stopped
+ 501   873     0       0       8.27     16.92         40  never reached, never stopped
+ 502   874     0       0      22.41     15.62         41  never reached, never stopped
+ 503   875     0       0      21.11     14.37         42  never reached, never stopped
+ 504   876     1       1       1.61     11.70         29  success
+ 505   877     0       1       6.37     17.41         43  reached goal, never stopped
+ 506   878     0       1       3.33     13.65         34  reached goal, stopped outside radius
+ 507   879     1       1       2.13     10.49         32  success
+ 508   880     1       1       0.23      8.22         25  success
+ 509   881     0       0      20.46     13.58         35  never reached, stopped in wrong place
+ 510   885     0       0       7.70     18.32         31  never reached, never stopped
+ 511   886     0       1       3.09     12.03         48  reached goal, never stopped
+ 512   887     0       0       5.19     10.47         47  never reached, never stopped
+ 513   888     0       0      26.31     16.21         42  never reached, never stopped
+ 514   889     0       0      23.54     10.74         28  never reached, stopped in wrong place
+ 515   890     0       0      24.08     12.10         30  never reached, stopped in wrong place
+ 516   897     1       1       0.25      6.95         21  success
+ 517   898     1       1       2.26      6.79         20  success
+ 518   899     1       1       2.25      6.93         23  success
+ 519   900     0       0       8.51      1.15         18  never reached, never stopped
+ 520   901     0       0       7.70      0.61         20  never reached, never stopped
+ 521   902     0       0       4.22      5.98         18  never reached, stopped in wrong place
+ 522   906     0       0       9.27     14.17         43  never reached, never stopped
+ 523   907     0       0       6.62     10.55         39  never reached, never stopped
+ 524   908     0       1       1.15     12.82         40  reached goal, never stopped
+ 525   909     0       1       4.27     14.55         41  reached goal, never stopped
+ 526   910     1       1       0.84     11.58         26  success
+ 527   911     1       1       0.38     10.46         27  success
+ 528   912     0       1       4.24     14.75         41  reached goal, never stopped
+ 529   913     0       1       4.09     14.32         32  reached goal, stopped outside radius
+ 530   914     0       0       3.92      9.06         23  never reached, stopped in wrong place
+ 531   915     1       1       2.43      9.42         21  success
+ 532   916     1       1       0.40      7.06         16  success
+ 533   917     1       1       0.92      7.64         19  success
+ 534   921     0       0      12.78     12.83         46  never reached, never stopped
+ 535   922     0       0      14.60      7.42         25  never reached, stopped in wrong place
+ 536   923     0       0       9.55     10.48         27  never reached, stopped in wrong place
+ 537   927     1       1       1.28      8.49         26  success
+ 538   928     1       1       1.10      8.87         23  success
+ 539   929     0       0       8.74     15.41         42  never reached, never stopped
+ 540   930     0       0       9.41     14.42         42  never reached, stopped in wrong place
+ 541   931     0       1       5.99     15.33         43  reached goal, never stopped
+ 542   932     0       0      12.87      5.85         62  never reached, never stopped
+ 543   936     0       0       5.11      2.48         36  never reached, never stopped
+ 544   937     0       0       5.11      2.48         36  never reached, never stopped
+ 545   938     0       0       5.12      6.11         54  never reached, never stopped
+ 546   942     0       0      11.24     15.97         41  never reached, never stopped
+ 547   943     0       0      12.64     13.08         31  never reached, stopped in wrong place
+ 548   944     0       0      19.59     17.24         41  never reached, never stopped
+ 549   951     1       1       0.66      8.04         27  success
+ 550   952     0       0      12.12     12.65         37  never reached, stopped in wrong place
+ 551   953     1       1       2.10     10.22         29  success
+ 552   954     0       0       5.68     13.90         46  never reached, never stopped
+ 553   955     0       0       5.86     13.80         48  never reached, never stopped
+ 554   956     0       0      16.01      8.77         27  never reached, stopped in wrong place
+ 555   957     1       1       0.47      7.65         22  success
+ 556   958     1       1       1.24      9.21         23  success
+ 557   959     0       1       4.59     12.59         30  reached goal, stopped outside radius
+ 558   963     1       1       0.33      5.22         13  success
+ 559   964     1       1       0.89      5.87         14  success
+ 560   965     1       1       0.43      5.42         15  success
+ 561   969     1       1       0.44      7.34         25  success
+ 562   970     1       1       0.47      7.45         25  success
+ 563   971     1       1       0.50      8.06         33  success
+ 564   975     1       1       2.21     11.90         27  success
+ 565   976     1       1       1.60     11.87         26  success
+ 566   977     1       1       2.11     11.79         28  success
+ 567   984     0       0       5.33      3.94         17  never reached, stopped in wrong place
+ 568   985     0       1       2.33      8.56         44  reached goal, never stopped
+ 569   986     0       0       8.60     15.54         42  never reached, never stopped
+ 570   987     0       0      20.43      8.25         41  never reached, never stopped
+ 571   988     0       0      18.97      5.00         18  never reached, stopped in wrong place
+ 572   989     0       0      20.15     11.10         42  never reached, never stopped
+ 573   993     0       0       4.19     13.55         38  never reached, stopped in wrong place
+ 574   994     0       0      18.57     16.99         41  never reached, never stopped
+ 575   995     0       1       1.23     15.76         41  reached goal, never stopped
+ 576  1002     1       1       0.81      8.28         28  success
+ 577  1003     1       1       1.75      6.61         19  success
+ 578  1004     0       0       7.54      9.02         30  never reached, stopped in wrong place
+ 579  1005     1       1       0.47     16.42         41  success
+ 580  1006     1       1       0.47     15.48         41  success
+ 581  1007     1       1       1.04     16.10         37  success
+ 582  1014     0       0       8.36      0.27         36  never reached, never stopped
+ 583  1015     0       0       8.36      0.27         37  never reached, never stopped
+ 584  1016     0       0       8.36      0.27         34  never reached, never stopped
+ 585  1017     0       0       7.76      7.93         21  never reached, stopped in wrong place
+ 586  1018     1       1       2.08      9.69         30  success
+ 587  1019     0       0       6.63      6.93         18  never reached, stopped in wrong place
+ 588  1020     1       1       1.59     12.38         31  success
+ 589  1021     1       1       1.39      9.62         26  success
+ 590  1022     1       1       0.85     11.60         30  success
+ 591  1023     0       0      14.42      0.20         23  never reached, never stopped
+ 592  1024     0       0      14.42      0.20         28  never reached, never stopped
+ 593  1025     0       0      14.42      0.20         25  never reached, never stopped
+ 594  1026     0       1       4.82     15.11         47  reached goal, never stopped
+ 595  1027     0       1       4.55     14.88         49  reached goal, never stopped
+ 596  1028     0       0       8.40      7.64         16  never reached, never stopped
+ 597  1038     0       0       9.21      5.58         42  never reached, never stopped
+ 598  1039     0       1       4.59     10.55         24  reached goal, stopped outside radius
+ 599  1040     0       1       4.59     10.55         24  reached goal, stopped outside radius
+ 600  1041     0       0      17.33     16.66         43  never reached, never stopped
+ 601  1042     0       0      17.12     16.12         40  never reached, never stopped
+ 602  1043     0       1       2.23     11.98         44  reached goal, never stopped
+ 603  1047     0       1       8.46     19.09         41  reached goal, never stopped
+ 604  1048     1       1       1.23      7.16         19  success
+ 605  1049     1       1       0.77     10.38         40  success
+ 606  1056     1       1       0.79     11.49         33  success
+ 607  1057     1       1       1.38     10.25         25  success
+ 608  1058     1       1       2.06     13.58         34  success
+ 609  1059     0       0      16.79      9.90         33  never reached, stopped in wrong place
+ 610  1060     0       0      17.08      9.06         31  never reached, stopped in wrong place
+ 611  1061     1       1       2.48     11.89         35  success
+ 612  1068     1       1       0.46     14.15         35  success
+ 613  1069     1       1       2.86     12.42         33  success
+ 614  1070     0       1       1.32     14.83         41  reached goal, never stopped
+ 615  1074     0       0      12.67      9.99         32  never reached, stopped in wrong place
+ 616  1075     0       0      12.50      6.61         20  never reached, stopped in wrong place
+ 617  1076     0       0      11.61     10.97         45  never reached, never stopped
+ 618  1077     0       0      11.20      7.42         19  never reached, stopped in wrong place
+ 619  1078     1       1       2.39      8.79         23  success
+ 620  1079     0       0      11.14      9.40         48  never reached, never stopped
+ 621  1083     1       1       0.44      4.56         19  success
+ 622  1084     1       1       0.74      5.59         20  success
+ 623  1085     1       1       0.34      5.16         20  success
+ 624  1086     0       1       1.65      7.17         33  reached goal, never stopped
+ 625  1087     0       1       1.65      7.17         33  reached goal, never stopped
+ 626  1088     0       1       1.63      7.17         35  reached goal, never stopped
+ 627  1092     0       0       4.16     10.07         29  never reached, stopped in wrong place
+ 628  1093     0       0       4.90     11.27         34  never reached, stopped in wrong place
+ 629  1094     0       0      20.09     16.94         43  never reached, never stopped
+ 630  1095     1       1       1.70     13.03         34  success
+ 631  1096     0       0      29.54     18.66         41  never reached, never stopped
+ 632  1097     0       0      29.29     18.24         39  never reached, stopped in wrong place
+ 633  1098     1       1       2.76      7.35         25  success
+ 634  1099     0       1       2.72     14.21         46  reached goal, never stopped
+ 635  1100     0       0      13.23      7.78         29  never reached, stopped in wrong place
+ 636  1104     0       0      22.97     16.10         41  never reached, never stopped
+ 637  1105     0       0      23.22     16.93         39  never reached, never stopped
+ 638  1106     0       0      22.88     15.78         42  never reached, never stopped
+ 639  1107     0       0       3.56      7.84         23  never reached, stopped in wrong place
+ 640  1108     0       0      13.89      5.92         27  never reached, stopped in wrong place
+ 641  1109     1       1       1.32     12.17         28  success
+ 642  1113     1       1       0.76     12.15         34  success
+ 643  1114     1       1       0.51     13.57         36  success
+ 644  1115     1       1       0.26     12.86         36  success
+ 645  1116     1       1       2.26     10.54         24  success
+ 646  1117     1       1       1.20      9.43         20  success
+ 647  1118     1       1       0.62      8.77         19  success
+ 648  1128     0       0      12.90     11.23         36  never reached, stopped in wrong place
+ 649  1129     0       0       9.17     13.71         48  never reached, never stopped
+ 650  1130     0       0      22.36     16.59         44  never reached, never stopped
+ 651  1131     0       0       4.98      9.99         29  never reached, stopped in wrong place
+ 652  1132     0       0       5.44     10.82         32  never reached, stopped in wrong place
+ 653  1133     0       0      12.66     27.22         32  never reached, never stopped
+ 654  1134     0       0      16.29      7.07         26  never reached, stopped in wrong place
+ 655  1135     0       0      17.22      8.88         31  never reached, stopped in wrong place
+ 656  1136     0       0       4.47      7.99         20  never reached, stopped in wrong place
+ 657  1137     0       0      11.24      7.04         42  never reached, stopped in wrong place
+ 658  1138     1       1       0.79      9.11         24  success
+ 659  1139     0       0      14.22     18.26         43  never reached, never stopped
+ 660  1140     1       1       0.72      7.44         26  success
+ 661  1141     1       1       0.43      9.85         31  success
+ 662  1142     1       1       0.74      7.50         24  success
+ 663  1146     0       0       5.60     13.10         37  never reached, stopped in wrong place
+ 664  1147     1       1       1.05     10.04         29  success
+ 665  1148     0       0       4.19      3.82         26  never reached, never stopped
+ 666  1149     0       0      12.90      1.00          3  never reached, never stopped
+ 667  1150     0       0      12.07      6.63         24  never reached, stopped in wrong place
+ 668  1151     0       1       1.64     14.78         44  reached goal, never stopped
+ 669  1152     1       1       1.01      8.07         22  success
+ 670  1153     1       1       0.65      9.00         28  success
+ 671  1154     1       1       1.01      8.07         21  success
+ 672  1155     0       0       6.73     15.10         42  never reached, never stopped
+ 673  1156     0       0       6.41     15.35         39  never reached, never stopped
+ 674  1157     0       0       6.93     15.35         41  never reached, never stopped
+ 675  1158     0       0      26.30     14.03         41  never reached, never stopped
+ 676  1159     0       0       3.36     16.23         46  never reached, never stopped
+ 677  1160     0       0      10.33      7.22         24  never reached, stopped in wrong place
+ 678  1164     1       1       1.26     14.80         39  success
+ 679  1165     0       1       1.37     16.13         45  reached goal, never stopped
+ 680  1166     1       1       1.26     14.80         39  success
+ 681  1167     0       0      11.01     10.03         45  never reached, never stopped
+ 682  1168     0       0      12.74      5.15         19  never reached, stopped in wrong place
+ 683  1169     0       0       7.34      7.91         33  never reached, stopped in wrong place
+ 684  1170     1       1       1.60      6.72         24  success
+ 685  1171     1       1       1.47      8.68         28  success
+ 686  1172     1       1       2.20      6.97         43  success
+ 687  1176     0       0       4.79      5.30         53  never reached, never stopped
+ 688  1177     0       0       4.57      1.09         24  never reached, never stopped
+ 689  1178     0       0       5.65      5.05         42  never reached, never stopped
+ 690  1179     0       0      13.33     13.21         40  never reached, never stopped
+ 691  1180     0       1       1.24     17.04         37  reached goal, never stopped
+ 692  1181     0       1       1.40     17.04         37  reached goal, never stopped
+ 693  1182     0       0       6.75      7.02         41  never reached, never stopped
+ 694  1183     1       1       0.92     11.60         40  success
+ 695  1184     0       0       6.87      6.34         39  never reached, never stopped
+ 696  1188     1       1       1.57      9.12         25  success
+ 697  1189     1       1       2.34     12.86         39  success
+ 698  1190     0       0       5.36     15.05         42  never reached, never stopped
+ 699  1191     0       1       5.76     16.08         41  reached goal, never stopped
+ 700  1192     0       1       6.61     14.37         48  reached goal, stopped outside radius
+ 701  1193     1       1       2.33      5.26         22  success
+ 702  1194     1       1       0.74      9.63         29  success
+ 703  1195     0       0      11.05      7.07         47  never reached, never stopped
+ 704  1196     1       1       0.45     11.45         39  success
+ 705  1197     0       1       5.00      7.09         22  reached goal, stopped outside radius
+ 706  1198     1       1       0.90      7.89         26  success
+ 707  1199     1       1       0.98      7.92         27  success
+ 708  1200     0       0      11.74     16.40         46  never reached, never stopped
+ 709  1201     0       0      15.20     10.89         33  never reached, stopped in wrong place
+ 710  1202     1       1       1.89     10.35         26  success
+ 711  1203     1       1       0.96      9.87         32  success
+ 712  1204     0       1       4.93     14.31         43  reached goal, never stopped
+ 713  1205     1       1       1.12     10.34         26  success
+ 714  1206     0       0      25.47     16.08         43  never reached, never stopped
+ 715  1207     0       0      13.31     13.55         47  never reached, never stopped
+ 716  1208     0       0      25.65     17.04         41  never reached, never stopped
+ 717  1212     0       1       6.41     16.72         49  reached goal, never stopped
+ 718  1213     0       1       3.52     14.57         31  reached goal, stopped outside radius
+ 719  1214     1       1       0.31      8.86         21  success
+ 720  1227     0       1       3.44     11.73         30  reached goal, stopped outside radius
+ 721  1228     1       1       1.12      9.18         21  success
+ 722  1229     0       1       8.70     18.37         44  reached goal, never stopped
+ 723  1236     0       0      13.56     16.75         48  never reached, never stopped
+ 724  1237     0       0      10.14     16.65         43  never reached, never stopped
+ 725  1238     0       0      11.67     13.59         21  never reached, never stopped
+ 726  1239     0       1       3.52      7.45         23  reached goal, stopped outside radius
+ 727  1240     0       0       7.89      5.54         13  never reached, stopped in wrong place
+ 728  1241     0       0       6.92     13.50         45  never reached, never stopped
+ 729  1245     1       1       0.68      7.95         18  success
+ 730  1246     1       1       0.68      7.95         18  success
+ 731  1247     1       1       0.85      6.75         14  success
+ 732  1254     1       1       1.70      7.94         24  success
+ 733  1255     1       1       1.03     10.65         27  success
+ 734  1256     1       1       1.25      8.58         24  success
+ 735  1260     1       1       2.32     10.16         30  success
+ 736  1261     1       1       0.56     11.46         31  success
+ 737  1262     1       1       0.28     11.02         30  success
+ 738  1263     1       1       1.78     15.24         44  success
+ 739  1264     1       1       2.11     15.86         40  success
+ 740  1265     1       1       0.52     14.83         39  success
+ 741  1269     1       1       1.45      7.29         17  success
+ 742  1270     0       0       7.68     10.34         35  never reached, stopped in wrong place
+ 743  1271     0       0       9.25      3.54         11  never reached, stopped in wrong place
+ 744  1275     1       1       1.17     11.25         34  success
+ 745  1276     1       1       1.21     10.79         27  success
+ 746  1277     0       1       3.03     13.29         34  reached goal, stopped outside radius
+ 747  1278     0       0       8.21     12.13         45  never reached, stopped in wrong place
+ 748  1279     0       0       8.70      9.22         27  never reached, stopped in wrong place
+ 749  1280     0       0       8.66     10.65         27  never reached, stopped in wrong place
+ 750  1281     1       1       2.95      7.23         18  success
+ 751  1282     1       1       2.95      7.23         17  success
+ 752  1283     1       1       2.95      7.23         17  success
+ 753  1284     0       0       9.62     13.72         44  never reached, stopped in wrong place
+ 754  1285     0       1       3.81     10.04         27  reached goal, stopped outside radius
+ 755  1286     0       1       5.31     15.13         47  reached goal, stopped outside radius
+ 756  1287     0       0      20.85     13.88         44  never reached, never stopped
+ 757  1288     0       0      20.45     14.27         45  never reached, never stopped
+ 758  1289     0       0      21.88     15.08         44  never reached, never stopped
+ 759  1299     1       1       1.82     11.62         26  success
+ 760  1300     0       1       4.56     14.72         42  reached goal, stopped outside radius
+ 761  1301     0       0      16.54      7.82         23  never reached, stopped in wrong place
+ 762  1302     0       1       2.32     15.69         42  reached goal, never stopped
+ 763  1303     0       0      11.11      8.28         26  never reached, stopped in wrong place
+ 764  1304     0       0      11.15      8.34         28  never reached, stopped in wrong place
+ 765  1308     0       0      14.18     13.11         18  never reached, never stopped
+ 766  1309     0       0      14.36     10.56         27  never reached, stopped in wrong place
+ 767  1310     0       0       6.33     15.31         41  never reached, never stopped
+ 768  1311     0       0       8.42      4.41         39  never reached, never stopped
+ 769  1312     0       0       8.42      4.41         37  never reached, never stopped
+ 770  1313     0       0       8.42      4.41         32  never reached, never stopped
+ 771  1320     0       0       8.73      7.83         27  never reached, stopped in wrong place
+ 772  1321     0       0       9.43     10.45         43  never reached, never stopped
+ 773  1322     0       0      10.97     11.13         41  never reached, never stopped
+ 774  1323     0       0      14.13      6.64         42  never reached, never stopped
+ 775  1324     0       1       2.28      8.73         49  reached goal, never stopped
+ 776  1325     0       0      14.19      4.99         30  never reached, never stopped
+ 777  1326     0       0      19.58     15.66         47  never reached, never stopped
+ 778  1327     0       0      20.07     16.07         42  never reached, never stopped
+ 779  1328     0       0      21.73     17.37         35  never reached, stopped in wrong place
+ 780  1332     1       1       0.27     12.11         33  success
+ 781  1333     1       1       0.75     11.45         33  success
+ 782  1334     1       1       0.41     12.40         34  success
+ 783  1335     1       1       0.33      8.65         26  success
+ 784  1336     1       1       1.29      7.54         25  success
+ 785  1337     1       1       0.57      8.20         26  success
+ 786  1338     0       1       6.91     10.96         31  reached goal, stopped outside radius
+ 787  1339     0       0       7.61     14.02         41  never reached, never stopped
+ 788  1340     0       0      13.90     12.12         45  never reached, never stopped
+ 789  1344     0       1       8.90     16.83         41  reached goal, never stopped
+ 790  1345     0       1       3.85     16.31         43  reached goal, never stopped
+ 791  1346     0       0      24.66     15.67         39  never reached, never stopped
+ 792  1350     0       0      21.13      9.86         33  never reached, stopped in wrong place
+ 793  1351     1       1       1.02     14.02         34  success
+ 794  1352     0       0       6.87      7.66         59  never reached, never stopped
+ 795  1353     1       1       0.70      8.65         20  success
+ 796  1354     0       1       1.95     13.60         46  reached goal, never stopped
+ 797  1355     1       1       0.25      8.03         20  success
+ 798  1359     0       1       2.98     11.87         52  reached goal, never stopped
+ 799  1360     1       1       0.61      9.88         34  success
+ 800  1361     1       1       1.92     10.84         35  success
+ 801  1362     0       0       9.70     10.69         27  never reached, stopped in wrong place
+ 802  1363     0       0       4.11      4.41         45  never reached, never stopped
+ 803  1364     1       1       0.41      7.88         22  success
+ 804  1365     1       1       0.35      9.05         26  success
+ 805  1366     0       1       1.76     13.51         41  reached goal, never stopped
+ 806  1367     1       1       0.82     11.10         34  success
+ 807  1371     0       1      13.38     17.85         36  reached goal, stopped outside radius
+ 808  1372     0       1      13.13     17.73         39  reached goal, never stopped
+ 809  1373     0       1       1.93      9.62         46  reached goal, never stopped
+ 810  1374     0       0      11.14     17.67         37  never reached, never stopped
+ 811  1375     1       1       1.01      9.59         26  success
+ 812  1376     1       1       1.01      8.39         22  success
+ 813  1377     0       1       5.81      9.52         30  reached goal, stopped outside radius
+ 814  1378     1       1       0.31      7.82         26  success
+ 815  1379     1       1       0.32      7.72         26  success
+ 816  1380     1       1       0.46      9.95         34  success
+ 817  1381     0       0      17.15     14.77         45  never reached, never stopped
+ 818  1382     0       0      20.55     17.60         46  never reached, never stopped
+ 819  1386     1       1       1.10     14.73         44  success
+ 820  1387     0       1       0.43     15.71         43  reached goal, never stopped
+ 821  1388     0       0      12.46      8.39         37  never reached, never stopped
+ 822  1392     0       0      21.32     17.77         41  never reached, never stopped
+ 823  1393     0       0      19.46     15.82         36  never reached, stopped in wrong place
+ 824  1394     0       0      12.21     14.48         38  never reached, never stopped
+ 825  1395     1       1       1.68     12.08         38  success
+ 826  1396     1       1       1.46     12.06         32  success
+ 827  1397     0       0       6.48     14.77         46  never reached, stopped in wrong place
+ 828  1404     1       1       1.64     10.39         34  success
+ 829  1405     1       1       1.71     10.07         30  success
+ 830  1406     0       0       3.64      3.82         40  never reached, never stopped
+ 831  1416     0       0       8.89      7.64         46  never reached, never stopped
+ 832  1417     0       1       2.84     12.01         48  reached goal, never stopped
+ 833  1418     1       1       0.15      9.03         31  success
+ 834  1419     0       1       1.78     16.18         42  reached goal, never stopped
+ 835  1420     0       1       0.38     15.10         44  reached goal, never stopped
+ 836  1421     0       0      15.16      5.52         40  never reached, never stopped
+ 837  1431     0       0       9.40      1.94          6  never reached, never stopped
+ 838  1432     0       0       9.40      1.94          6  never reached, never stopped
+ 839  1433     0       0       9.40      1.94          6  never reached, never stopped
+ 840  1434     1       1       0.30     10.61         29  success
+ 841  1435     1       1       0.89     11.33         33  success
+ 842  1436     1       1       0.97      8.87         28  success
+ 843  1437     1       1       0.67      7.95         27  success
+ 844  1438     1       1       2.61     12.71         42  success
+ 845  1439     0       0       5.20      6.91         37  never reached, never stopped
+ 846  1440     0       0       5.06      8.82         49  never reached, never stopped
+ 847  1441     0       0      10.74      8.47         23  never reached, stopped in wrong place
+ 848  1442     0       0       5.45      7.16         44  never reached, never stopped
+ 849  1443     0       1       7.40     16.75         30  reached goal, never stopped
+ 850  1444     0       0       6.70      0.61         20  never reached, never stopped
+ 851  1445     0       0       7.51      1.15         18  never reached, never stopped
+ 852  1449     0       1       3.50     11.93         31  reached goal, stopped outside radius
+ 853  1450     0       1       3.72     15.27         43  reached goal, never stopped
+ 854  1451     1       1       2.60     12.21         32  success
+ 855  1461     0       0      14.76     13.06         29  never reached, stopped in wrong place
+ 856  1462     0       0       8.46     16.61         42  never reached, never stopped
+ 857  1463     0       0      16.37     15.60         41  never reached, stopped in wrong place
+ 858  1464     0       1       5.91     17.08         40  reached goal, never stopped
+ 859  1465     0       0       4.76      6.26         32  never reached, never stopped
+ 860  1466     0       1       3.03     14.16         35  reached goal, stopped outside radius
+ 861  1470     0       1       5.63     15.30         46  reached goal, never stopped
+ 862  1471     0       1       5.90     15.51         46  reached goal, never stopped
+ 863  1472     0       0      15.80     16.76         43  never reached, never stopped
+ 864  1473     0       0      15.74     11.27         35  never reached, stopped in wrong place
+ 865  1474     0       0      11.16      4.28         30  never reached, never stopped
+ 866  1475     0       0      11.50     12.72         47  never reached, never stopped
+ 867  1476     1       1       2.00     12.76         32  success
+ 868  1477     1       1       2.11     12.80         31  success
+ 869  1478     1       1       2.07     12.78         32  success
+ 870  1479     1       1       0.48      7.98         25  success
+ 871  1480     1       1       2.21      8.52         27  success
+ 872  1481     0       0       6.61      4.16         17  never reached, stopped in wrong place
+ 873  1485     1       1       1.36      9.83         27  success
+ 874  1486     1       1       1.19     11.34         30  success
+ 875  1487     0       0       3.53      6.91         21  never reached, stopped in wrong place
+ 876  1488     0       1      18.99     15.26         32  reached goal, stopped outside radius
+ 877  1489     0       1      19.17     16.84         38  reached goal, stopped outside radius
+ 878  1490     1       1       0.50      9.18         31  success
+ 879  1497     1       1       0.21      9.81         36  success
+ 880  1498     0       1       0.87     11.00         41  reached goal, never stopped
+ 881  1499     0       1       0.96     11.07         43  reached goal, never stopped
+ 882  1500     0       1       9.65     13.87         48  reached goal, never stopped
+ 883  1501     0       0       4.30      6.58         41  never reached, never stopped
+ 884  1502     0       0       5.74      9.72         40  never reached, stopped in wrong place
+ 885  1512     0       0       9.36      6.94         48  never reached, never stopped
+ 886  1513     0       0      13.98     13.74         51  never reached, never stopped
+ 887  1514     0       0       9.22      5.40         43  never reached, never stopped
+ 888  1515     1       1       1.09      7.78         17  success
+ 889  1516     1       1       0.50      8.36         18  success
+ 890  1517     1       1       0.26      8.71         25  success
+ 891  1518     1       1       0.15      6.30         13  success
+ 892  1519     1       1       0.66      6.93         14  success
+ 893  1520     1       1       0.86      7.14         15  success
+ 894  1521     0       0       6.41      4.19         70  never reached, never stopped
+ 895  1522     0       0       6.48      4.23         51  never reached, never stopped
+ 896  1523     0       0       6.48      4.23         51  never reached, never stopped
+ 897  1524     0       0      11.22      3.45         36  never reached, never stopped
+ 898  1525     0       0      11.22      3.16         24  never reached, never stopped
+ 899  1526     0       0       4.77     15.19         38  never reached, never stopped
+ 900  1527     0       0       8.69      6.76         30  never reached, never stopped
+ 901  1528     0       1       8.69     16.97         29  reached goal, never stopped
+ 902  1529     0       1       8.69     16.92         27  reached goal, never stopped
+ 903  1536     0       0      12.80      9.67         50  never reached, never stopped
+ 904  1537     0       0       9.72      8.33         48  never reached, never stopped
+ 905  1538     0       0       6.46     12.34         44  never reached, stopped in wrong place
+ 906  1542     1       1       0.35      6.97         20  success
+ 907  1543     1       1       0.71      8.51         32  success
+ 908  1544     1       1       0.36      7.41         19  success
+ 909  1545     0       0      10.42      0.79          1  never reached, never stopped
+ 910  1546     0       0      10.42      0.79          1  never reached, never stopped
+ 911  1547     0       0      10.42      0.79          1  never reached, never stopped
+ 912  1548     0       0       8.08     13.16         44  never reached, never stopped
+ 913  1549     1       1       0.66     12.09         34  success
+ 914  1550     1       1       1.60     11.58         31  success
+ 915  1557     1       1       0.36      5.41         15  success
+ 916  1558     1       1       0.36      5.41         15  success
+ 917  1559     1       1       0.97      6.06         16  success
+ 918  1560     0       0      21.97     17.38         38  never reached, never stopped
+ 919  1561     0       0      22.14     17.17         41  never reached, never stopped
+ 920  1562     1       1       0.51      8.31         22  success
+ 921  1563     0       0      12.48      5.12         36  never reached, never stopped
+ 922  1564     0       0       8.97      2.90         24  never reached, never stopped
+ 923  1565     0       0       8.77      2.94         24  never reached, never stopped
+ 924  1566     0       0       7.40     11.47         33  never reached, stopped in wrong place
+ 925  1567     0       0      10.27      5.96         21  never reached, stopped in wrong place
+ 926  1568     1       1       0.33      7.39         20  success
+ 927  1572     1       1       2.86     10.11         24  success
+ 928  1573     0       1       3.24     10.49         24  reached goal, stopped outside radius
+ 929  1574     0       1       1.10     14.03         42  reached goal, never stopped
+ 930  1578     0       0       3.60     11.31         27  never reached, stopped in wrong place
+ 931  1579     0       0       4.44     12.63         29  never reached, stopped in wrong place
+ 932  1580     0       0       3.95     11.92         28  never reached, stopped in wrong place
+ 933  1587     1       1       0.16      9.48         24  success
+ 934  1588     1       1       0.58     10.10         25  success
+ 935  1589     1       1       0.16      9.48         24  success
+ 936  1599     0       1       1.03     16.05         43  reached goal, never stopped
+ 937  1600     0       0       3.83     11.52         35  never reached, stopped in wrong place
+ 938  1601     0       0       7.39     13.94         42  never reached, never stopped
+ 939  1605     0       0       3.13      7.17         33  never reached, never stopped
+ 940  1606     0       0       5.49      3.36         11  never reached, stopped in wrong place
+ 941  1607     0       0       3.13      7.17         33  never reached, never stopped
+ 942  1611     1       1       0.25      9.27         29  success
+ 943  1612     1       1       0.45      9.23         29  success
+ 944  1613     1       1       0.58      9.70         27  success
+ 945  1614     0       0       4.99     16.28         44  never reached, never stopped
+ 946  1615     0       0       6.95     16.21         39  never reached, never stopped
+ 947  1616     1       1       2.07     12.87         29  success
+ 948  1620     0       0       3.26      9.53         40  never reached, never stopped
+ 949  1621     0       0       6.66      4.83         12  never reached, stopped in wrong place
+ 950  1622     0       0       6.83     11.90         42  never reached, never stopped
+ 951  1632     0       0       7.67      1.26          2  never reached, never stopped
+ 952  1633     0       0       7.67      1.26          2  never reached, never stopped
+ 953  1634     0       0       7.67      1.26          2  never reached, never stopped
+ 954  1635     1       1       0.38      6.80         28  success
+ 955  1636     1       1       1.90      6.51         26  success
+ 956  1637     1       1       1.53      6.73         21  success
+ 957  1638     0       0       3.88     14.19         38  never reached, never stopped
+ 958  1639     0       1       1.14     15.96         42  reached goal, never stopped
+ 959  1640     0       1       1.75     14.78         48  reached goal, never stopped
+ 960  1641     1       1       1.40      9.69         28  success
+ 961  1642     0       0      11.03      9.24         38  never reached, stopped in wrong place
+ 962  1643     0       1       3.23     11.45         31  reached goal, stopped outside radius
+ 963  1644     0       0       8.21     10.24         24  never reached, stopped in wrong place
+ 964  1645     1       1       0.57      7.88         21  success
+ 965  1646     1       1       1.02      7.75         20  success
+ 966  1647     0       0       6.63     13.36         49  never reached, stopped in wrong place
+ 967  1648     0       0       3.58     13.90         52  never reached, stopped in wrong place
+ 968  1649     1       1       1.15     12.46         45  success
+ 969  1650     0       0      12.07     20.10         29  never reached, never stopped
+ 970  1651     0       1       0.51     15.71         43  reached goal, never stopped
+ 971  1652     0       1       4.50     17.72         41  reached goal, never stopped
+ 972  1653     0       0      10.41      0.25          1  never reached, never stopped
+ 973  1654     0       0      10.41      0.25          1  never reached, never stopped
+ 974  1655     0       0      10.41      0.25          1  never reached, never stopped
+ 975  1656     0       0       5.84      6.63         56  never reached, never stopped
+ 976  1657     1       1       0.63      8.02         29  success
+ 977  1658     0       0       6.63      5.76         54  never reached, never stopped
+ 978  1659     1       1       0.48      8.82         26  success
+ 979  1660     1       1       0.46      8.78         19  success
+ 980  1661     0       1       4.47      8.92         26  reached goal, stopped outside radius
+ 981  1677     0       0       6.19      8.44         36  never reached, never stopped
+ 982  1678     0       0       6.64      7.94         37  never reached, never stopped
+ 983  1679     1       1       0.51     12.24         30  success
+ 984  1680     0       0       7.91      8.21         26  never reached, stopped in wrong place
+ 985  1681     0       1       4.57     16.16         43  reached goal, never stopped
+ 986  1682     0       1       5.57     14.58         42  reached goal, never stopped
+ 987  1683     0       0      13.63     10.55         24  never reached, stopped in wrong place
+ 988  1684     0       0      13.63     10.55         24  never reached, stopped in wrong place
+ 989  1685     0       0      13.63     10.55         24  never reached, stopped in wrong place
+ 990  1689     1       1       2.62     12.41         40  success
+ 991  1690     0       1       7.67     15.40         39  reached goal, never stopped
+ 992  1691     0       1       4.55     14.69         41  reached goal, never stopped
+ 993  1698     1       1       0.92     13.67         38  success
+ 994  1699     1       1       1.03     13.65         38  success
+ 995  1700     1       1       0.55     14.79         45  success
+ 996  1704     1       1       0.31     13.16         27  success
+ 997  1705     1       1       0.23     13.28         30  success
+ 998  1706     0       0      26.67     16.08         41  never reached, never stopped
+ 999  1707     1       1       2.73     12.99         31  success
+1000  1708     0       0      10.15      4.71         17  never reached, never stopped
+1001  1709     1       1       2.21     12.63         33  success
+1002  1710     1       1       0.82      7.86         21  success
+1003  1711     0       1       3.68     10.09         24  reached goal, stopped outside radius
+1004  1712     0       1       3.65      9.75         24  reached goal, stopped outside radius
+1005  1713     0       0      12.32      9.38         28  never reached, stopped in wrong place
+1006  1714     0       0       8.48      5.42         21  never reached, stopped in wrong place
+1007  1715     0       0      12.48      9.46         26  never reached, stopped in wrong place
+1008  1716     1       1       0.83     11.57         29  success
+1009  1717     0       0       8.80     10.43         39  never reached, never stopped
+1010  1718     0       0      10.35     14.30         40  never reached, never stopped
+1011  1719     0       0       7.47     11.53         49  never reached, never stopped
+1012  1720     1       1       2.23     11.26         36  success
+1013  1721     0       0       8.44     15.73         40  never reached, stopped in wrong place
+1014  1722     0       1       0.81     14.32         40  reached goal, never stopped
+1015  1723     0       0      13.13     14.66         26  never reached, never stopped
+1016  1724     0       0      10.36      4.48         35  never reached, never stopped
+1017  1728     0       0       8.99      5.04         38  never reached, never stopped
+1018  1729     0       0      14.58     11.84         51  never reached, never stopped
+1019  1730     0       0      12.82     10.47         49  never reached, never stopped
+1020  1737     0       0       6.25      1.95          6  never reached, stopped in wrong place
+1021  1738     0       0       6.27      2.00          5  never reached, stopped in wrong place
+1022  1739     0       0       6.25      1.95          6  never reached, stopped in wrong place
+1023  1740     1       1       0.39      7.16         19  success
+1024  1741     1       1       0.96      8.40         20  success
+1025  1742     1       1       2.11      9.58         23  success
+1026  1746     0       0       6.96      2.51          5  never reached, never stopped
+1027  1747     0       0       6.96      2.51          5  never reached, never stopped
+1028  1748     0       0       6.96      2.51          5  never reached, never stopped
+1029  1749     0       0      15.66      0.27          1  never reached, never stopped
+1030  1750     0       0      15.66      0.27          1  never reached, never stopped
+1031  1751     0       0      15.66      0.27          1  never reached, never stopped
+1032  1752     0       1       4.44     10.59         48  reached goal, stopped outside radius
+1033  1753     0       0       9.59      8.77         49  never reached, never stopped
+1034  1754     0       1       4.29     10.55         48  reached goal, stopped outside radius
+1035  1755     0       0       9.86     15.38         43  never reached, never stopped
+1036  1756     0       0       7.90     15.01         42  never reached, never stopped
+1037  1757     0       0      12.27      2.56         39  never reached, never stopped
+1038  1758     0       0       7.50     10.01         28  never reached, stopped in wrong place
+1039  1759     0       0       7.39     10.96         42  never reached, never stopped
+1040  1760     0       0       7.34     12.10         46  never reached, never stopped
+1041  1764     0       1       2.62      7.94         46  reached goal, never stopped
+1042  1765     1       1       1.07      8.48         18  success
+1043  1766     1       1       0.57      9.45         26  success
+1044  1767     0       1       6.56     14.14         46  reached goal, stopped outside radius
+1045  1768     0       1       5.18     12.71         43  reached goal, stopped outside radius
+1046  1769     0       1       5.77     13.33         41  reached goal, stopped outside radius
+1047  1770     0       1       2.28     13.10         42  reached goal, never stopped
+1048  1771     0       1       2.54      9.98         62  reached goal, never stopped
+1049  1772     1       1       2.23     11.09         49  success
+1050  1776     1       1       1.73      4.56         15  success
+1051  1777     0       1       2.88     10.55         43  reached goal, never stopped
+1052  1778     0       1       4.01     10.50         48  reached goal, never stopped
+1053  1782     1       1       0.92     10.56         31  success
+1054  1783     0       0      10.96     21.11         31  never reached, never stopped
+1055  1784     1       1       1.15      9.69         26  success
+1056  1788     0       0       8.67      0.25          1  never reached, never stopped
+1057  1789     0       0       8.67      0.25          1  never reached, never stopped
+1058  1790     0       0       8.67      0.25          1  never reached, never stopped
+1059  1794     0       0       5.53     11.44         35  never reached, never stopped
+1060  1795     0       0       5.91      0.73          4  never reached, never stopped
+1061  1796     0       0       5.91      0.99          4  never reached, never stopped
+1062  1800     1       1       0.29     13.79         38  success
+1063  1801     1       1       1.12     14.48         34  success
+1064  1802     1       1       1.12     14.71         37  success
+1065  1803     1       1       0.33      8.40         24  success
+1066  1804     1       1       0.33      8.40         26  success
+1067  1805     0       0      15.62      8.48         23  never reached, stopped in wrong place
+1068  1806     0       0      12.43     14.15         48  never reached, never stopped
+1069  1807     0       0      13.55      9.39         26  never reached, stopped in wrong place
+1070  1808     0       0      17.57     10.05         35  never reached, stopped in wrong place
+1071  1818     0       1       2.39     14.68         49  reached goal, never stopped
+1072  1819     1       1       2.47     13.95         42  success
+1073  1820     0       1       3.21     15.31         49  reached goal, never stopped
+1074  1830     0       1       3.29      8.50         44  reached goal, never stopped
+1075  1831     0       1       5.87     12.81         52  reached goal, never stopped
+1076  1832     0       1       3.67     12.47         45  reached goal, never stopped

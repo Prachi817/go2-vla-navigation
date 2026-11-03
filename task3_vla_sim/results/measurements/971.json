@@ -1,0 +1,8 @@
+{
+    "path_length": 8.056275118285726,
+    "distance_to_goal": 0.5037990442561059,
+    "success": 1.0,
+    "spl": 0.8431781296758567,
+    "oracle_navigation_error": 0.4922904245513182,
+    "oracle_success": 1.0
+}
