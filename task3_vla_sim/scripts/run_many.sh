@@ -29,8 +29,9 @@ for i in $(seq $START $END); do
   echo "$(date +%H:%M:%S) episode_idx $i ..."
   # -u = unbuffered: without it, "VLM output" lines are lost when Isaac's
   # fastShutdown exits the process before Python flushes stdout.
-  # timeout 900 = 15 min cap in case Isaac Sim hangs.
-  timeout 900 $PY -u scripts/navila_eval.py --task=go2_matterport_vision --num_envs=1 --history_length=9 \
+  # timeout 900 = 15 min cap in case Isaac Sim hangs; -k 30 force-kills it 30 s
+  # later, because Isaac Sim can ignore the SIGTERM (episode 20 hung for 17 h).
+  timeout -k 30 900 $PY -u scripts/navila_eval.py --task=go2_matterport_vision --num_envs=1 --history_length=9 \
     --load_run=2024-09-25_23-22-02 --headless --enable_cameras --episode_idx=$i \
     > $R/logs/episode_idx_$i.log 2>&1
   if grep -q "Traceback" $R/logs/episode_idx_$i.log; then
