@@ -10,9 +10,14 @@ navigation actions, closing the loop end to end.
 Go2 in Isaac Sim through NaVILA-Bench's Matterport3D scenes, on a single
 RTX A4500 (20 GB) shared with Isaac Sim.
 
-- First 10 episodes: **70% success, 90% oracle success, SPL 0.647**
-  (see [Results](#results)).
-- Overnight run of episodes 10-209 in progress - results to be added below.
+- **Full benchmark, all 1,077 episodes: 34.4% success, 51.7% oracle
+  success, SPL 0.307** (paper, Go2 vision: 50.2% / 58.7% / 0.455). See
+  [Results](#results).
+- Most of the gap is **stopping**: NaVILA reaches the goal area nearly as
+  often as in the paper, but stops there less often.
+- **8-bit is not the main cause**: fp16 makes the same decision as 8-bit
+  96.8% of the time on identical inputs (see
+  [8-bit vs fp16 test](#8-bit-vs-fp16-test)).
 
 **Closes Task 2's open item**: the Task 2 README couldn't confirm that
 simulated *sensors* were exercised (the planner demo only proved control).
@@ -536,20 +541,69 @@ points - small evaluations need repeated runs or many more episodes.
 
 ### Run 3 - dataset indexes 10-209 (overnight)
 
-Started 2026-10-28 19:43 with `run_many.sh 10 209` (~2.5 min/episode,
-~8 h). Fill in from `summarize_results.py`:
+Started 2026-10-28 19:43 with `run_many.sh 10 209` (~2.2 min/episode).
+Episode 20 hung at `Simulation App Starting` and `timeout` couldn't kill it
+(Isaac Sim ignored SIGTERM), which stalled the run for 17 h; after adding
+`timeout -k 30` it was restarted and finished 2026-10-29 21:36.
 
 | Metric | Indexes 10-209 | All 210 (0-209) |
 |---|---|---|
-| Episodes completed | _TBD_ | _TBD_ |
-| Success rate | _TBD_ | _TBD_ |
-| Oracle success | _TBD_ | _TBD_ |
-| SPL | _TBD_ | _TBD_ |
-| Distance to goal | _TBD_ | _TBD_ |
-| Path length | _TBD_ | _TBD_ |
-| Failed to run (`failed.txt`) | _TBD_ | - |
+| Episodes completed | 200 | 210 |
+| Success rate | 0.385 | 0.405 |
+| Oracle success | 0.535 | 0.552 |
+| SPL | - | 0.370 |
+| Distance to goal | 5.97 m | 5.75 m |
+| Path length | 9.82 m | 9.80 m |
+| Failed to run (`failed.txt`) | 0 | - |
 
-Outcome breakdown: _TBD_
+(The 10-209 column was computed from the per-episode table, which has no
+SPL column.) Outcome breakdown, indexes 10-209:
+
+| Outcome | Episodes |
+|---|---|
+| success | 77 (38.5%) |
+| never reached, never stopped | 50 (25.0%) |
+| never reached, stopped in wrong place | 43 (21.5%) |
+| reached goal, never stopped | 20 (10.0%) |
+| reached goal, stopped outside radius | 10 (5.0%) |
+
+**Stuck at the start.** 18 episodes moved less than 3.5 m, some almost not
+at all: indexes 36-38 (0.15 m despite 63-81 NaVILA decisions), 123-125
+(~0.1 m), 171-173 (~1 m, only 3 decisions). They come in threes because
+R2R has 3 instructions per route, so consecutive indexes share a start
+point: different instructions failing identically points at the start
+position (robot stuck against the mesh), not at NaVILA. Without these 18:
+0.423 success, 0.588 oracle success.
+
+### Run 4 - all 1,077 episodes (full split)
+
+`run_many.sh 210 1076` started 2026-10-30 (~32 h). Four episodes (374,
+416, 666, 1055) hung and were force-killed by `timeout -k 30`; they leave
+no Traceback, so they were counted in `done.txt` and only showed up by
+checking each log for `Shutting Down`. All four were re-run successfully
+(old logs kept in `logs/hung/`). No episode failed with an error.
+
+| Metric | All 1,077 (ours, 8-bit) | NaVILA paper, Go2 vision (Table IV) |
+|---|---|---|
+| **Success rate** | **0.344** | 0.502 |
+| Oracle success | 0.517 | 0.587 |
+| **SPL** | **0.307** | 0.455 |
+| Distance to goal (NE) | 6.33 m | 5.49 m |
+| Path length | 10.10 m | - |
+
+| Outcome | Episodes |
+|---|---|
+| success | 370 (34.4%) |
+| never reached, never stopped | 333 (30.9%) |
+| never reached, stopped in wrong place | 187 (17.4%) |
+| reached goal, never stopped | 129 (12.0%) |
+| reached goal, stopped outside radius | 58 (5.4%) |
+
+The first 200 episodes (38.5%) turned out slightly easier than the full
+split. Backups on the lab machine: `~/go2-sim/results_backup/`
+(`navila_full_20261103_1336.tar.gz` with videos, before the 4 re-runs;
+`navila_metrics_final_*.tar.gz` with all 1,077 measurements and logs;
+`summary_full.txt`).
 
 ## Failure analysis
 
@@ -590,9 +644,21 @@ only re-decides after each one, so once it's near the goal one extra
 "forward 75 cm" can carry it out of the radius. (Run 1's text log wasn't
 captured; its outcome comes from the metrics and video.)
 
-**Takeaways (so far):**
-- NaVILA nearly always finds the goal region (90% oracle success); most
-  failures are about **when to stop**, not where to go.
+**Takeaways:**
+- On the full split the gap to the paper is mostly about **when to stop**,
+  not where to go. Oracle success is 7 points below the paper (51.7% vs
+  58.7%) but success is 16 points below (34.4% vs 50.2%). When the paper's
+  NaVILA reaches the goal area it ends in a success 86% of the time
+  (50.2/58.7); ours does 67% of the time (34.4/51.7). 187 episodes (17.4%)
+  reached the goal area and didn't stop properly.
+- The [8-bit vs fp16 test](#8-bit-vs-fp16-test) rules out quantization as
+  the cause of the stopping gap: only 1 of 725 decisions differed on
+  "stop".
+- "Never stopped" usually means the time limit: `navila_eval.py` ends an
+  episode after 50 s of simulated time (`max_episode_steps`), which long
+  routes at 0.5 m/s can hit.
+- Some failures are the simulator, not NaVILA: the robot stuck at its start
+  point (see Run 3).
 - The coarse action set (fixed 0.5 m/s, pi/6 rad/s, 25/50/75 cm, 15/30/45 degrees)
   limits how precisely it can stop.
 - Runs aren't exactly repeatable in simulation; borderline episodes flip.
@@ -644,14 +710,44 @@ cd ~/go2-sim/NaVILA-Bench && python3 compare_precision.py --label fp16
 
 **4. Switch back to 8-bit** (Step 6 command) before resuming episode runs.
 
-Results: _TBD_
+In the run below, step 3 used the original `vlm_server.py` (the fp16 server
+already tested in Step 3 of Setup) instead of `vlm_server_8bit.py
+--precision W16A16`; same model either way.
+
+### Test results (2026-11-03)
+
+Episodes 10-29 recorded with 8-bit: 20 episodes, 725 decisions, 144 MB.
+
+| Replay to | Identical text | Same action + amount | Same action type |
+|---|---|---|---|
+| 8-bit (sanity check) | 100.0% | 100.0% | 100.0% |
+| **fp16** | **96.8%** | **96.8%** | **98.5%** |
+
+The sanity check confirms the server is deterministic, so every fp16
+difference comes from precision alone.
+
+- **23 of 725 decisions differed.** Most kept the action type and changed
+  only the amount: `left 15 -> left 45` (3), `forward 75 -> forward 50`
+  (2), `right 15 -> right 30` (2). Eleven changed the type, e.g.
+  `right 15 -> forward 75` (2), `left 15 -> right 15` (2).
+- **Only one involved stopping**: `forward 25 -> stop`.
+- 8 of 20 episodes had no difference at all. In the other 12 the first
+  difference came at decision 2-38 (usually 10-20).
+
+**Conclusion:** 8-bit changes about 3% of NaVILA's decisions, mostly in turn
+angle or step size, and almost never the stop decision. It is unlikely to
+explain the 16-point success gap to the paper, which is mostly a stopping
+gap. Caveats: this compares single decisions, not whole episodes (one
+different turn can change the rest of an episode, so 8-bit may still cost a
+few points of success), and 20 episodes is a small sample.
 
 ## Known caveats
 
-- **8-bit, not fp16.** The NaVILA paper's numbers use full precision; 8-bit
-  may cost some accuracy. Running whole episodes in fp16 would need Isaac
-  Sim and NaVILA on separate GPUs, or a 24 GB+ card; the
-  [8-bit vs fp16 test](#8-bit-vs-fp16-test) compares their decisions instead.
+- **8-bit, not fp16.** The NaVILA paper's numbers use full precision.
+  Running whole episodes in fp16 would need Isaac Sim and NaVILA on
+  separate GPUs, or a 24 GB+ card; the
+  [8-bit vs fp16 test](#8-bit-vs-fp16-test) compares their decisions
+  instead and found 96.8% agreement.
 - **Patched installed library.** The 8-bit fix edits the installed
   Transformers file in the `navila` env. Reinstalling Transformers or
   re-running NaVILA's `cp -rv transformers_replace` step undoes it - re-run
@@ -659,18 +755,20 @@ Results: _TBD_
 - **`pillow==10.2.0` pinned in `vlnce-isaac`.** Pip may warn that some
   package wants `pillow>=11`; it hasn't caused problems. Upgrading Pillow in
   that env will bring the torchvision crash back.
-- **Disk.** ~26 GB free after the checkpoint. `~/.local` (93 GB) and
+- **Disk.** ~26 GB free after the checkpoint; **13 GB (99% full) after the
+  full run and backups** (2026-11-03). `~/.local` (93 GB) and
   `~/.local.bak` (40 GB) look like leftovers of Task 2's `~/.local` pip
   problem, but this is a shared account - check before deleting anything.
 
 ## Next steps
 
-- [ ] Add Run 3 (indexes 10-209) results and outcome breakdown above.
-- [ ] Supervisor review: is ~200 episodes enough, or a larger/full split?
-      Repeated runs per episode to measure variance? Is 8-bit acceptable?
-- [ ] Run the [8-bit vs fp16 test](#8-bit-vs-fp16-test) and fill in its results.
-- [ ] Remaining episodes (indexes 210-1076, ~32 h) for a full-split comparison
-      with the paper.
+- [x] Add Run 3 (indexes 10-209) results and outcome breakdown above.
+- [x] Remaining episodes (indexes 210-1076) for a full-split comparison
+      with the paper (Run 4).
+- [x] Run the [8-bit vs fp16 test](#8-bit-vs-fp16-test) and fill in its results.
+- [ ] Supervisor review: repeated runs per episode to measure variance?
+- [ ] Count "stuck at the start" episodes on the full split (path length
+      < 1 m in `summary_full.txt`).
 - [ ] Custom instructions (outside the R2R dataset) - needs a small custom
       script instead of `navila_eval.py`.
 - [ ] Bridge toward Task 4: a loop of Go2 camera -> `vlm_server_8bit.py` ->
