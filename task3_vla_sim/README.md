@@ -603,7 +603,9 @@ The first 200 episodes (38.5%) turned out slightly easier than the full
 split. Backups on the lab machine: `~/go2-sim/results_backup/`
 (`navila_full_20261103_1336.tar.gz` with videos, before the 4 re-runs;
 `navila_metrics_final_*.tar.gz` with all 1,077 measurements and logs;
-`summary_full.txt`).
+`summary_full.txt`). The raw data (summary, all 1,077 measurement files,
+every NaVILA decision, 8-bit test answers) is also in this repo, in
+[`results/`](results/).
 
 ## Failure analysis
 
