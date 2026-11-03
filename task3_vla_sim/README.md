@@ -151,6 +151,9 @@ Only these files are ours, in [`scripts/`](scripts/):
 | [`test_vlm_server.py`](scripts/test_vlm_server.py) | Sends a test request to the server |
 | [`run_many.sh`](scripts/run_many.sh) | Our resumable batch runner |
 | [`summarize_results.py`](scripts/summarize_results.py) | Reads the saved result files, averages the metrics and sorts failures into types (the metrics themselves are computed by `measures.py`) |
+| [`patch_eval_record.py`](scripts/patch_eval_record.py) | Creates `navila_eval_record.py`, which saves every NaVILA request (for the 8-bit vs fp16 test) |
+| [`record_8bit.sh`](scripts/record_8bit.sh) | Runs a few episodes with recording on, into a separate results folder |
+| [`compare_precision.py`](scripts/compare_precision.py) | Replays the saved requests to a server and compares its answers with the 8-bit ones |
 
 ## Machine
 
@@ -435,7 +438,9 @@ dataset (1,077 episodes, ~2 days). [`scripts/run_many.sh`](scripts/run_many.sh)
 replaces it:
 - runs a chosen index range with `$PY -u`, one log per episode;
 - **resumable** - `logs/done.txt` records finished episodes, re-running skips them;
-- 15-min `timeout` per episode in case Isaac hangs;
+- 15-min `timeout` per episode in case Isaac hangs, plus `-k 30` to
+  force-kill it: Isaac Sim can ignore the plain SIGTERM (one episode hung
+  at `Simulation App Starting` for 17 h before this was added);
 - stops if the server process has died, instead of burning through failures;
 - episodes with a Traceback go to `logs/failed.txt`.
 
@@ -592,11 +597,61 @@ captured; its outcome comes from the metrics and video.)
   limits how precisely it can stop.
 - Runs aren't exactly repeatable in simulation; borderline episodes flip.
 
+## 8-bit vs fp16 test
+
+fp16 NaVILA and Isaac Sim don't fit on the 20 GB card together, but fp16
+NaVILA alone does. So the test compares **decisions**, not whole episodes:
+save exactly what NaVILA was shown during 8-bit episodes (8 images +
+instruction), then send the same inputs to an fp16 server with Isaac Sim
+off. Decoding is greedy, so any difference comes from precision alone.
+
+What it measures: how often fp16 picks the same action on the same input.
+What it doesn't: the effect on success rate (one different turn can change
+the rest of the episode; `first_diff` in the output shows how early that
+happens).
+
+**1. Record (Isaac Sim + 8-bit server, ~45 min for 20 episodes).** Pause any
+long run first (`pkill -f run_many.sh; pkill -9 -f navila_eval`); it resumes
+later with the same command.
+```bash
+cp patch_eval_record.py ~/go2-sim/NaVILA-Bench/scripts/
+cp record_8bit.sh compare_precision.py ~/go2-sim/NaVILA-Bench/
+cd ~/go2-sim/NaVILA-Bench/scripts && python3 patch_eval_record.py   # -> wrote navila_eval_record.py
+cd ~/go2-sim/NaVILA-Bench && chmod +x record_8bit.sh
+nohup ./record_8bit.sh 10 29 > ~/go2-sim/record_8bit.log 2>&1 &
+```
+Requests go to `eval_results/quant_test_requests/`; measurements and
+videos to `..._quant_test/`, so the benchmark results aren't touched.
+
+**2. Sanity check: replay to the same 8-bit server.** Should be ~100%
+identical; if not, the server isn't deterministic and the fp16 numbers
+can't be trusted.
+```bash
+python3 compare_precision.py --label 8bit
+```
+
+**3. fp16: restart the server in fp16 (Isaac Sim must not be running).**
+```bash
+pgrep -af "run_many|record_8bit|navila_eval" && echo "STOP: Isaac is still running"
+pkill -f vlm_server_8bit.py; sleep 3
+cd ~/go2-sim/NaVILA-Bench/scripts
+nohup env PYTHONNOUSERSITE=1 ~/miniconda3/envs/navila/bin/python -u vlm_server_8bit.py \
+  --model_path ~/go2-sim/checkpoints/navila-llama3-8b-8f --port 54321 --precision W16A16 \
+  > ~/go2-sim/vlm_server_fp16.log 2>&1 &
+sleep 90; tail -3 ~/go2-sim/vlm_server_fp16.log    # -> VLM Server listening on localhost:54321
+cd ~/go2-sim/NaVILA-Bench && python3 compare_precision.py --label fp16
+```
+
+**4. Switch back to 8-bit** (Step 6 command) before resuming episode runs.
+
+Results: _TBD_
+
 ## Known caveats
 
 - **8-bit, not fp16.** The NaVILA paper's numbers use full precision; 8-bit
-  may cost some accuracy. A small fp16-vs-8-bit comparison would need
-  Isaac Sim and fp16 NaVILA on separate GPUs, or a 24 GB+ card.
+  may cost some accuracy. Running whole episodes in fp16 would need Isaac
+  Sim and NaVILA on separate GPUs, or a 24 GB+ card; the
+  [8-bit vs fp16 test](#8-bit-vs-fp16-test) compares their decisions instead.
 - **Patched installed library.** The 8-bit fix edits the installed
   Transformers file in the `navila` env. Reinstalling Transformers or
   re-running NaVILA's `cp -rv transformers_replace` step undoes it - re-run
@@ -613,6 +668,9 @@ captured; its outcome comes from the metrics and video.)
 - [ ] Add Run 3 (indexes 10-209) results and outcome breakdown above.
 - [ ] Supervisor review: is ~200 episodes enough, or a larger/full split?
       Repeated runs per episode to measure variance? Is 8-bit acceptable?
+- [ ] Run the [8-bit vs fp16 test](#8-bit-vs-fp16-test) and fill in its results.
+- [ ] Remaining episodes (indexes 210-1076, ~32 h) for a full-split comparison
+      with the paper.
 - [ ] Custom instructions (outside the R2R dataset) - needs a small custom
       script instead of `navila_eval.py`.
 - [ ] Bridge toward Task 4: a loop of Go2 camera -> `vlm_server_8bit.py` ->
