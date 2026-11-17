@@ -18,6 +18,10 @@ RTX A4500 (20 GB) shared with Isaac Sim.
 - **8-bit is not the main cause**: fp16 makes the same decision as 8-bit
   96.8% of the time on identical inputs (see
   [8-bit vs fp16 test](#8-bit-vs-fp16-test)).
+- **Built, not yet run on the lab machine:** the
+  [stop-aware controller](#stop-aware-controller) with its offline
+  stop-check test, and [custom instructions](#custom-instructions) on 5
+  benchmark routes.
 
 **Closes Task 2's open item**: the Task 2 README couldn't confirm that
 simulated *sensors* were exercised (the planner demo only proved control).
@@ -608,6 +612,11 @@ checking each log for `Shutting Down`. All four were re-run successfully
 | reached goal, never stopped | 129 (12.0%) |
 | reached goal, stopped outside radius | 58 (5.4%) |
 
+**Stuck at the start, full split:** 38 episodes (3.5%) moved less than 1 m
+in total, and 91 failed episodes moved less than 3.5 m (from
+`summary_full.txt`). As in Run 3, these point at start positions where the
+robot is stuck in the scanned mesh, not at NaVILA.
+
 The first 200 episodes (38.5%) turned out slightly easier than the full
 split. Backups on the lab machine: `~/go2-sim/results_backup/`
 (`navila_full_20261103_1336.tar.gz` with videos, before the 4 re-runs;
@@ -669,7 +678,7 @@ captured; its outcome comes from the metrics and video.)
   episode after 50 s of simulated time (`max_episode_steps`), which long
   routes at 0.5 m/s can hit.
 - Some failures are the simulator, not NaVILA: the robot stuck at its start
-  point (see Run 3).
+  point (see Run 3; 38 of 1,077 episodes moved less than 1 m, Run 4).
 - The coarse action set (fixed 0.5 m/s, pi/6 rad/s, 25/50/75 cm, 15/30/45 degrees)
   limits how precisely it can stop.
 - Runs aren't exactly repeatable in simulation; borderline episodes flip.
@@ -874,11 +883,15 @@ Results: _TBD_
 - [x] Remaining episodes (indexes 210-1076) for a full-split comparison
       with the paper (Run 4).
 - [x] Run the [8-bit vs fp16 test](#8-bit-vs-fp16-test) and fill in its results.
-- [ ] Supervisor review: repeated runs per episode to measure variance?
-- [ ] Count "stuck at the start" episodes on the full split (path length
-      < 1 m in `summary_full.txt`).
-- [ ] Custom instructions (outside the R2R dataset) - needs a small custom
-      script instead of `navila_eval.py`.
-- [ ] Bridge toward Task 4: a loop of Go2 camera -> `vlm_server_8bit.py` ->
-      `get_vel_command()` -> Task 1 high-level commands, so the same server
-      and command mapping carry over to the real robot.
+- [x] Count "stuck at the start" episodes on the full split: 38 moved
+      less than 1 m (see Run 4).
+- [x] Custom instructions: written for 5 routes, with an episode builder
+      and per-route comparison (see [Custom instructions](#custom-instructions)).
+- [x] Bridge toward Task 4: Go2 camera -> NaVILA server -> Task 1
+      commands, in [`task4_real_go2/`](../task4_real_go2/); matches
+      `get_vel_command()` on 35,594 of 35,597 Task 3 answers.
+- [ ] Run the offline stop-check test and set the controller thresholds
+      (~30 min).
+- [ ] Run the custom-instruction episodes (~75 min) and fill in results.
+- [ ] Run the stop-aware controller on `subset_100.txt` (~4 h) and compare
+      with the baseline.
