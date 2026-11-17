@@ -1,0 +1,726 @@
+idx	step	stop_prob	ask	labels	recorded_answer
+10	0	0.0000	no	start	The next action is turn left 45 degree.
+10	1	0.0000	no	start	The next action is turn left 45 degree.
+10	2	0.0003	no	start	The next action is turn left 30 degree.
+10	3	0.0000	no		The next action is turn left 15 degree.
+10	4	0.0001	no		The next action is move forward 75 cm.
+10	5	0.0000	yes		The next action is move forward 75 cm.
+10	6	0.0000	yes		The next action is move forward 75 cm.
+10	7	0.0000	yes		The next action is move forward 75 cm.
+10	8	0.0000	yes		The next action is move forward 75 cm.
+10	9	0.0000	yes		The next action is move forward 75 cm.
+10	10	0.0000	yes		The next action is turn right 45 degree.
+10	11	0.0000	yes		The next action is move forward 75 cm.
+10	12	0.0000	yes		The next action is move forward 75 cm.
+10	13	0.0000	yes		The next action is move forward 75 cm.
+10	14	0.0000	yes		The next action is move forward 75 cm.
+10	15	0.0000	yes		The next action is move forward 75 cm.
+10	16	0.0000	yes		The next action is move forward 75 cm.
+10	17	0.0000	yes		The next action is move forward 75 cm.
+10	18	0.0000	yes		The next action is move forward 75 cm.
+10	19	0.0004	yes		The next action is move forward 75 cm.
+10	20	0.0008	yes		The next action is move forward 75 cm.
+10	21	0.0027	yes		The next action is move forward 75 cm.
+10	22	0.0014	yes		The next action is move forward 25 cm.
+10	23	0.0002	yes		The next action is move forward 25 cm.
+10	24	0.0003	yes		The next action is turn right 30 degree.
+10	25	0.0015	no		The next action is move forward 25 cm.
+10	26	0.0002	no		The next action is move forward 75 cm.
+10	27	0.0006	no		The next action is move forward 75 cm.
+10	28	0.0027	no		The next action is turn right 15 degree.
+10	29	0.0020	no		The next action is turn right 15 degree.
+10	30	0.0024	no		The next action is move forward 75 cm.
+10	31	0.0006	no		The next action is turn right 15 degree.
+10	32	0.0023	no		The next action is move forward 75 cm.
+10	33	0.0010	no		The next action is turn right 45 degree.
+10	34	0.0002	no		The next action is turn right 30 degree.
+10	35	0.0014	yes		The next action is turn right 15 degree.
+10	36	0.0023	yes		The next action is turn right 15 degree.
+10	37	0.0066	yes		The next action is move forward 75 cm.
+10	38	0.0030	yes		The next action is move forward 75 cm.
+10	39	0.0194	yes		The next action is move forward 75 cm.
+10	40	0.0141	yes		The next action is move forward 75 cm.
+11	0	0.0000	no	start	The next action is turn left 45 degree.
+11	1	0.0000	no	start	The next action is turn left 45 degree.
+11	2	0.0003	no	start	The next action is turn left 30 degree.
+11	3	0.0000	no		The next action is turn left 15 degree.
+11	4	0.0000	no		The next action is move forward 75 cm.
+11	5	0.0000	yes		The next action is move forward 75 cm.
+11	6	0.0000	yes		The next action is move forward 75 cm.
+11	7	0.0000	yes		The next action is move forward 75 cm.
+11	8	0.0000	yes		The next action is turn right 30 degree.
+11	9	0.0000	yes		The next action is move forward 75 cm.
+11	10	0.0000	yes		The next action is turn right 15 degree.
+11	11	0.0000	yes		The next action is move forward 75 cm.
+11	12	0.0000	yes		The next action is turn right 15 degree.
+11	13	0.0000	yes		The next action is turn right 15 degree.
+11	14	0.0000	yes		The next action is turn right 15 degree.
+11	15	0.0000	other		The next action is turn right 15 degree.
+11	16	0.0000	other		The next action is move forward 75 cm.
+11	17	0.0000	no		The next action is move forward 75 cm.
+11	18	0.0000	no		The next action is move forward 75 cm.
+11	19	0.0000	no		The next action is move forward 75 cm.
+11	20	0.0000	no		The next action is turn left 15 degree.
+11	21	0.0000	no		The next action is turn left 30 degree.
+11	22	0.0000	no		The next action is move forward 75 cm.
+11	23	0.0000	yes		The next action is move forward 75 cm.
+11	24	0.0000	yes		The next action is move forward 75 cm.
+11	25	0.0000	yes		The next action is move forward 75 cm.
+11	26	0.0000	no		The next action is move forward 75 cm.
+11	27	0.0000	other	before_ok	The next action is move forward 75 cm.
+11	28	0.0005	other	before_ok	The next action is move forward 75 cm.
+11	29	0.0434	other	before_ok	The next action is move forward 75 cm.
+11	30	0.0408	other	before_ok	The next action is move forward 75 cm.
+11	31	0.4727	other	before_ok	The next action is move forward 25 cm.
+11	32	0.5429	other	said_stop	I think I should stop because I have finished the instruction.
+12	0	0.0000	no	start	The next action is turn right 45 degree.
+12	1	0.0000	no	start	The next action is move forward 75 cm.
+12	2	0.0000	no	start	The next action is move forward 75 cm.
+12	3	0.0000	yes		The next action is move forward 75 cm.
+12	4	0.0000	yes		The next action is turn right 45 degree.
+12	5	0.0000	yes		The next action is move forward 75 cm.
+12	6	0.0000	no		The next action is move forward 75 cm.
+12	7	0.0000	yes		The next action is move forward 75 cm.
+12	8	0.0000	yes		The next action is move forward 75 cm.
+12	9	0.0000	yes		The next action is move forward 25 cm.
+12	10	0.0000	yes		The next action is move forward 25 cm.
+12	11	0.0000	yes		The next action is turn right 15 degree.
+12	12	0.0000	yes		The next action is turn right 15 degree.
+12	13	0.0000	yes		The next action is turn right 15 degree.
+12	14	0.0000	no		The next action is move forward 75 cm.
+12	15	0.0000	yes		The next action is turn right 15 degree.
+12	16	0.0000	no		The next action is turn right 15 degree.
+12	17	0.0001	yes		The next action is turn left 15 degree.
+12	18	0.0000	yes		The next action is move forward 75 cm.
+12	19	0.0000	yes		The next action is turn left 45 degree.
+12	20	0.0005	no		The next action is turn left 15 degree.
+12	21	0.0003	no		The next action is turn left 15 degree.
+12	22	0.0003	yes		The next action is move forward 75 cm.
+12	23	0.0001	yes		The next action is move forward 75 cm.
+12	24	0.0002	yes		The next action is move forward 75 cm.
+12	25	0.0001	other		The next action is move forward 75 cm.
+12	26	0.0003	no		The next action is move forward 75 cm.
+12	27	0.0003	no		The next action is move forward 75 cm.
+12	28	0.0087	no		The next action is turn left 45 degree.
+12	29	0.0390	yes		The next action is turn left 30 degree.
+12	30	0.0016	other		The next action is move forward 75 cm.
+12	31	0.0006	yes		The next action is move forward 75 cm.
+12	32	0.0062	yes		The next action is move forward 75 cm.
+12	33	0.0206	yes		The next action is move forward 25 cm.
+12	34	0.5467	yes	said_stop	I think I should stop because I have finished the instruction.
+13	0	0.0000	no	start	The next action is turn right 45 degree.
+13	1	0.0000	no	start	The next action is move forward 75 cm.
+13	2	0.0000	yes	start	The next action is move forward 75 cm.
+13	3	0.0000	yes		The next action is move forward 75 cm.
+13	4	0.0000	yes		The next action is turn right 15 degree.
+13	5	0.0000	yes		The next action is turn right 15 degree.
+13	6	0.0000	no		The next action is turn right 15 degree.
+13	7	0.0000	no		The next action is move forward 75 cm.
+13	8	0.0000	yes		The next action is move forward 75 cm.
+13	9	0.0000	yes		The next action is turn left 15 degree.
+13	10	0.0000	yes		The next action is move forward 75 cm.
+13	11	0.0000	yes		The next action is move forward 75 cm.
+13	12	0.0000	no		The next action is turn left 30 degree.
+13	13	0.0000	yes		The next action is turn left 15 degree.
+13	14	0.0000	yes		The next action is turn left 15 degree.
+13	15	0.0000	yes		The next action is move forward 75 cm.
+13	16	0.0000	yes		The next action is move forward 75 cm.
+13	17	0.0000	yes		The next action is move forward 25 cm.
+13	18	0.0001	yes		The next action is turn right 15 degree.
+13	19	0.0003	yes		The next action is turn right 15 degree.
+13	20	0.0003	yes		The next action is turn right 15 degree.
+13	21	0.0002	yes		The next action is move forward 75 cm.
+13	22	0.0002	yes		The next action is move forward 75 cm.
+13	23	0.0004	yes		The next action is move forward 75 cm.
+13	24	0.0004	yes		The next action is turn right 15 degree.
+13	25	0.0003	yes		The next action is move forward 75 cm.
+13	26	0.0037	yes		The next action is move forward 75 cm.
+13	27	0.0311	yes		The next action is move forward 75 cm.
+13	28	0.0863	yes		The next action is move forward 75 cm.
+13	29	0.2069	yes		The next action is move forward 75 cm.
+13	30	0.3522	yes		The next action is move forward 75 cm.
+13	31	0.1385	yes		The next action is move forward 75 cm.
+13	32	0.6654	other	said_stop	I think I should stop because I have finished the instruction.
+14	0	0.0000	no	start	The next action is turn right 45 degree.
+14	1	0.0000	no	start	The next action is move forward 75 cm.
+14	2	0.0000	no	start	The next action is move forward 75 cm.
+14	3	0.0000	yes		The next action is move forward 75 cm.
+14	4	0.0000	yes		The next action is turn right 15 degree.
+14	5	0.0000	yes		The next action is turn right 15 degree.
+14	6	0.0000	no		The next action is turn right 15 degree.
+14	7	0.0000	no		The next action is move forward 75 cm.
+14	8	0.0000	no		The next action is move forward 75 cm.
+14	9	0.0000	yes		The next action is move forward 75 cm.
+14	10	0.0000	yes		The next action is move forward 75 cm.
+14	11	0.0000	yes		The next action is move forward 25 cm.
+14	12	0.0000	yes		The next action is move forward 25 cm.
+14	13	0.0000	yes		The next action is turn right 15 degree.
+14	14	0.0000	yes		The next action is turn right 15 degree.
+14	15	0.0000	yes		The next action is turn right 15 degree.
+14	16	0.0000	no		The next action is move forward 75 cm.
+14	17	0.0000	no		The next action is turn right 15 degree.
+14	18	0.0000	no		The next action is turn right 15 degree.
+14	19	0.0002	yes		The next action is move forward 50 cm.
+14	20	0.0051	yes		The next action is move forward 75 cm.
+14	21	0.0064	yes		The next action is turn right 15 degree.
+14	22	0.0526	yes		The next action is turn right 15 degree.
+14	23	0.1645	yes		The next action is move forward 75 cm.
+14	24	0.0726	yes		The next action is move forward 75 cm.
+14	25	0.0748	yes		The next action is move forward 75 cm.
+14	26	0.1348	yes		The next action is turn left 45 degree.
+14	27	0.0066	yes		The next action is turn left 15 degree.
+14	28	0.0024	yes		The next action is move forward 75 cm.
+14	29	0.0018	yes		The next action is move forward 75 cm.
+14	30	0.0210	yes		The next action is turn left 15 degree.
+14	31	0.0321	yes		The next action is turn left 30 degree.
+14	32	0.0007	yes		The next action is move forward 75 cm.
+14	33	0.0276	yes		The next action is move forward 75 cm.
+14	34	0.0637	yes		The next action is move forward 75 cm.
+14	35	0.0748	yes		The next action is move forward 75 cm.
+14	36	0.2720	yes		The next action is move forward 75 cm.
+14	37	0.1582	yes	before_ok	The next action is move forward 75 cm.
+14	38	0.3346	yes	before_ok	The next action is move forward 75 cm.
+14	39	0.0914	yes	before_ok	The next action is move forward 25 cm.
+14	40	0.0511	yes	before_ok	The next action is move forward 75 cm.
+14	41	0.3311	yes	before_ok	The next action is turn left 15 degree.
+14	42	0.6114	yes	said_stop	I think I should stop because I have finished the instruction.
+15	0	0.0000	no	start	The next action is turn left 45 degree.
+15	1	0.0000	no	start	The next action is move forward 75 cm.
+15	2	0.0000	yes	start	The next action is move forward 75 cm.
+15	3	0.0000	yes		The next action is move forward 75 cm.
+15	4	0.0000	no		The next action is move forward 75 cm.
+15	5	0.0000	no		The next action is turn right 15 degree.
+15	6	0.0000	no		The next action is turn right 15 degree.
+15	7	0.0000	no		The next action is turn right 15 degree.
+15	8	0.0000	no		The next action is move forward 75 cm.
+15	9	0.0000	no		The next action is move forward 75 cm.
+15	10	0.0000	no		The next action is move forward 75 cm.
+15	11	0.0000	no		The next action is move forward 75 cm.
+15	12	0.0000	no		The next action is move forward 75 cm.
+15	13	0.0000	no		The next action is move forward 75 cm.
+15	14	0.0000	no		The next action is turn left 45 degree.
+15	15	0.0000	no		The next action is turn right 45 degree.
+15	16	0.0000	no		The next action is turn right 45 degree.
+15	17	0.0000	no		The next action is turn right 45 degree.
+15	18	0.0001	no		The next action is turn right 45 degree.
+15	19	0.0003	other		The next action is turn right 45 degree.
+15	20	0.0004	no		The next action is turn right 45 degree.
+15	21	0.0005	no		The next action is turn right 30 degree.
+15	22	0.0012	no		The next action is turn right 45 degree.
+15	23	0.0007	no		The next action is turn right 15 degree.
+15	24	0.0005	no		The next action is turn right 30 degree.
+15	25	0.0006	no		The next action is turn right 15 degree.
+15	26	0.0002	no		The next action is turn right 15 degree.
+15	27	0.0002	no		The next action is move forward 50 cm.
+15	28	0.0007	no		The next action is move forward 50 cm.
+15	29	0.0006	no		The next action is turn right 15 degree.
+15	30	0.0008	no		The next action is turn right 15 degree.
+15	31	0.0004	no		The next action is turn right 15 degree.
+15	32	0.0007	no		The next action is move forward 75 cm.
+15	33	0.0001	other		The next action is move forward 75 cm.
+15	34	0.0002	no		The next action is move forward 75 cm.
+15	35	0.0004	no		The next action is move forward 75 cm.
+15	36	0.0011	no		The next action is move forward 75 cm.
+15	37	0.0011	no		The next action is move forward 25 cm.
+15	38	0.0002	no		The next action is turn left 15 degree.
+15	39	0.0003	no		The next action is move forward 25 cm.
+15	40	0.0004	no		The next action is turn left 15 degree.
+15	41	0.0002	no		The next action is turn left 45 degree.
+15	42	0.0001	no		The next action is turn left 30 degree.
+15	43	0.0006	no		The next action is move forward 75 cm.
+16	0	0.0000	no	start	The next action is turn right 45 degree.
+16	1	0.0000	no	start	The next action is turn left 15 degree.
+16	2	0.0000	no	start	The next action is turn left 15 degree.
+16	3	0.0000	no		The next action is move forward 75 cm.
+16	4	0.0000	yes		The next action is move forward 75 cm.
+16	5	0.0000	yes		The next action is move forward 75 cm.
+16	6	0.0000	yes		The next action is turn right 45 degree.
+16	7	0.0000	yes		The next action is turn right 45 degree.
+16	8	0.0000	no		The next action is turn right 30 degree.
+16	9	0.0000	no		The next action is turn right 15 degree.
+16	10	0.0000	no		The next action is move forward 75 cm.
+16	11	0.0000	no		The next action is move forward 75 cm.
+16	12	0.0000	no		The next action is move forward 50 cm.
+16	13	0.0000	other		The next action is turn left 45 degree.
+16	14	0.0000	no		The next action is turn left 30 degree.
+16	15	0.0000	no		The next action is turn left 15 degree.
+16	16	0.0001	no		The next action is move forward 75 cm.
+16	17	0.0002	yes		The next action is move forward 75 cm.
+16	18	0.0000	other		The next action is move forward 75 cm.
+16	19	0.0000	yes		The next action is move forward 50 cm.
+16	20	0.0000	yes		The next action is turn right 15 degree.
+16	21	0.0000	yes		The next action is turn right 15 degree.
+16	22	0.0000	no		The next action is move forward 75 cm.
+16	23	0.0000	yes		The next action is move forward 75 cm.
+16	24	0.0000	yes		The next action is move forward 75 cm.
+16	25	0.0001	other		The next action is move forward 75 cm.
+16	26	0.0000	yes		The next action is move forward 75 cm.
+16	27	0.0001	other		The next action is move forward 75 cm.
+16	28	0.0000	other		The next action is move forward 75 cm.
+16	29	0.0001	other		The next action is move forward 75 cm.
+16	30	0.0001	no	before_ok	The next action is turn right 15 degree.
+16	31	0.0001	no	before_ok	The next action is move forward 75 cm.
+16	32	0.0010	no	before_ok	The next action is move forward 75 cm.
+16	33	0.0107	no	before_ok	The next action is move forward 75 cm.
+16	34	0.2568	yes	before_ok	The next action is move forward 75 cm.
+16	35	0.8418	other	said_stop	I think I should stop because I have finished the instruction.
+17	0	0.0000	no	start	The next action is turn left 45 degree.
+17	1	0.0000	no	start	The next action is move forward 75 cm.
+17	2	0.0000	no	start	The next action is move forward 75 cm.
+17	3	0.0000	yes		The next action is move forward 75 cm.
+17	4	0.0000	no		The next action is turn right 15 degree.
+17	5	0.0000	yes		The next action is turn right 15 degree.
+17	6	0.0000	yes		The next action is move forward 75 cm.
+17	7	0.0000	yes		The next action is move forward 75 cm.
+17	8	0.0001	no		The next action is move forward 75 cm.
+17	9	0.0001	no		The next action is move forward 75 cm.
+17	10	0.0002	no		The next action is move forward 75 cm.
+17	11	0.0007	no		The next action is move forward 75 cm.
+17	12	0.0008	no		The next action is move forward 25 cm.
+17	13	0.0005	no		The next action is turn left 30 degree.
+17	14	0.0000	no		The next action is turn left 45 degree.
+17	15	0.0003	no		The next action is turn left 45 degree.
+17	16	0.0002	no		The next action is turn left 45 degree.
+17	17	0.0025	no		The next action is turn left 45 degree.
+17	18	0.0009	no		The next action is turn left 15 degree.
+17	19	0.0003	no		The next action is move forward 75 cm.
+17	20	0.0002	no		The next action is move forward 75 cm.
+17	21	0.0045	no		The next action is move forward 25 cm.
+17	22	0.0025	no		The next action is move forward 25 cm.
+17	23	0.0013	no		The next action is move forward 25 cm.
+17	24	0.0029	no		The next action is move forward 75 cm.
+17	25	0.0016	no		The next action is move forward 75 cm.
+17	26	0.0036	no		The next action is turn right 15 degree.
+17	27	0.0026	no		The next action is turn right 15 degree.
+17	28	0.0070	no		The next action is move forward 75 cm.
+17	29	0.0219	no		The next action is move forward 75 cm.
+17	30	0.0032	no		The next action is move forward 75 cm.
+17	31	0.0033	no		The next action is move forward 75 cm.
+17	32	0.0039	no		The next action is move forward 75 cm.
+17	33	0.0047	no		The next action is move forward 75 cm.
+17	34	0.0685	no		The next action is turn left 15 degree.
+17	35	0.0496	no		The next action is turn left 45 degree.
+17	36	0.0610	no		The next action is turn right 45 degree.
+17	37	0.0264	no		The next action is turn left 45 degree.
+17	38	0.0210	no		The next action is turn left 45 degree.
+17	39	0.0097	no		The next action is move forward 75 cm.
+17	40	0.0035	no		The next action is move forward 75 cm.
+18	0	0.0000	no	start	The next action is turn right 45 degree.
+18	1	0.0000	yes	start	The next action is turn right 45 degree.
+18	2	0.0002	yes	start	The next action is turn right 45 degree.
+18	3	0.0000	yes		The next action is move forward 75 cm.
+18	4	0.0000	yes		The next action is move forward 75 cm.
+18	5	0.0000	yes		The next action is move forward 75 cm.
+18	6	0.0000	yes		The next action is turn left 15 degree.
+18	7	0.0000	yes		The next action is turn left 15 degree.
+18	8	0.0000	yes		The next action is move forward 75 cm.
+18	9	0.0000	yes		The next action is move forward 75 cm.
+18	10	0.0000	yes		The next action is turn right 15 degree.
+18	11	0.0000	yes		The next action is move forward 75 cm.
+18	12	0.0002	yes		The next action is move forward 75 cm.
+18	13	0.0000	yes		The next action is move forward 75 cm.
+18	14	0.0000	yes		The next action is move forward 75 cm.
+18	15	0.0000	yes		The next action is turn left 45 degree.
+18	16	0.0000	yes		The next action is turn left 30 degree.
+18	17	0.0000	no		The next action is turn left 15 degree.
+18	18	0.0006	no		The next action is move forward 75 cm.
+18	19	0.0003	yes		The next action is move forward 75 cm.
+18	20	0.0001	yes		The next action is turn left 15 degree.
+18	21	0.0001	yes		The next action is turn right 15 degree.
+18	22	0.0002	yes		The next action is turn right 15 degree.
+18	23	0.0001	yes		The next action is turn right 15 degree.
+18	24	0.0002	yes		The next action is move forward 75 cm.
+18	25	0.0003	yes		The next action is turn right 15 degree.
+18	26	0.0001	yes		The next action is move forward 75 cm.
+18	27	0.0082	yes		The next action is move forward 75 cm.
+18	28	0.0035	yes		The next action is turn right 15 degree.
+18	29	0.0276	no		The next action is turn right 15 degree.
+18	30	0.0619	yes		The next action is turn right 15 degree.
+18	31	0.0110	yes		The next action is turn right 15 degree.
+18	32	0.0402	yes		The next action is turn right 15 degree.
+18	33	0.0017	yes		The next action is move forward 75 cm.
+18	34	0.0036	yes		The next action is move forward 25 cm.
+18	35	0.0067	no		The next action is move forward 25 cm.
+18	36	0.0183	yes		The next action is move forward 50 cm.
+18	37	0.1848	yes		The next action is turn right 15 degree.
+18	38	0.3311	yes		The next action is turn right 15 degree.
+18	39	0.8355	other	said_stop	I think I should stop because I have finished the instruction.
+19	0	0.0000	no	start	The next action is turn right 45 degree.
+19	1	0.0000	no	start	The next action is turn right 45 degree.
+19	2	0.0000	yes	start	The next action is turn right 15 degree.
+19	3	0.0000	yes		The next action is move forward 75 cm.
+19	4	0.0000	no		The next action is move forward 75 cm.
+19	5	0.0000	yes		The next action is move forward 75 cm.
+19	6	0.0000	yes		The next action is move forward 50 cm.
+19	7	0.0000	yes		The next action is turn right 15 degree.
+19	8	0.0000	yes		The next action is turn right 15 degree.
+19	9	0.0000	yes		The next action is move forward 75 cm.
+19	10	0.0000	yes		The next action is move forward 75 cm.
+19	11	0.0000	yes		The next action is move forward 75 cm.
+19	12	0.0000	yes		The next action is move forward 25 cm.
+19	13	0.0000	yes		The next action is move forward 25 cm.
+19	14	0.0000	yes		The next action is move forward 50 cm.
+19	15	0.0000	no		The next action is move forward 25 cm.
+19	16	0.0000	no		The next action is turn left 45 degree.
+19	17	0.0000	no		The next action is turn left 30 degree.
+19	18	0.0000	no		The next action is turn left 15 degree.
+19	19	0.0000	no		The next action is turn left 30 degree.
+19	20	0.0000	no		The next action is move forward 75 cm.
+19	21	0.0000	no		The next action is turn left 30 degree.
+19	22	0.0000	no	before_ok	The next action is turn left 30 degree.
+19	23	0.0000	no	before_ok	The next action is move forward 75 cm.
+19	24	0.0000	no	before_ok	The next action is move forward 75 cm.
+19	25	0.0004	yes	before_ok	The next action is move forward 75 cm.
+19	26	0.0675	other	before_ok	The next action is move forward 75 cm.
+19	27	0.6114	other	said_stop	I think I should stop because I have finished the instruction.
+20	0	0.0000	no	start	The next action is turn right 45 degree.
+20	1	0.0000	no	start	The next action is turn right 45 degree.
+20	2	0.0001	yes	start	The next action is turn right 15 degree.
+20	3	0.0000	yes		The next action is move forward 75 cm.
+20	4	0.0000	yes		The next action is move forward 75 cm.
+20	5	0.0000	yes		The next action is move forward 75 cm.
+20	6	0.0000	yes		The next action is move forward 50 cm.
+20	7	0.0000	yes		The next action is turn right 15 degree.
+20	8	0.0000	yes		The next action is turn right 15 degree.
+20	9	0.0000	yes		The next action is move forward 75 cm.
+20	10	0.0000	yes		The next action is move forward 75 cm.
+20	11	0.0000	yes		The next action is move forward 75 cm.
+20	12	0.0001	yes		The next action is move forward 25 cm.
+20	13	0.0001	yes		The next action is move forward 75 cm.
+20	14	0.0002	yes		The next action is move forward 25 cm.
+20	15	0.0024	yes		The next action is turn left 45 degree.
+20	16	0.0000	no		The next action is turn left 30 degree.
+20	17	0.0000	no		The next action is turn left 15 degree.
+20	18	0.0002	no		The next action is turn left 30 degree.
+20	19	0.0000	no		The next action is move forward 75 cm.
+20	20	0.0000	no		The next action is turn left 30 degree.
+20	21	0.0000	no	before_ok	The next action is turn left 30 degree.
+20	22	0.0000	no	before_ok	The next action is move forward 75 cm.
+20	23	0.0001	no	before_ok	The next action is move forward 75 cm.
+20	24	0.0020	yes	before_ok	The next action is move forward 75 cm.
+20	25	0.3886	other	before_ok	The next action is move forward 25 cm.
+20	26	0.7186	other	said_stop	I think I should stop because I have finished the instruction.
+21	0	0.0000	no	start	The next action is turn left 45 degree.
+21	1	0.0000	no	start	The next action is turn left 15 degree.
+21	2	0.0000	no	start	The next action is move forward 75 cm.
+21	3	0.0000	no		The next action is move forward 75 cm.
+21	4	0.0000	yes		The next action is move forward 75 cm.
+21	5	0.0000	yes		The next action is move forward 75 cm.
+21	6	0.0000	yes		The next action is move forward 75 cm.
+21	7	0.0000	yes		The next action is move forward 75 cm.
+21	8	0.0000	yes		The next action is move forward 75 cm.
+21	9	0.0000	yes		The next action is move forward 75 cm.
+21	10	0.0000	yes		The next action is turn right 15 degree.
+21	11	0.0000	yes		The next action is turn right 15 degree.
+21	12	0.0000	yes		The next action is move forward 75 cm.
+21	13	0.0000	yes		The next action is move forward 75 cm.
+21	14	0.0000	yes		The next action is move forward 75 cm.
+21	15	0.0000	no		The next action is turn right 45 degree.
+21	16	0.0000	no		The next action is move forward 75 cm.
+21	17	0.0000	no		The next action is turn left 15 degree.
+21	18	0.0000	no		The next action is turn left 45 degree.
+21	19	0.0000	no		The next action is move forward 75 cm.
+21	20	0.0000	no		The next action is turn left 45 degree.
+21	21	0.0001	no		The next action is turn left 45 degree.
+21	22	0.0016	no		The next action is turn left 30 degree.
+21	23	0.0021	no		The next action is turn left 45 degree.
+21	24	0.0006	no		The next action is turn left 30 degree.
+21	25	0.0001	no		The next action is turn left 30 degree.
+21	26	0.0002	no		The next action is move forward 75 cm.
+21	27	0.0009	no		The next action is move forward 75 cm.
+21	28	0.0038	no		The next action is move forward 75 cm.
+21	29	0.0029	no		The next action is turn left 45 degree.
+21	30	0.0005	yes		The next action is turn right 30 degree.
+21	31	0.0002	yes		The next action is turn right 30 degree.
+21	32	0.0000	yes		The next action is turn right 15 degree.
+21	33	0.0001	no		The next action is move forward 75 cm.
+21	34	0.0003	no		The next action is move forward 75 cm.
+21	35	0.0000	no		The next action is move forward 75 cm.
+21	36	0.0001	no		The next action is move forward 75 cm.
+21	37	0.0000	no		The next action is move forward 75 cm.
+21	38	0.0013	no		The next action is turn left 45 degree.
+22	0	0.0000	no	start	The next action is turn left 45 degree.
+22	1	0.0000	no	start	The next action is turn left 15 degree.
+22	2	0.0000	no	start	The next action is move forward 75 cm.
+22	3	0.0000	no		The next action is move forward 75 cm.
+22	4	0.0000	no		The next action is move forward 75 cm.
+22	5	0.0000	yes		The next action is move forward 75 cm.
+22	6	0.0000	yes		The next action is move forward 75 cm.
+22	7	0.0000	yes		The next action is move forward 75 cm.
+22	8	0.0000	yes		The next action is move forward 75 cm.
+22	9	0.0000	yes		The next action is move forward 75 cm.
+22	10	0.0000	no		The next action is turn right 15 degree.
+22	11	0.0000	yes		The next action is turn right 15 degree.
+22	12	0.0000	yes		The next action is move forward 75 cm.
+22	13	0.0000	yes		The next action is move forward 75 cm.
+22	14	0.0000	no		The next action is move forward 75 cm.
+22	15	0.0000	no		The next action is move forward 75 cm.
+22	16	0.0000	no		The next action is move forward 75 cm.
+22	17	0.0000	no		The next action is move forward 75 cm.
+22	18	0.0000	no		The next action is move forward 25 cm.
+22	19	0.0000	no		The next action is move forward 25 cm.
+22	20	0.0000	no		The next action is turn right 30 degree.
+22	21	0.0000	other		The next action is turn right 30 degree.
+22	22	0.0000	no		The next action is turn right 30 degree.
+22	23	0.0000	other		The next action is turn right 15 degree.
+22	24	0.0000	no		The next action is move forward 75 cm.
+22	25	0.0000	no		The next action is move forward 75 cm.
+22	26	0.0000	no		The next action is turn right 15 degree.
+22	27	0.0000	no		The next action is turn right 30 degree.
+22	28	0.0000	no		The next action is move forward 50 cm.
+22	29	0.0000	no		The next action is move forward 75 cm.
+22	30	0.0000	no		The next action is move forward 75 cm.
+22	31	0.0108	no		The next action is turn right 15 degree.
+22	32	0.0070	no		The next action is move forward 25 cm.
+22	33	0.0019	no		The next action is move forward 75 cm.
+22	34	0.0434	yes		The next action is move forward 75 cm.
+22	35	0.2043	yes		The next action is move forward 75 cm.
+22	36	0.5927	other	said_stop	I think I should stop because I have finished the instruction.
+23	0	0.0000	no	start	The next action is turn left 45 degree.
+23	1	0.0000	no	start	The next action is turn left 15 degree.
+23	2	0.0000	yes	start	The next action is move forward 75 cm.
+23	3	0.0000	no		The next action is move forward 75 cm.
+23	4	0.0000	yes		The next action is move forward 75 cm.
+23	5	0.0000	yes		The next action is move forward 75 cm.
+23	6	0.0000	yes		The next action is move forward 75 cm.
+23	7	0.0000	yes		The next action is move forward 75 cm.
+23	8	0.0000	yes		The next action is move forward 75 cm.
+23	9	0.0000	yes		The next action is move forward 75 cm.
+23	10	0.0000	yes		The next action is move forward 25 cm.
+23	11	0.0000	yes		The next action is move forward 75 cm.
+23	12	0.0000	no		The next action is move forward 75 cm.
+23	13	0.0000	yes		The next action is move forward 75 cm.
+23	14	0.0000	yes		The next action is move forward 75 cm.
+23	15	0.0000	no		The next action is move forward 75 cm.
+23	16	0.0000	no		The next action is move forward 25 cm.
+23	17	0.0001	no		The next action is turn right 30 degree.
+23	18	0.0000	no		The next action is turn right 45 degree.
+23	19	0.0001	no		The next action is move forward 75 cm.
+23	20	0.0005	other		The next action is move forward 75 cm.
+23	21	0.0001	no		The next action is move forward 75 cm.
+23	22	0.0013	no		The next action is turn right 15 degree.
+23	23	0.0078	no		The next action is turn right 45 degree.
+23	24	0.0024	other		The next action is turn right 30 degree.
+23	25	0.0017	no		The next action is move forward 50 cm.
+23	26	0.0007	no		The next action is move forward 75 cm.
+23	27	0.0005	no		The next action is move forward 75 cm.
+23	28	0.0033	other		The next action is move forward 75 cm.
+23	29	0.0060	yes		The next action is move forward 75 cm.
+23	30	0.0203	other		The next action is move forward 75 cm.
+23	31	0.0526	no		The next action is move forward 75 cm.
+23	32	0.5583	other	said_stop	I think I should stop because I have finished the instruction.
+24	0	0.0000	no	start	The next action is turn left 15 degree.
+24	1	0.0000	no	start	The next action is turn left 15 degree.
+24	2	0.0000	no	start	The next action is move forward 75 cm.
+24	3	0.0000	yes		The next action is move forward 75 cm.
+24	4	0.0000	yes		The next action is move forward 75 cm.
+24	5	0.0000	yes		The next action is move forward 75 cm.
+24	6	0.0000	yes		The next action is move forward 75 cm.
+24	7	0.0000	yes		The next action is turn left 45 degree.
+24	8	0.0000	no		The next action is turn left 30 degree.
+24	9	0.0000	yes		The next action is turn left 15 degree.
+24	10	0.0000	yes		The next action is turn left 15 degree.
+24	11	0.0000	yes		The next action is move forward 75 cm.
+24	12	0.0000	yes		The next action is move forward 75 cm.
+24	13	0.0000	yes		The next action is move forward 75 cm.
+24	14	0.0000	yes		The next action is turn right 15 degree.
+24	15	0.0000	yes		The next action is turn right 15 degree.
+24	16	0.0000	yes		The next action is turn right 15 degree.
+24	17	0.0000	other		The next action is move forward 75 cm.
+24	18	0.0000	other		The next action is move forward 75 cm.
+24	19	0.0000	other		The next action is turn right 45 degree.
+24	20	0.0000	other		The next action is turn right 30 degree.
+24	21	0.0000	other		The next action is turn right 15 degree.
+24	22	0.0000	other		The next action is move forward 50 cm.
+24	23	0.0000	no		The next action is move forward 75 cm.
+24	24	0.0000	other		The next action is move forward 75 cm.
+24	25	0.0000	yes		The next action is turn right 15 degree.
+24	26	0.0002	yes		The next action is turn right 15 degree.
+24	27	0.0002	yes		The next action is move forward 75 cm.
+24	28	0.0003	other		The next action is move forward 75 cm.
+24	29	0.0071	other		The next action is turn left 45 degree.
+24	30	0.0016	yes		The next action is turn right 45 degree.
+24	31	0.0021	yes		The next action is turn right 45 degree.
+24	32	0.0009	other		The next action is move forward 75 cm.
+24	33	0.0026	other		The next action is turn left 15 degree.
+24	34	0.0010	other		The next action is turn left 45 degree.
+24	35	0.0113	other		The next action is turn left 45 degree.
+24	36	0.0112	other		The next action is turn left 45 degree.
+24	37	0.0013	other		The next action is turn left 15 degree.
+24	38	0.0009	other		The next action is turn left 15 degree.
+24	39	0.0012	other		The next action is turn left 15 degree.
+24	40	0.0013	other		The next action is move forward 75 cm.
+24	41	0.0028	other		The next action is turn left 15 degree.
+24	42	0.0025	other		The next action is turn left 15 degree.
+24	43	0.0022	other		The next action is move forward 75 cm.
+24	44	0.0009	other		The next action is move forward 75 cm.
+24	45	0.0017	other		The next action is move forward 75 cm.
+25	0	0.0000	no	start	The next action is turn left 15 degree.
+25	1	0.0000	no	start	The next action is turn left 15 degree.
+25	2	0.0000	yes	start	The next action is move forward 75 cm.
+25	3	0.0000	yes		The next action is move forward 75 cm.
+25	4	0.0000	yes		The next action is move forward 75 cm.
+25	5	0.0000	yes		The next action is move forward 75 cm.
+25	6	0.0000	yes		The next action is move forward 75 cm.
+25	7	0.0000	yes		The next action is turn right 45 degree.
+25	8	0.0000	other		The next action is turn right 45 degree.
+25	9	0.0000	no		The next action is turn right 15 degree.
+25	10	0.0000	no		The next action is turn right 15 degree.
+25	11	0.0000	no		The next action is turn right 15 degree.
+25	12	0.0000	no		The next action is move forward 75 cm.
+25	13	0.0000	no		The next action is move forward 75 cm.
+25	14	0.0000	no		The next action is move forward 75 cm.
+25	15	0.0000	no		The next action is turn right 15 degree.
+25	16	0.0000	no		The next action is turn right 15 degree.
+25	17	0.0000	no		The next action is move forward 75 cm.
+25	18	0.0001	no		The next action is move forward 75 cm.
+25	19	0.0002	no		The next action is move forward 75 cm.
+25	20	0.0063	yes		The next action is move forward 75 cm.
+25	21	0.0534	yes		The next action is move forward 75 cm.
+25	22	0.0223	yes		The next action is move forward 75 cm.
+25	23	0.1009	yes		The next action is move forward 75 cm.
+25	24	0.3961	other		The next action is move forward 25 cm.
+25	25	0.6188	other	said_stop	I think I should stop because I have finished the instruction.
+26	0	0.0000	no	start	The next action is turn left 45 degree.
+26	1	0.0000	yes	start	The next action is move forward 75 cm.
+26	2	0.0006	yes	start	The next action is move forward 75 cm.
+26	3	0.0000	yes		The next action is move forward 75 cm.
+26	4	0.0000	yes		The next action is move forward 75 cm.
+26	5	0.0000	yes		The next action is move forward 75 cm.
+26	6	0.0000	yes		The next action is turn left 45 degree.
+26	7	0.0000	yes		The next action is turn left 30 degree.
+26	8	0.0000	yes		The next action is turn left 15 degree.
+26	9	0.0000	yes		The next action is turn left 15 degree.
+26	10	0.0000	yes		The next action is move forward 75 cm.
+26	11	0.0000	yes		The next action is move forward 75 cm.
+26	12	0.0000	yes		The next action is move forward 75 cm.
+26	13	0.0000	yes		The next action is turn right 15 degree.
+26	14	0.0000	yes		The next action is turn right 15 degree.
+26	15	0.0000	yes		The next action is move forward 75 cm.
+26	16	0.0000	yes		The next action is turn right 45 degree.
+26	17	0.0000	other		The next action is turn right 30 degree.
+26	18	0.0000	other		The next action is move forward 75 cm.
+26	19	0.0000	no		The next action is move forward 75 cm.
+26	20	0.0000	other		The next action is turn right 15 degree.
+26	21	0.0000	other		The next action is turn right 15 degree.
+26	22	0.0000	other		The next action is turn right 15 degree.
+26	23	0.0000	other		The next action is turn right 15 degree.
+26	24	0.0000	other		The next action is move forward 75 cm.
+26	25	0.0000	other		The next action is move forward 75 cm.
+26	26	0.0000	other		The next action is turn right 15 degree.
+26	27	0.0000	other		The next action is move forward 25 cm.
+26	28	0.0000	other		The next action is move forward 75 cm.
+26	29	0.0008	other		The next action is turn left 30 degree.
+26	30	0.0001	other		The next action is turn left 45 degree.
+26	31	0.0046	other		The next action is turn right 45 degree.
+26	32	0.0006	other		The next action is turn right 45 degree.
+26	33	0.0003	other		The next action is turn left 45 degree.
+26	34	0.0002	other		The next action is turn right 15 degree.
+26	35	0.0002	other		The next action is turn right 15 degree.
+26	36	0.0003	other		The next action is turn left 45 degree.
+26	37	0.0068	other		The next action is move forward 75 cm.
+26	38	0.0014	other		The next action is turn right 45 degree.
+26	39	0.0001	other		The next action is turn right 45 degree.
+26	40	0.0002	yes		The next action is move forward 25 cm.
+26	41	0.0002	other		The next action is move forward 75 cm.
+26	42	0.0004	no		The next action is turn right 15 degree.
+26	43	0.0185	other		The next action is turn right 15 degree.
+26	44	0.0028	other		The next action is turn right 15 degree.
+26	45	0.0011	other		The next action is move forward 75 cm.
+27	0	0.0000	no	start	The next action is turn left 45 degree.
+27	1	0.0000	no	start	The next action is move forward 75 cm.
+27	2	0.0016	no	start	The next action is move forward 75 cm.
+27	3	0.0000	no		The next action is move forward 75 cm.
+27	4	0.0000	yes		The next action is turn left 45 degree.
+27	5	0.0000	no		The next action is turn left 30 degree.
+27	6	0.0000	no		The next action is move forward 75 cm.
+27	7	0.0000	yes		The next action is move forward 75 cm.
+27	8	0.0000	yes		The next action is move forward 75 cm.
+27	9	0.0000	yes		The next action is turn right 15 degree.
+27	10	0.0000	yes		The next action is turn right 15 degree.
+27	11	0.0000	yes		The next action is turn right 15 degree.
+27	12	0.0000	yes		The next action is turn right 30 degree.
+27	13	0.0001	no		The next action is turn right 30 degree.
+27	14	0.0001	no		The next action is turn right 15 degree.
+27	15	0.0003	no		The next action is move forward 75 cm.
+27	16	0.0014	yes		The next action is move forward 75 cm.
+27	17	0.0042	yes		The next action is move forward 75 cm.
+27	18	0.0346	yes		The next action is move forward 75 cm.
+27	19	0.0421	yes		The next action is turn right 15 degree.
+27	20	0.3630	yes		The next action is move forward 25 cm.
+27	21	0.5506	yes	said_stop	I think I should stop because I have finished the instruction.
+28	0	0.0000	no	start	The next action is turn left 45 degree.
+28	1	0.0000	no	start	The next action is move forward 75 cm.
+28	2	0.0001	no	start	The next action is move forward 75 cm.
+28	3	0.0000	no		The next action is move forward 75 cm.
+28	4	0.0000	no		The next action is turn left 30 degree.
+28	5	0.0000	no		The next action is turn left 30 degree.
+28	6	0.0000	no		The next action is turn left 30 degree.
+28	7	0.0000	no		The next action is move forward 75 cm.
+28	8	0.0000	no		The next action is move forward 75 cm.
+28	9	0.0000	yes		The next action is move forward 75 cm.
+28	10	0.0000	no		The next action is turn right 45 degree.
+28	11	0.0000	no		The next action is move forward 75 cm.
+28	12	0.0000	no		The next action is turn right 45 degree.
+28	13	0.0000	no		The next action is turn right 30 degree.
+28	14	0.0000	no		The next action is turn right 30 degree.
+28	15	0.0000	no		The next action is turn right 15 degree.
+28	16	0.0000	no		The next action is move forward 75 cm.
+28	17	0.0001	no		The next action is move forward 75 cm.
+28	18	0.0002	no		The next action is move forward 75 cm.
+28	19	0.0005	no		The next action is move forward 75 cm.
+28	20	0.0284	yes		The next action is move forward 75 cm.
+28	21	0.0637	yes		The next action is turn left 45 degree.
+28	22	0.0088	no		The next action is turn left 15 degree.
+28	23	0.0298	yes		The next action is turn left 15 degree.
+28	24	0.0062	no		The next action is move forward 75 cm.
+28	25	0.0099	no		The next action is move forward 75 cm.
+28	26	0.0385	yes		The next action is move forward 75 cm.
+28	27	0.0138	no		The next action is move forward 75 cm.
+28	28	0.1366	yes		The next action is move forward 25 cm.
+28	29	0.2393	yes		The next action is move forward 25 cm.
+28	30	0.7663	other	said_stop	I think I should stop because I have finished the instruction.
+29	0	0.0000	no	start	The next action is turn left 45 degree.
+29	1	0.0000	no	start	The next action is move forward 75 cm.
+29	2	0.0012	no	start	The next action is move forward 75 cm.
+29	3	0.0000	yes		The next action is move forward 75 cm.
+29	4	0.0000	yes		The next action is turn right 45 degree.
+29	5	0.0000	no		The next action is turn left 45 degree.
+29	6	0.0001	no		The next action is turn right 45 degree.
+29	7	0.0008	no		The next action is turn left 45 degree.
+29	8	0.0005	no		The next action is turn left 15 degree.
+29	9	0.0002	no		The next action is turn left 30 degree.
+29	10	0.0000	no		The next action is move forward 25 cm.
+29	11	0.0003	no		The next action is move forward 75 cm.
+29	12	0.0000	yes		The next action is move forward 75 cm.
+29	13	0.0000	yes		The next action is move forward 75 cm.
+29	14	0.0000	yes		The next action is turn right 45 degree.
+29	15	0.0001	yes		The next action is turn right 45 degree.
+29	16	0.0000	yes		The next action is turn right 30 degree.
+29	17	0.0001	no		The next action is turn right 15 degree.
+29	18	0.0000	yes		The next action is move forward 75 cm.
+29	19	0.0000	yes		The next action is move forward 75 cm.
+29	20	0.0002	yes		The next action is move forward 75 cm.
+29	21	0.0003	yes		The next action is move forward 75 cm.
+29	22	0.0008	yes		The next action is move forward 25 cm.
+29	23	0.0007	yes		The next action is turn left 15 degree.
+29	24	0.0014	yes		The next action is move forward 25 cm.
+29	25	0.0002	yes		The next action is turn left 15 degree.
+29	26	0.0001	other		The next action is turn left 15 degree.
+29	27	0.0001	yes		The next action is turn left 15 degree.
+29	28	0.0001	yes		The next action is move forward 25 cm.
+29	29	0.0001	yes		The next action is move forward 75 cm.
+29	30	0.0022	yes		The next action is move forward 75 cm.
+29	31	0.0007	other		The next action is move forward 75 cm.
+29	32	0.0007	yes		The next action is move forward 75 cm.
+29	33	0.0019	yes		The next action is move forward 25 cm.
+29	34	0.0044	yes		The next action is move forward 25 cm.
+29	35	0.0040	yes		The next action is turn left 45 degree.
+29	36	0.0289	no		The next action is turn left 45 degree.
+29	37	0.0006	yes		The next action is turn left 30 degree.
+29	38	0.0001	yes		The next action is move forward 75 cm.
+29	39	0.0003	yes		The next action is move forward 75 cm.
+29	40	0.0011	yes		The next action is move forward 50 cm.
+29	41	0.0048	yes		The next action is move forward 75 cm.
+29	42	0.0020	other		The next action is turn left 15 degree.
+29	43	0.0023	other		The next action is turn left 45 degree.

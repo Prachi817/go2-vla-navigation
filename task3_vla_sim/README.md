@@ -802,7 +802,29 @@ cd scripts && nohup env PYTHONNOUSERSITE=1 ~/miniconda3/envs/navila/bin/python -
 sleep 90; tail -2 ~/go2-sim/vlm_server_stopcheck.log     # -> VLM Server listening
 nohup python3 stop_check_offline.py > ~/go2-sim/stop_check.log 2>&1 &
 ```
-Results: _TBD_
+
+**Results (2026-11-17):** 725 decisions from episodes 10-29. Raw data in
+[`results/stop_check/`](results/stop_check/).
+
+| Decisions | n | Says "yes" | Mean stop probability | Stop prob >= 0.1 | >= 0.3 |
+|---|---|---|---|---|---|
+| First 3 of each episode (not done) | 60 | 16.7% | 0.000 | 0% | 0% |
+| NaVILA's own stop | 13 | 23.1% | 0.651 | 100% | 100% |
+| 5 before a successful stop (near goal) | 25 | 32.0% | 0.090 | 24% | 16% |
+| All | 725 | 45.7% | 0.022 | 4.6% | 2.9% |
+
+- **The yes/no question doesn't work.** 90 of 725 answers weren't yes or
+  no (NaVILA answered with a move, e.g. "The next instruction is turn
+  right 15 degree"); it says yes at 17% of starts and only 23% of its own
+  stops. Dropped.
+- **The stop probability works.** Exactly 0 at every start, rises in the
+  last 1-4 decisions before a stop (e.g. episode 18: 0.18, 0.33, then
+  NaVILA stopped outside the goal radius), and is >= 0.1 on only 4.6% of
+  all decisions.
+- **Risk:** in a successful episode (14) it reached 0.33 at decision 38,
+  four decisions before NaVILA's own stop at 42, so a 0.3 threshold can
+  stop early. Hence two controller versions: `prob` (stop at 0.3, 25 cm
+  steps at 0.1) and `fine` (25 cm steps at 0.1 only).
 
 ### 2. Controller runs (~2.5 min per episode)
 ```bash
@@ -856,7 +878,46 @@ nohup ./run_controller.sh custom eval_results/custom/custom_list.txt --stop_rule
 python3 compare_custom.py eval_results/go2_matterport_vision_loco_2024-09-25_23-22-02_ctrl_custom
 ```
 
-Results: _TBD_
+**Results (2026-11-17):** raw data and report in
+[`results/custom/`](results/custom/).
+
+| Route | Benchmark wording (2 runs each) | Our wording (2 runs each) |
+|---|---|---|
+| A | ep 0: 2/2, ep 1: 2/2 | 1/2 (other run: reached, never stopped) |
+| B | ep 3: 0/2 (stopped in wrong place) | 0/2 (never stopped, 8.4 m away) |
+| C | ep 7: 2/2, ep 8: 2/2 | 2/2 |
+| D | ep 9: 0/2 (reached, never stopped), ep 10: 2/2, ep 11: 2/2 | long: 0/2, "Go to the pantry.": 0/2 (all reached, never stopped) |
+| E | ep 13: 0/2 (stopped in wrong place) | 0/2 (stopped / ended 14-15 m away) |
+| **Total** | **12/18 (67%)** | **3/12 (25%)** |
+
+- **Our shorter, everyday wording did worse**, mostly by never stopping:
+  "Go to the pantry." ended 2.6 m from the goal (inside the 3 m radius)
+  in both runs without NaVILA saying stop. The benchmark instructions
+  describe the stopping point in detail ("halfway between the two shelves
+  on the right"); NaVILA seems to need that to decide it is done. For
+  Task 4, instructions need a clear, specific stopping point.
+- **Runs within one session are very repeatable**: all 9 benchmark
+  episodes gave the same outcome both times, mostly at the same distance.
+  Across sessions they can differ: episode 10 failed in the full run and
+  succeeded twice here.
+- Caveat: 6 instructions, written from the episode videos; some stopping
+  points may be described imperfectly.
+
+**What the stop probability would have done here.** The decision logs
+record the true distance to the goal at every decision, so stopping at
+the first decision (from the 5th) with stop probability >= t can be
+simulated exactly: the robot would end where it was at that decision.
+
+| Threshold | Benchmark wording | Our wording | Failures fixed | Successes lost |
+|---|---|---|---|---|
+| none (plain NaVILA) | 12/18 | 3/12 | - | - |
+| 0.1 | 14/18 | 5/12 | 4 | 0 |
+| 0.3 | 14/18 | 4/12 | 3 | 0 |
+| 0.5 | 12/18 | 3/12 | 0 | 0 |
+
+In the "reached, never stopped" runs the stop probability did rise inside
+the goal area (episode 9: up to 0.37; route A, our wording: 0.48). This
+is in-sample and small; the 100-episode controller runs are the real test.
 
 ## Known caveats
 
@@ -890,8 +951,9 @@ Results: _TBD_
 - [x] Bridge toward Task 4: Go2 camera -> NaVILA server -> Task 1
       commands, in [`task4_real_go2/`](../task4_real_go2/); matches
       `get_vel_command()` on 35,594 of 35,597 Task 3 answers.
-- [ ] Run the offline stop-check test and set the controller thresholds
-      (~30 min).
-- [ ] Run the custom-instruction episodes (~75 min) and fill in results.
-- [ ] Run the stop-aware controller on `subset_100.txt` (~4 h) and compare
-      with the baseline.
+- [x] Run the offline stop-check test and set the controller thresholds:
+      stop probability works, yes/no question dropped.
+- [x] Run the custom-instruction episodes: 12/18 benchmark wording vs
+      3/12 ours.
+- [ ] Run the stop-aware controller on `subset_100.txt`, versions `prob`
+      and `fine` (started 2026-11-17), and compare with the baseline.

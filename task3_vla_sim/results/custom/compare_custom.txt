@@ -1,0 +1,61 @@
+
+=== Route A
+  original (ep 0)  "Exit the bedroom and turn left. Walk straight passing the gray couch and stop near the ..."
+      success                         1.13 m from goal
+      success                         1.16 m from goal
+  original (ep 1)  "Walk out of the bedroom through the open door into the hallway. Turn the corner and wal..."
+      success                         1.36 m from goal
+      success                         1.36 m from goal
+  custom           "Leave the bedroom and turn left. Go into the living room and stop on the rug past the g..."
+      reached, never stopped          3.54 m from goal
+      success                         2.18 m from goal
+
+=== Route B
+  original (ep 3)  "Go straight past the pool. Walk between the bar and chairs.  Stop when you get to the c..."
+      not reached, stopped wrong      3.13 m from goal
+      not reached, stopped wrong      3.31 m from goal
+  custom           "Walk along the pool to the bar and stop at the corner of the bar."
+      not reached, never stopped      8.35 m from goal
+      not reached, never stopped      8.35 m from goal
+
+=== Route C
+  original (ep 7)  "Walk across the floor and wait the archway. "
+      success                         0.46 m from goal
+      success                         0.46 m from goal
+  original (ep 8)  "Move forward to the doorway on the opposite side of the hall.  Stop in the archway. "
+      success                         1.04 m from goal
+      success                         1.04 m from goal
+  custom           "Cross the big hall and stop in the archway on the far side."
+      success                         2.33 m from goal
+      success                         2.33 m from goal
+
+=== Route D
+  original (ep 9)  "Walk passed the dining table and continue towards the kitchen. Walk through the kitchen..."
+      reached, never stopped          2.72 m from goal
+      reached, never stopped          2.72 m from goal
+  original (ep 10) "Move to the far left corner of the table
+Proceed to the doorway to your right
+walk in..."
+      success                         0.27 m from goal
+      success                         0.19 m from goal
+  original (ep 11) "Walk straight past the table and turn right to go between the kitchen counters and walk..."
+      success                         0.19 m from goal
+      success                         0.23 m from goal
+  custom           "Go past the dining table, turn right into the kitchen, and stop in the pantry between t..."
+      reached, never stopped          6.30 m from goal
+      reached, never stopped          6.30 m from goal
+  custom           "Go to the pantry."
+      reached, never stopped          2.56 m from goal
+      reached, never stopped          2.58 m from goal
+
+=== Route E
+  original (ep 13) "Walk behind the couch towards the kitchen. Enter the kitchen.  Walk towards the doors t..."
+      not reached, stopped wrong      4.96 m from goal
+      not reached, stopped wrong      4.96 m from goal
+  custom           "Walk past the couch into the kitchen. Turn left at the doors to the outside, go down th..."
+      not reached, stopped wrong     14.08 m from goal
+      not reached, never stopped     14.97 m from goal
+
+Success over all runs:
+  original  12/18  (67%)
+  custom    3/12  (25%)
