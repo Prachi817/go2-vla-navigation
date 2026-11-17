@@ -165,6 +165,9 @@ Only these files are ours, in [`scripts/`](scripts/):
 | [`run_controller.sh`](scripts/run_controller.sh) | Runs an episode list with the controller |
 | [`compare_runs.py`](scripts/compare_runs.py) | Controller run vs baseline on the same episodes |
 | [`subset_100.txt`](scripts/subset_100.txt), [`subset_200.txt`](scripts/subset_200.txt) | Fixed random episode subsets (seed 0); the 100 are inside the 200 |
+| [`custom_instructions.json`](scripts/custom_instructions.json) | Our own instructions on 5 benchmark routes |
+| [`make_custom_episodes.py`](scripts/make_custom_episodes.py) | Builds an episode file from them (original + custom wording, repeated) |
+| [`compare_custom.py`](scripts/compare_custom.py) | Original vs custom wording, per route |
 
 ## Machine
 
@@ -807,6 +810,42 @@ Thresholds are placeholders until the offline test is in. Re-running the
 baseline on the same list (`./run_controller.sh none subset_100.txt
 --stop_rule=none`) measures run-to-run noise and logs stop probability vs
 true distance for plain NaVILA.
+
+Results: _TBD_
+
+## Custom instructions
+
+Does NaVILA handle instructions written the way we'll talk to the real
+robot (Task 4)? We keep 5 benchmark routes (same house, start, goal and
+scoring) and replace only the wording, in
+[`custom_instructions.json`](scripts/custom_instructions.json). The
+landmarks come from the Task 3 episode videos.
+
+| Route | Benchmark episodes (full-run result) | Our wording |
+|---|---|---|
+| A | 0, 1 (both success) | "Leave the bedroom and turn left. Go into the living room and stop on the rug past the gray couch." |
+| B | 3 (stopped in wrong place) | "Walk along the pool to the bar and stop at the corner of the bar." |
+| C | 7, 8 (both success) | "Cross the big hall and stop in the archway on the far side." |
+| D | 9 (reached, never stopped), 10 (stopped in wrong place), 11 (success) | "Go past the dining table, turn right into the kitchen, and stop in the pantry between the shelves." and "Go to the pantry." |
+| E | 13 (stopped in wrong place) | "Walk past the couch into the kitchen. Turn left at the doors to the outside, go down the hallway, and stop where four hallways meet." |
+
+Route D already shows wording matters: three benchmark instructions for
+the same route give three outcomes. In the videos, the success (11, "turn
+right to go between the kitchen counters") turns into the kitchen; episode
+9 ("continue towards the kitchen") goes straight past it, past the
+living-room sofa and into a hallway.
+
+The run re-runs the originals alongside our wording (same code, same
+conditions), each twice. Plain NaVILA, no controller.
+```bash
+cd ~/go2-sim/NaVILA-Bench
+for f in custom_instructions.json make_custom_episodes.py compare_custom.py; do curl -fsSO $B/$f; done
+python3 make_custom_episodes.py custom_instructions.json --repeats 2   # -> 30 episodes, check for WARNING lines
+# vlm_server_stopcheck.py running, navila_eval_stopaware.py patched (see Stop-aware controller)
+nohup ./run_controller.sh custom eval_results/custom/custom_list.txt --stop_rule=none \
+  --episodes_file=eval_results/custom/custom_episodes.json.gz > ~/go2-sim/ctrl_custom.log 2>&1 &   # ~75 min
+python3 compare_custom.py eval_results/go2_matterport_vision_loco_2024-09-25_23-22-02_ctrl_custom
+```
 
 Results: _TBD_
 

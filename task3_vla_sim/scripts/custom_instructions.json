@@ -1,0 +1,26 @@
+{
+  "_note": "Custom instructions on benchmark routes. 'originals' are the benchmark episodes for the same route (same start and goal, checked by make_custom_episodes.py); each custom instruction reuses the route of 'base'. Landmarks taken from the Task 3 episode videos.",
+  "routes": [
+    {
+      "name": "A", "base": 0, "originals": [0, 1],
+      "custom": ["Leave the bedroom and turn left. Go into the living room and stop on the rug past the gray couch."]
+    },
+    {
+      "name": "B", "base": 3, "originals": [3],
+      "custom": ["Walk along the pool to the bar and stop at the corner of the bar."]
+    },
+    {
+      "name": "C", "base": 7, "originals": [7, 8],
+      "custom": ["Cross the big hall and stop in the archway on the far side."]
+    },
+    {
+      "name": "D", "base": 11, "originals": [9, 10, 11],
+      "custom": ["Go past the dining table, turn right into the kitchen, and stop in the pantry between the shelves.",
+                 "Go to the pantry."]
+    },
+    {
+      "name": "E", "base": 13, "originals": [13],
+      "custom": ["Walk past the couch into the kitchen. Turn left at the doors to the outside, go down the hallway, and stop where four hallways meet."]
+    }
+  ]
+}

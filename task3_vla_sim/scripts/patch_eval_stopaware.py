@@ -16,6 +16,8 @@ New options:
     --t_fine 0.1
     --min_decisions 5     never stop or slow down before this many decisions
     --results_suffix SFX  results go to eval_results/<task>_loco_<run><SFX>
+    --episodes_file F     read episodes from F (.json.gz) instead of the
+                          benchmark, e.g. custom instructions
 
 The controller only uses NaVILA's own outputs. The simulator's distance to
 the goal is never used for control; it is only logged, per decision, in
@@ -44,7 +46,8 @@ parser.add_argument("--t_stop", type=float, default=0.3)
 parser.add_argument("--ask_every", type=int, default=3)
 parser.add_argument("--fine_steps", action="store_true")
 parser.add_argument("--t_fine", type=float, default=0.1)
-parser.add_argument("--min_decisions", type=int, default=5)'''),
+parser.add_argument("--min_decisions", type=int, default=5)
+parser.add_argument("--episodes_file", type=str, default=None)'''),
     # 2. Let a request carry extra fields ("mode", "question").
     ('''def sample_images_and_send_to_vlm(image_list, vlm_host, vlm_port, query):''',
      '''def sample_images_and_send_to_vlm(image_list, vlm_host, vlm_port, query, extra=None):'''),
@@ -133,7 +136,10 @@ def main():'''),
                     print(f"VLM output: [controller] {control_note}")
                 elif control_note:
                     print(f"Controller: {control_note}")'''),
-    # 6. Separate results folder + save the decision log.
+    # 6. Optional custom episode file (make_custom_episodes.py).
+    ('''    r2r_data_path = os.path.join(ASSETS_DIR, "vln_ce_isaac_v1.json.gz")''',
+     '''    r2r_data_path = args_cli.episodes_file or os.path.join(ASSETS_DIR, "vln_ce_isaac_v1.json.gz")'''),
+    # 7. Separate results folder + save the decision log.
     ('''    result_dir = f"eval_results/{args_cli.task}_loco_{args_cli.load_run}"''',
      '''    result_dir = f"eval_results/{args_cli.task}_loco_{args_cli.load_run}{args_cli.results_suffix}"'''),
     ('''        json.dump(measurements, f, indent=4)''',
