@@ -159,6 +159,12 @@ Only these files are ours, in [`scripts/`](scripts/):
 | [`patch_eval_record.py`](scripts/patch_eval_record.py) | Creates `navila_eval_record.py`, which saves every NaVILA request (for the 8-bit vs fp16 test) |
 | [`record_8bit.sh`](scripts/record_8bit.sh) | Runs a few episodes with recording on, into a separate results folder |
 | [`compare_precision.py`](scripts/compare_precision.py) | Replays the saved requests to a server and compares its answers with the 8-bit ones |
+| [`patch_vlm_server_stopcheck.py`](scripts/patch_vlm_server_stopcheck.py) | Creates `vlm_server_stopcheck.py`: the 8-bit server plus stop probability and yes/no questions |
+| [`stop_check_offline.py`](scripts/stop_check_offline.py) | Tests both stop signals on the saved requests, no Isaac Sim |
+| [`patch_eval_stopaware.py`](scripts/patch_eval_stopaware.py) | Creates `navila_eval_stopaware.py`: the eval loop with our stop-aware controller and per-decision logging |
+| [`run_controller.sh`](scripts/run_controller.sh) | Runs an episode list with the controller |
+| [`compare_runs.py`](scripts/compare_runs.py) | Controller run vs baseline on the same episodes |
+| [`subset_100.txt`](scripts/subset_100.txt), [`subset_200.txt`](scripts/subset_200.txt) | Fixed random episode subsets (seed 0); the 100 are inside the 200 |
 
 ## Machine
 
@@ -742,6 +748,67 @@ explain the 16-point success gap to the paper, which is mostly a stopping
 gap. Caveats: this compares single decisions, not whole episodes (one
 different turn can change the rest of an episode, so 8-bit may still cost a
 few points of success), and 20 episodes is a small sample.
+
+## Stop-aware controller
+
+Our contribution: a training-free module between NaVILA's answer and the
+walking policy, aimed at the stopping gap (187 of 1,077 episodes reached the
+goal area but didn't stop correctly). It only uses NaVILA's own outputs;
+the simulator's distance to the goal is logged for analysis, never used.
+
+**Stop signals.** NaVILA's answers always start either "I think I should
+stop ..." (all 608 stops) or "The next action is ..." (all 34,989 moves),
+so the probability of the first token gives a **stop probability** from
+NaVILA's normal prompt. The alternative is a direct **yes/no question**
+with the same images and instruction. `vlm_server_stopcheck.py` serves
+both (`"mode": "stop_prob"` / `"ask"`); normal requests are unchanged.
+
+**Controller** (`navila_eval_stopaware.py`):
+- `--stop_rule prob`: stop when stop probability >= `--t_stop`;
+  `--stop_rule ask`: stop when NaVILA answers yes (every `--ask_every`
+  decisions); `--stop_rule none`: plain NaVILA.
+- `--fine_steps`: forward moves capped at 25 cm when stop probability >=
+  `--t_fine` or NaVILA's last 4 decisions are turns both ways (searching).
+- Nothing changes before decision `--min_decisions` (5); NaVILA's own stops
+  are always kept; same 50 s time limit as the baseline.
+
+**Evaluation:** fixed random subsets of the benchmark, compared with the
+full run's results for the same episodes. On `subset_100.txt` the baseline
+is 38% success / 50% oracle (9 + 3 "reached but didn't stop" episodes); on
+`subset_200.txt` 36.5% / 49% (21 + 4).
+
+### 1. Offline test of the stop signals (~30 min, no Isaac Sim)
+```bash
+cd ~/go2-sim/NaVILA-Bench
+B=https://raw.githubusercontent.com/Prachi817/go2-vla-navigation/main/task3_vla_sim/scripts
+curl -fsSO $B/stop_check_offline.py && curl -fsS -o scripts/patch_vlm_server_stopcheck.py $B/patch_vlm_server_stopcheck.py
+cd scripts && python3 patch_vlm_server_stopcheck.py && cd ..
+pkill -f vlm_server; sleep 5
+cd scripts && nohup env PYTHONNOUSERSITE=1 ~/miniconda3/envs/navila/bin/python -u vlm_server_stopcheck.py \
+  --model_path ~/go2-sim/checkpoints/navila-llama3-8b-8f --port 54321 --precision W8A16 \
+  > ~/go2-sim/vlm_server_stopcheck.log 2>&1 & cd ..
+sleep 90; tail -2 ~/go2-sim/vlm_server_stopcheck.log     # -> VLM Server listening
+nohup python3 stop_check_offline.py > ~/go2-sim/stop_check.log 2>&1 &
+```
+Results: _TBD_
+
+### 2. Controller runs (~2.5 min per episode)
+```bash
+cd ~/go2-sim/NaVILA-Bench
+for f in run_controller.sh compare_runs.py subset_100.txt subset_200.txt; do curl -fsSO $B/$f; done
+curl -fsS -o scripts/patch_eval_stopaware.py $B/patch_eval_stopaware.py
+cd scripts && python3 patch_eval_stopaware.py && cd .. && chmod +x run_controller.sh
+# vlm_server_stopcheck.py must be running (see 1.)
+nohup ./run_controller.sh prob subset_100.txt --stop_rule=prob --t_stop=0.3 --fine_steps > ~/go2-sim/ctrl_prob.log 2>&1 &
+# when done:
+python3 compare_runs.py eval_results/go2_matterport_vision_loco_2024-09-25_23-22-02_ctrl_prob
+```
+Thresholds are placeholders until the offline test is in. Re-running the
+baseline on the same list (`./run_controller.sh none subset_100.txt
+--stop_rule=none`) measures run-to-run noise and logs stop probability vs
+true distance for plain NaVILA.
+
+Results: _TBD_
 
 ## Known caveats
 
