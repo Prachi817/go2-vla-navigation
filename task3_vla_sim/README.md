@@ -895,6 +895,3 @@ Results: _TBD_
 - [ ] Run the custom-instruction episodes (~75 min) and fill in results.
 - [ ] Run the stop-aware controller on `subset_100.txt` (~4 h) and compare
       with the baseline.
-- [ ] Supervisor review: repeated runs per episode to measure variance?
-      (The custom-instruction run re-runs 9 benchmark episodes twice, a
-      first small check.)
