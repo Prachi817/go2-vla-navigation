@@ -1,0 +1,37 @@
+Run: eval_results/go2_matterport_vision_loco_2024-09-25_23-22-02_ctrl_fine
+  options: --stop_rule=none --fine_steps
+Episodes compared: 100
+
+  metric              baseline  controller
+  success                0.380       0.460   (+0.080)
+  oracle_success         0.500       0.530   (+0.030)
+  spl                    0.345       0.441   (+0.095)
+  distance_to_goal       6.390       5.595   (-0.795)
+  path_length           10.092       8.835   (-1.257)
+
+Outcomes:                        baseline  controller
+  success                              38          46
+  reached, never stopped                9           6
+  reached, stopped outside              3           1
+  never reached, stopped wrong         19          25
+  never reached, never stopped         31          22
+
+Failure -> success: 16  [82, 194, 223, 236, 306, 391, 482, 488, 499, 761, 858, 872, 1010, 1040, 1068, 1074]
+Success -> failure: 8  [67, 255, 495, 621, 664, 686, 816, 976]
+   67: now 'never reached, stopped wrong'
+   255: now 'never reached, stopped wrong'
+   495: now 'never reached, never stopped'
+   621: now 'reached, never stopped'
+   664: now 'reached, never stopped'
+   686: now 'never reached, never stopped'
+   816: now 'never reached, never stopped'
+   976: now 'never reached, never stopped'
+
+Controller: 3054 decisions, 0 controller stops, 162 forward moves cut to 25 cm
+
+Stop probability vs true distance to goal (analysis only):
+  distance   decisions   mean stop_prob   >=0.1    >=0.3
+  < 1 m           105            0.321    73.3%   48.6%
+  1-3 m           357            0.099    26.6%   14.0%
+  3-5 m           445            0.026     8.1%    1.6%
+  > 5 m          2147            0.018     4.4%    2.0%

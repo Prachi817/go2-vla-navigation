@@ -1,0 +1,1 @@
+options: --stop_rule=prob --t_stop=0.3 --fine_steps

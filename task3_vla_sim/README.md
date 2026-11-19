@@ -842,7 +842,46 @@ baseline on the same list (`./run_controller.sh none subset_100.txt
 --stop_rule=none`) measures run-to-run noise and logs stop probability vs
 true distance for plain NaVILA.
 
-Results: _TBD_
+**Results (2026-11-17/18, preliminary):** 100 episodes (`subset_100.txt`),
+run back to back on the same server. Raw data and reports in
+[`results/controller_prob/`](results/controller_prob/) and
+[`results/controller_fine/`](results/controller_fine/).
+
+| Same 100 episodes | Success | Oracle success | SPL | Distance to goal |
+|---|---|---|---|---|
+| Plain NaVILA (full run, Run 4) | 0.38 | 0.50 | 0.345 | 6.39 m |
+| `fine` (25 cm steps at stop prob >= 0.1) | 0.46 | 0.53 | 0.441 | 5.60 m |
+| `prob` (stop at >= 0.3, plus 25 cm steps) | **0.49** | 0.59 | 0.472 | 4.94 m |
+
+`prob`: 53 controller stops, 35 of them inside the 3 m goal radius (all
+35 ended as successes); 84 forward moves cut to 25 cm. `fine`: 162 moves
+cut to 25 cm.
+
+**The stop probability tracks the true distance to the goal** (from the
+`prob` run's decision logs; distance logged for analysis only):
+
+| True distance | Decisions | Mean stop prob | >= 0.1 | >= 0.3 |
+|---|---|---|---|---|
+| < 1 m | 81 | 0.245 | 64.2% | 37.0% |
+| 1-3 m | 362 | 0.051 | 15.7% | 5.2% |
+| 3-5 m | 463 | 0.017 | 5.4% | 1.3% |
+| > 5 m | 2007 | 0.013 | 3.2% | 1.2% |
+
+**Why the gain is not yet proven.** The baseline row comes from a
+different run (weeks earlier), and the simulator is not fully repeatable:
+- In `fine`, 44 episodes were never touched by the controller (plain
+  NaVILA throughout); 14 of them still changed outcome versus the old run
+  (9 better, 5 worse).
+- `prob` vs `fine` in the 47 episodes where `prob` never forced a stop
+  (identical settings in effect): the decision sequences differed in 35
+  and the outcome in 4.
+
+The cleanest comparison available is `prob` vs `fine` (same night, only
+the stop rule differs): the stop rule fixed 5 episodes and broke 2 (+3).
+That is in the right direction but within the noise. Next: re-run plain
+NaVILA on the same 100 episodes with the same code (`./run_controller.sh
+none subset_100.txt --stop_rule=none`), and if possible use
+`subset_200.txt` for a firmer answer.
 
 ## Custom instructions
 
@@ -955,5 +994,7 @@ is in-sample and small; the 100-episode controller runs are the real test.
       stop probability works, yes/no question dropped.
 - [x] Run the custom-instruction episodes: 12/18 benchmark wording vs
       3/12 ours.
-- [ ] Run the stop-aware controller on `subset_100.txt`, versions `prob`
-      and `fine` (started 2026-11-17), and compare with the baseline.
+- [x] Run the stop-aware controller on `subset_100.txt`, versions `prob`
+      and `fine`: 0.49 and 0.46 success vs 0.38 (preliminary, see above).
+- [ ] Re-run plain NaVILA on `subset_100.txt` with the same code, for a
+      same-setup baseline (~4 h).
