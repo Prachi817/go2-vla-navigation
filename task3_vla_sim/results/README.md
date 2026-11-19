@@ -2,7 +2,7 @@
 
 Raw output of the full NaVILA-Bench run (all 1,077 episodes of
 `vln_ce_isaac_v1`, NaVILA 8-bit, Go2 vision policy `2024-09-25_23-22-02`)
-and of the 8-bit vs fp16 test. The numbers and what they mean are in the
+the 8-bit vs fp16 test, the offline stop-check test and the custom-instruction run. The numbers and what they mean are in the
 [Task 3 README](../README.md#results); this folder is the data behind them.
 
 | File | What it is |
@@ -14,6 +14,11 @@ and of the 8-bit vs fp16 test. The numbers and what they mean are in the
 | `quant_test/replay_8bit.json` | 8-bit server's answers to the 725 recorded requests (episodes 10-29); identical to the answers recorded during the episodes |
 | `quant_test/replay_fp16.json` | fp16 server's answers to the same 725 requests |
 | `quant_test/compare_fp16.log` | Output of [`compare_precision.py`](../scripts/compare_precision.py) `--label fp16` |
+| `stop_check/stop_check.tsv` | Offline stop-check test, one row per decision: stop probability, yes/no answer, labels, NaVILA's recorded answer |
+| `stop_check/stop_check.json` | The same answers as returned by the server (incl. top-5 first tokens); `stop_check.log` is the printed report |
+| `custom/custom_map.json` | Custom-instruction run: which episode file is which route, wording and repeat |
+| `custom/measurements/`, `custom/decisions/` | Metrics per episode, and every decision with stop probability, position and true distance to goal |
+| `custom/compare_custom.txt` | Output of [`compare_custom.py`](../scripts/compare_custom.py) |
 
 Not included (kept on the lab machine, `~/go2-sim/`): the per-episode
 Isaac Sim logs, the videos (`results_backup/navila_full_20261103_1336.tar.gz`,

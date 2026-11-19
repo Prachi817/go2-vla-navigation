@@ -1,0 +1,272 @@
+[
+ {
+  "i": 0,
+  "file": 900000,
+  "route": "A",
+  "kind": "original",
+  "source_idx": 0,
+  "repeat": 0,
+  "instruction": "Exit the bedroom and turn left. Walk straight passing the gray couch and stop near the rug. "
+ },
+ {
+  "i": 1,
+  "file": 900001,
+  "route": "A",
+  "kind": "original",
+  "source_idx": 0,
+  "repeat": 1,
+  "instruction": "Exit the bedroom and turn left. Walk straight passing the gray couch and stop near the rug. "
+ },
+ {
+  "i": 2,
+  "file": 900002,
+  "route": "A",
+  "kind": "original",
+  "source_idx": 1,
+  "repeat": 0,
+  "instruction": "Walk out of the bedroom through the open door into the hallway. Turn the corner and walk into the dining area. Pass the dining table and walk  into the living room area towards the television. Stop near the chair and open sliding doors to outside. "
+ },
+ {
+  "i": 3,
+  "file": 900003,
+  "route": "A",
+  "kind": "original",
+  "source_idx": 1,
+  "repeat": 1,
+  "instruction": "Walk out of the bedroom through the open door into the hallway. Turn the corner and walk into the dining area. Pass the dining table and walk  into the living room area towards the television. Stop near the chair and open sliding doors to outside. "
+ },
+ {
+  "i": 4,
+  "file": 900004,
+  "route": "A",
+  "kind": "custom",
+  "source_idx": 0,
+  "repeat": 0,
+  "instruction": "Leave the bedroom and turn left. Go into the living room and stop on the rug past the gray couch."
+ },
+ {
+  "i": 5,
+  "file": 900005,
+  "route": "A",
+  "kind": "custom",
+  "source_idx": 0,
+  "repeat": 1,
+  "instruction": "Leave the bedroom and turn left. Go into the living room and stop on the rug past the gray couch."
+ },
+ {
+  "i": 6,
+  "file": 900006,
+  "route": "B",
+  "kind": "original",
+  "source_idx": 3,
+  "repeat": 0,
+  "instruction": "Go straight past the pool. Walk between the bar and chairs.  Stop when you get to the corner of the bar.  That's where you will wait. "
+ },
+ {
+  "i": 7,
+  "file": 900007,
+  "route": "B",
+  "kind": "original",
+  "source_idx": 3,
+  "repeat": 1,
+  "instruction": "Go straight past the pool. Walk between the bar and chairs.  Stop when you get to the corner of the bar.  That's where you will wait. "
+ },
+ {
+  "i": 8,
+  "file": 900008,
+  "route": "B",
+  "kind": "custom",
+  "source_idx": 3,
+  "repeat": 0,
+  "instruction": "Walk along the pool to the bar and stop at the corner of the bar."
+ },
+ {
+  "i": 9,
+  "file": 900009,
+  "route": "B",
+  "kind": "custom",
+  "source_idx": 3,
+  "repeat": 1,
+  "instruction": "Walk along the pool to the bar and stop at the corner of the bar."
+ },
+ {
+  "i": 10,
+  "file": 900010,
+  "route": "C",
+  "kind": "original",
+  "source_idx": 7,
+  "repeat": 0,
+  "instruction": "Walk across the floor and wait the archway. "
+ },
+ {
+  "i": 11,
+  "file": 900011,
+  "route": "C",
+  "kind": "original",
+  "source_idx": 7,
+  "repeat": 1,
+  "instruction": "Walk across the floor and wait the archway. "
+ },
+ {
+  "i": 12,
+  "file": 900012,
+  "route": "C",
+  "kind": "original",
+  "source_idx": 8,
+  "repeat": 0,
+  "instruction": "Move forward to the doorway on the opposite side of the hall.  Stop in the archway. "
+ },
+ {
+  "i": 13,
+  "file": 900013,
+  "route": "C",
+  "kind": "original",
+  "source_idx": 8,
+  "repeat": 1,
+  "instruction": "Move forward to the doorway on the opposite side of the hall.  Stop in the archway. "
+ },
+ {
+  "i": 14,
+  "file": 900014,
+  "route": "C",
+  "kind": "custom",
+  "source_idx": 7,
+  "repeat": 0,
+  "instruction": "Cross the big hall and stop in the archway on the far side."
+ },
+ {
+  "i": 15,
+  "file": 900015,
+  "route": "C",
+  "kind": "custom",
+  "source_idx": 7,
+  "repeat": 1,
+  "instruction": "Cross the big hall and stop in the archway on the far side."
+ },
+ {
+  "i": 16,
+  "file": 900016,
+  "route": "D",
+  "kind": "original",
+  "source_idx": 9,
+  "repeat": 0,
+  "instruction": "Walk passed the dining table and continue towards the kitchen. Walk through the kitchen passed the counters and stove and stop near the sink. "
+ },
+ {
+  "i": 17,
+  "file": 900017,
+  "route": "D",
+  "kind": "original",
+  "source_idx": 9,
+  "repeat": 1,
+  "instruction": "Walk passed the dining table and continue towards the kitchen. Walk through the kitchen passed the counters and stove and stop near the sink. "
+ },
+ {
+  "i": 18,
+  "file": 900018,
+  "route": "D",
+  "kind": "original",
+  "source_idx": 10,
+  "repeat": 0,
+  "instruction": "Move to the far left corner of the table\r\nProceed to the doorway to your right\r\nwalk into the kitchen with the stove on your right\r\nproceed forward until the fridge is on your left\r\nproceed forward once more until there is a small sink on your left and shelves on your right. "
+ },
+ {
+  "i": 19,
+  "file": 900019,
+  "route": "D",
+  "kind": "original",
+  "source_idx": 10,
+  "repeat": 1,
+  "instruction": "Move to the far left corner of the table\r\nProceed to the doorway to your right\r\nwalk into the kitchen with the stove on your right\r\nproceed forward until the fridge is on your left\r\nproceed forward once more until there is a small sink on your left and shelves on your right. "
+ },
+ {
+  "i": 20,
+  "file": 900020,
+  "route": "D",
+  "kind": "original",
+  "source_idx": 11,
+  "repeat": 0,
+  "instruction": "Walk straight past the table and turn right to go between the kitchen counters and walk straight past the refrigerator into the pantry and stop halfway between the two shelves on the right. "
+ },
+ {
+  "i": 21,
+  "file": 900021,
+  "route": "D",
+  "kind": "original",
+  "source_idx": 11,
+  "repeat": 1,
+  "instruction": "Walk straight past the table and turn right to go between the kitchen counters and walk straight past the refrigerator into the pantry and stop halfway between the two shelves on the right. "
+ },
+ {
+  "i": 22,
+  "file": 900022,
+  "route": "D",
+  "kind": "custom",
+  "source_idx": 11,
+  "repeat": 0,
+  "instruction": "Go past the dining table, turn right into the kitchen, and stop in the pantry between the shelves."
+ },
+ {
+  "i": 23,
+  "file": 900023,
+  "route": "D",
+  "kind": "custom",
+  "source_idx": 11,
+  "repeat": 1,
+  "instruction": "Go past the dining table, turn right into the kitchen, and stop in the pantry between the shelves."
+ },
+ {
+  "i": 24,
+  "file": 900024,
+  "route": "D",
+  "kind": "custom",
+  "source_idx": 11,
+  "repeat": 0,
+  "instruction": "Go to the pantry."
+ },
+ {
+  "i": 25,
+  "file": 900025,
+  "route": "D",
+  "kind": "custom",
+  "source_idx": 11,
+  "repeat": 1,
+  "instruction": "Go to the pantry."
+ },
+ {
+  "i": 26,
+  "file": 900026,
+  "route": "E",
+  "kind": "original",
+  "source_idx": 13,
+  "repeat": 0,
+  "instruction": "Walk behind the couch towards the kitchen. Enter the kitchen.  Walk towards the doors that go outside.  Turn left when you reach the doors. Walk down the hallway past the kitchen.  Stop where the four hallways intersect. "
+ },
+ {
+  "i": 27,
+  "file": 900027,
+  "route": "E",
+  "kind": "original",
+  "source_idx": 13,
+  "repeat": 1,
+  "instruction": "Walk behind the couch towards the kitchen. Enter the kitchen.  Walk towards the doors that go outside.  Turn left when you reach the doors. Walk down the hallway past the kitchen.  Stop where the four hallways intersect. "
+ },
+ {
+  "i": 28,
+  "file": 900028,
+  "route": "E",
+  "kind": "custom",
+  "source_idx": 13,
+  "repeat": 0,
+  "instruction": "Walk past the couch into the kitchen. Turn left at the doors to the outside, go down the hallway, and stop where four hallways meet."
+ },
+ {
+  "i": 29,
+  "file": 900029,
+  "route": "E",
+  "kind": "custom",
+  "source_idx": 13,
+  "repeat": 1,
+  "instruction": "Walk past the couch into the kitchen. Turn left at the doors to the outside, go down the hallway, and stop where four hallways meet."
+ }
+]
