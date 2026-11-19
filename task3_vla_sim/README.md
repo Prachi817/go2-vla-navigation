@@ -434,7 +434,7 @@ installed (and needs sudo), so use `nohup`:
 ```bash
 pkill -f vlm_server_8bit.py; sleep 3
 cd ~/go2-sim/NaVILA-Bench/scripts
-nohup env PYTHONNOUSERSITE=1 ~/miniconda3/envs/navila/bin/python -u vlm_server_8bit.py \
+nohup env -u PYTHONPATH PYTHONNOUSERSITE=1 ~/miniconda3/envs/navila/bin/python -u vlm_server_8bit.py \
   --model_path ~/go2-sim/checkpoints/navila-llama3-8b-8f --port 54321 --precision W8A16 \
   > ~/go2-sim/vlm_server.log 2>&1 &
 sleep 90; tail -3 ~/go2-sim/vlm_server.log    # -> VLM Server listening on localhost:54321
@@ -681,7 +681,11 @@ captured; its outcome comes from the metrics and video.)
   point (see Run 3; 38 of 1,077 episodes moved less than 1 m, Run 4).
 - The coarse action set (fixed 0.5 m/s, pi/6 rad/s, 25/50/75 cm, 15/30/45 degrees)
   limits how precisely it can stop.
-- Runs aren't exactly repeatable in simulation; borderline episodes flip.
+- Runs aren't exactly repeatable in simulation; borderline episodes flip,
+  but up and down roughly balance. Episodes 10-29 were run twice (Run 3,
+  and again while recording for the 8-bit test): 5/20 successes both
+  times, but 4 of 20 episodes changed outcome (2 each way). Raw data:
+  [`results/quant_test/rerun_10_29/`](results/quant_test/rerun_10_29/).
 
 ## 8-bit vs fp16 test
 
@@ -721,7 +725,7 @@ python3 compare_precision.py --label 8bit
 pgrep -af "run_many|record_8bit|navila_eval" && echo "STOP: Isaac is still running"
 pkill -f vlm_server_8bit.py; sleep 3
 cd ~/go2-sim/NaVILA-Bench/scripts
-nohup env PYTHONNOUSERSITE=1 ~/miniconda3/envs/navila/bin/python -u vlm_server_8bit.py \
+nohup env -u PYTHONPATH PYTHONNOUSERSITE=1 ~/miniconda3/envs/navila/bin/python -u vlm_server_8bit.py \
   --model_path ~/go2-sim/checkpoints/navila-llama3-8b-8f --port 54321 --precision W16A16 \
   > ~/go2-sim/vlm_server_fp16.log 2>&1 &
 sleep 90; tail -3 ~/go2-sim/vlm_server_fp16.log    # -> VLM Server listening on localhost:54321
@@ -796,7 +800,7 @@ B=https://raw.githubusercontent.com/Prachi817/go2-vla-navigation/main/task3_vla_
 curl -fsSO $B/stop_check_offline.py && curl -fsS -o scripts/patch_vlm_server_stopcheck.py $B/patch_vlm_server_stopcheck.py
 cd scripts && python3 patch_vlm_server_stopcheck.py && cd ..
 pkill -f vlm_server; sleep 5
-cd scripts && nohup env PYTHONNOUSERSITE=1 ~/miniconda3/envs/navila/bin/python -u vlm_server_stopcheck.py \
+cd scripts && nohup env -u PYTHONPATH PYTHONNOUSERSITE=1 ~/miniconda3/envs/navila/bin/python -u vlm_server_stopcheck.py \
   --model_path ~/go2-sim/checkpoints/navila-llama3-8b-8f --port 54321 --precision W8A16 \
   > ~/go2-sim/vlm_server_stopcheck.log 2>&1 & cd ..
 sleep 90; tail -2 ~/go2-sim/vlm_server_stopcheck.log     # -> VLM Server listening
@@ -965,6 +969,13 @@ is in-sample and small; the 100-episode controller runs are the real test.
   separate GPUs, or a 24 GB+ card; the
   [8-bit vs fp16 test](#8-bit-vs-fp16-test) compares their decisions
   instead and found 96.8% agreement.
+- **`PYTHONPATH` from new terminals.** After a reboot, new terminals set
+  `PYTHONPATH` to ROS and system folders (`/usr/lib/python3/dist-packages`
+  etc.), so the `navila` Python picks up the system's numpy 1.21.5 and the
+  server crashes with `ImportError: this version of pandas is incompatible
+  with numpy < 1.22.4`. All server commands here start with
+  `env -u PYTHONPATH` for that reason; `run_many.sh` and
+  `run_controller.sh` already unset it.
 - **Patched installed library.** The 8-bit fix edits the installed
   Transformers file in the `navila` env. Reinstalling Transformers or
   re-running NaVILA's `cp -rv transformers_replace` step undoes it - re-run

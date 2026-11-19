@@ -14,6 +14,7 @@ the 8-bit vs fp16 test, the offline stop-check test and the custom-instruction r
 | `quant_test/replay_8bit.json` | 8-bit server's answers to the 725 recorded requests (episodes 10-29); identical to the answers recorded during the episodes |
 | `quant_test/replay_fp16.json` | fp16 server's answers to the same 725 requests |
 | `quant_test/compare_fp16.log` | Output of [`compare_precision.py`](../scripts/compare_precision.py) `--label fp16` |
+| `quant_test/rerun_10_29/measurements/` | Episodes 10-29 as re-run while recording for the 8-bit test (a second run of the same episodes; file names as in `measurements/`) |
 | `stop_check/stop_check.tsv` | Offline stop-check test, one row per decision: stop probability, yes/no answer, labels, NaVILA's recorded answer |
 | `stop_check/stop_check.json` | The same answers as returned by the server (incl. top-5 first tokens); `stop_check.log` is the printed report |
 | `custom/custom_map.json` | Custom-instruction run: which episode file is which route, wording and repeat |
