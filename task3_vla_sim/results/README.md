@@ -19,6 +19,7 @@ the 8-bit vs fp16 test, the offline stop-check test and the custom-instruction r
 | `custom/custom_map.json` | Custom-instruction run: which episode file is which route, wording and repeat |
 | `custom/measurements/`, `custom/decisions/` | Metrics per episode, and every decision with stop probability, position and true distance to goal |
 | `custom/compare_custom.txt` | Output of [`compare_custom.py`](../scripts/compare_custom.py) |
+| `controller_prob/`, `controller_fine/` | Stop-aware controller runs on `subset_100.txt`: measurements, per-decision logs, `compare_runs.txt` (output of [`compare_runs.py`](../scripts/compare_runs.py)), run log and options |
 
 Not included (kept on the lab machine, `~/go2-sim/`): the per-episode
 Isaac Sim logs, the videos (`results_backup/navila_full_20261103_1336.tar.gz`,

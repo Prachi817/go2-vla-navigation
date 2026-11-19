@@ -1,0 +1,1 @@
+{"decision": 0, "sim_step": 0, "navila": "The next action is turn left 45 degree.", "stop_prob": 1.855391506215012e-07, "ask": null, "control": "", "vel": [0.0, 0.0, 0.5235987755982988], "time_to_go": 1.5, "pos": [-2.931844472885132, -4.46331787109375, 0.19566255807876587], "dist_to_goal_logged_only": 10.230310664435573}
