@@ -172,6 +172,7 @@ Only these files are ours, in [`scripts/`](scripts/):
 | [`custom_instructions.json`](scripts/custom_instructions.json) | Our own instructions on 5 benchmark routes |
 | [`make_custom_episodes.py`](scripts/make_custom_episodes.py) | Builds an episode file from them (original + custom wording, repeated) |
 | [`compare_custom.py`](scripts/compare_custom.py) | Original vs custom wording, per route |
+| [`try_instruction.py`](scripts/try_instruction.py) | Type any instruction and run it once on a benchmark route |
 
 ## Machine
 
@@ -961,6 +962,25 @@ simulated exactly: the robot would end where it was at that decision.
 In the "reached, never stopped" runs the stop probability did rise inside
 the goal area (episode 9: up to 0.37; route A, our wording: 0.48). This
 is in-sample and small; the 100-episode controller runs are the real test.
+
+### Trying your own instruction
+
+[`try_instruction.py`](scripts/try_instruction.py) runs one episode with an
+instruction you type, on a benchmark route (same house, start, goal and
+scoring). It prints NaVILA's decisions as they happen, then the result and
+the video path (~2-3 min per try). NaVILA reads the instruction once at the
+start of an episode, so it can't be changed mid-run.
+```bash
+cd ~/go2-sim/NaVILA-Bench
+curl -fsSO https://raw.githubusercontent.com/Prachi817/go2-vla-navigation/main/task3_vla_sim/scripts/try_instruction.py
+python3 try_instruction.py --list                     # routes A-E and their original instructions
+python3 try_instruction.py --route D "Go to the pantry and stop between the two shelves on the right."
+python3 try_instruction.py --base 7 "Cross the hall and stop in the archway."   # any episode 0-1076
+python3 try_instruction.py --route D "Go to the pantry." --stop_rule prob --fine_steps   # with the controller
+```
+Needs the VLM server running. Each try is saved in `eval_results/try/`
+(episode file, settings, log); results and videos go to
+`eval_results/go2_matterport_vision_loco_2024-09-25_23-22-02_try/`.
 
 ## Known caveats
 
